@@ -13,16 +13,29 @@ server = app.server
 
 def load_geojson(url):
     try:
-        return gpd.read_file(url)
+        # Carregar o arquivo GeoJSON diretamente da URL
+        gdf = gpd.read_file(url)
+        
+        # Verificar o sistema de coordenadas atual
+        print(f"Sistema de Coordenadas Original: {gdf.crs}")
+
+        # Converter para WGS 84 (EPSG:4326) se necessário
+        if gdf.crs != 'EPSG:4326':
+            gdf = gdf.to_crs(epsg=4674)
+            print("Sistema de Coordenadas convertido para EPSG:4326")
+        else:
+            print("Arquivo já está no sistema EPSG:4326")
+        
+        return gdf
     except Exception as e:
-        print(f"Erro ao carregar {url}: {e}")
+        print(f"Erro ao carregar o arquivo GeoJSON: {e}")
         return None
     
-    
+   
 
-brazil_states = load_geojson('https://github.com/ScriptsRemote/repo_simex_/raw/master/geojson/limite_municipios_amz_legal.geojson')
-df_degrad = pd.read_csv('https://media.githubusercontent.com/media/ScriptsRemote/Amazon/main/csv/alertas_sad_degradacao_09_2008_04_2024_municipio.csv')
+brazil_states = load_geojson('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_assentamentos.geojson')
 
+df_degrad = pd.read_parquet('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_degradacao_09_2008_04_2024_municipio.parquet')
 df_acumulado_ano = df_degrad.groupby(['ESTADO', 'ANO'])['AREAKM2'].sum().reset_index()
 df_acumulado_ano['AREAKM2'] = df_acumulado_ano['AREAKM2'].round(2)
 df_acumulado_ano['ANO'] = df_acumulado_ano['ANO'].astype(int)
