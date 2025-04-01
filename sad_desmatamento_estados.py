@@ -13,29 +13,15 @@ server = app.server
 
 def load_geojson(url):
     try:
-        # Carregar o arquivo GeoJSON diretamente da URL
-        gdf = gpd.read_file(url)
-        
-        # Verificar o sistema de coordenadas atual
-        print(f"Sistema de Coordenadas Original: {gdf.crs}")
-
-        # Converter para WGS 84 (EPSG:4326) se necessário
-        if gdf.crs != 'EPSG:4326':
-            gdf = gdf.to_crs(epsg=4674)
-            print("Sistema de Coordenadas convertido para EPSG:4326")
-        else:
-            print("Arquivo já está no sistema EPSG:4326")
-        
-        return gdf
+        return gpd.read_file(url)
     except Exception as e:
-        print(f"Erro ao carregar o arquivo GeoJSON: {e}")
+        print(f"Erro ao carregar {url}: {e}")
         return None
-    
-   
 
-brazil_states = load_geojson('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_assentamentos.geojson')
 
-df_degrad = pd.read_parquet('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_degradacao_09_2008_04_2024_municipio.parquet')
+brazil_states = load_geojson('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_estados.geojson')
+df_degrad = pd.read_parquet('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_desmatamento_08_2008_04_2024_municipios.parquet')
+
 df_acumulado_ano = df_degrad.groupby(['ESTADO', 'ANO'])['AREAKM2'].sum().reset_index()
 df_acumulado_ano['AREAKM2'] = df_acumulado_ano['AREAKM2'].round(2)
 df_acumulado_ano['ANO'] = df_acumulado_ano['ANO'].astype(int)
@@ -51,13 +37,13 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(dbc.Card([
             dbc.CardBody([
-                html.H1("Análise de Degradação - Amazônia Legal", className="text-center mb-4"),
+                html.H1("Análise de Desmatamento - Amazônia Legal", className="text-center mb-4"),
                 dbc.Row([
                     dbc.Col(
                         dbc.Button(
                             [html.I(className="fa fa-filter mr-1"), "Remover Filtros"],
-                            id="reset-button-top", n_clicks=0, color="primary",className="btn-sm custom-button"
-                        ), width="auto",className="d-flex justify-content-end"
+                            id="reset-button-top", n_clicks=0, color="primary",className="btn-sm custom-button",
+                        ), width="auto", className="d-flex justify-content-end"
                     ),
                     dbc.Col(
                         dbc.Button(
@@ -142,14 +128,15 @@ def update_bar_total(_):
     df_degrad_accum_total['AREAKM2'] = df_degrad_accum_total['AREAKM2'].round(2)
     df_degrad_accum_total['ANO'] = df_degrad_accum_total['ANO'].astype(int)
 
-    fig = px.bar(df_degrad_accum_total, x='ANO', y='AREAKM2', text='AREAKM2', title='Taxas de degradação<br>Amazônia Legal - Estados',
-                 labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'}, template='plotly_white')
+    fig = px.bar(df_degrad_accum_total, x='ANO', y='AREAKM2', text='AREAKM2', title='SAD Alerta de Desmatamento<br>Amazônia Legal - Estados',
+                 labels={'AREAKM2': 'Área (km²)', 'ANO': 'Ano'}, template='plotly_white')
 
     fig.update_traces(marker_color='orange', marker_line_color='orange', marker_line_width=1.5, opacity=0.6,
-                      texttemplate='%{text:.2s}', textangle=-45, textposition='outside', textfont=dict(size=12, color='black', family='Arial'))
+                      texttemplate='%{text:.2s}', textangle=-45, textposition='outside', textfont=dict(size=10, color='black', family='Arial'))
 
-    fig.update_layout(title={
-        'text': 'Taxas de Degradação<br>Amazônia Legal - Estados',
+    fig.update_layout(
+    title={
+        'text': 'SAD Alerta de Desmatamento<br>Amazônia Legal - Estados',
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
@@ -162,7 +149,7 @@ def update_bar_total(_):
         tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo x
     ),
     yaxis=dict(
-        title='Taxas (km²)',
+        title='Área (km²)',
         title_font=dict(size=10),  # Tamanho da fonte do título do eixo y
         tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo y
     ),
@@ -222,29 +209,27 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         bargap=0.1,
         font=dict(size=10),
         title={
-        'text':f'Taxas de Degradação acumulados - Estados ({selected_year})',
+        'text': f'SAD Alerta de Desmatamento<br>acumulados - Estados ({selected_year})',
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
-               
-        
-        }
+    }
     )
 
     df_map = df_year[df_year['ESTADO'].isin(selected_states)] if selected_states else df_year
 
     map_fig = px.choropleth_mapbox(
-        df_map, geojson=brazil_states, color='AREAKM2',
-        locations="ESTADO", featureidkey="properties.Estado",
-        mapbox_style="open-street-map",
-        center={"lat": -14, "lon": -55},
-        color_continuous_scale='YlOrRd',  
-        zoom=3
+    df_map, geojson=brazil_states, color='AREAKM2',
+    locations="ESTADO", featureidkey="properties.Estado",
+    mapbox_style="open-street-map",
+    center={"lat": -14, "lon": -55},
+    color_continuous_scale='YlOrRd',  
+    zoom=3
     )
-    
+
     map_fig.update_layout(
         title={
-            'text': f"Mapa de Degradação Ambiental (km²) - {selected_year}",
+            'text': f"Mapa de Desmatamento (km²) - {selected_year}",
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
@@ -259,17 +244,17 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     )
 
     df_line = df_acumulado_ano[df_acumulado_ano['ESTADO'].isin(selected_states)] if selected_states else df_acumulado_ano.copy()
-    line_title = f'Taxas de Degradação - Estados Selecionados' if selected_states else 'Taxas de Degradação - Amazônia Legal - Estados'
+    line_title = f'SAD Alerta de Desmatamento - Estados Selecionados' if selected_states else 'SAD Alerta de Desmatamento<br>Amazônia Legal - Estados'
 
     line_fig = px.line(df_line, x='ANO', y='AREAKM2', color='ESTADO',
-                       title=line_title, labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'},
-                       template='plotly_white', line_shape='spline')
+                       title=line_title, labels={'AREAKM2': 'Área (km²)', 'ANO': 'Ano'},
+                       template='plotly_white', line_shape='spline',color_discrete_sequence=px.colors.sequential.Reds)
 
     line_fig.update_traces(mode='lines+markers')
 
     line_fig.update_layout(
         xaxis_title='Ano',
-        yaxis_title='Taxas (km²)',
+        yaxis_title='Área (km²)',
         font=dict(size=10),
         yaxis=dict(tickformat=".0f"),
         legend=dict(itemsizing='constant'),

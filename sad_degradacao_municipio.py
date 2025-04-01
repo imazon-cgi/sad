@@ -22,11 +22,10 @@ def load_geojson(url):
 def load_csv(url):
     return pd.read_csv(url)
 
-# Carregar GeoJSON
-brazil_states = load_geojson('https://github.com/ScriptsRemote/Amazon/raw/main/geojson/AMZ_terra_indigena.geojson')
 
-# Carregar dados CSV na inicialização, sem pré-processar
-df_degrad = load_csv('https://github.com/ScriptsRemote/Amazon/raw/main/csv/alertas_sad_desmatamento_08_2008_04_2024_terraIndigena.csv')
+brazil_states = load_geojson('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_municipios.geojson')
+df_degrad = pd.read_parquet('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_degradacao_09_2008_04_2024_municipio.parquet')
+
 
 list_states = df_degrad['ESTADO'].unique()
 list_anual = sorted(df_degrad['ANO'].unique())
@@ -37,7 +36,7 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(dbc.Card([
             dbc.CardBody([
-                html.H1("Análise de Desmatamento - Amazônia Legal", className="text-center mb-4"),
+                html.H1("Análise de Degradação - Amazônia Legal", className="text-center mb-4"),
                 dbc.Row([
                     dbc.Col(
                         dbc.Button(
@@ -92,7 +91,7 @@ app.layout = dbc.Container([
     ], className='mb-4'),
     dcc.Store(id='selected-states', data=[]),
     dbc.Modal([
-        dbc.ModalHeader(dbc.ModalTitle("Escolha Terras Indígenas da Amazônia Legal")),
+        dbc.ModalHeader(dbc.ModalTitle("Escolha os Municípios da Amazônia Legal")),
         dbc.ModalBody([
             dcc.Dropdown(
                 options=state_options,
@@ -106,7 +105,7 @@ app.layout = dbc.Container([
         ])
     ], id="state-modal", is_open=False),
     dbc.Modal([
-        dbc.ModalHeader(dbc.ModalTitle("Escolha as Terras Indígenas da Amazônia Legal")),
+        dbc.ModalHeader(dbc.ModalTitle("Escolha os Municípios da Amazônia Legal")),
         dbc.ModalBody([
             dbc.Checklist(
                 options=state_options,
@@ -188,44 +187,44 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     df_acumulado_ano['PERCENTUAL'] = df_acumulado_ano.groupby('ANO')['AREAKM2'].transform(lambda x: (x / x.sum()) * 100)
     df_acumulado_ano['PERCENTUAL'] = df_acumulado_ano['PERCENTUAL'].round(2)
 
-    df_acumulado_ano_municipio = df_degrad.groupby(['TERRA_INDI', 'ESTADO', 'ANO'])['AREAKM2'].sum().reset_index()
+    df_acumulado_ano_municipio = df_degrad.groupby(['MUNICIPIO', 'ESTADO', 'ANO'])['AREAKM2'].sum().reset_index()
     df_acumulado_ano_municipio['AREAKM2'] = df_acumulado_ano_municipio['AREAKM2'].round(2)
     df_acumulado_ano_municipio['ANO'] = df_acumulado_ano_municipio['ANO'].astype(int)
     df_acumulado_ano_municipio['PERCENTUAL'] = df_acumulado_ano_municipio.groupby('ANO')['AREAKM2'].transform(lambda x: (x / x.sum()) * 100)
     df_acumulado_ano_municipio['PERCENTUAL'] = df_acumulado_ano_municipio['PERCENTUAL'].round(2)
 
     if selected_state:
-        df_year = df_acumulado_ano_municipio[(df_acumulado_ano_municipio['ANO'] == selected_year) & (df_acumulado_ano_municipio['ESTADO'].isin(selected_state))].sort_values(by='AREAKM2', ascending=False).head(15)
+        df_year = df_acumulado_ano_municipio[(df_acumulado_ano_municipio['ANO'] == selected_year) & (df_acumulado_ano_municipio['ESTADO'].isin(selected_state))].sort_values(by='AREAKM2', ascending=True).head(10)
     else:
-        df_year = df_acumulado_ano_municipio[df_acumulado_ano_municipio['ANO'] == selected_year].sort_values(by='AREAKM2', ascending=False).head(15)
+        df_year = df_acumulado_ano_municipio[df_acumulado_ano_municipio['ANO'] == selected_year].sort_values(by='AREAKM2', ascending=True).head(10)
     
     bar_yearly_fig = go.Figure(go.Bar(
-        y=df_year['TERRA_INDI'],
+        y=df_year['MUNICIPIO'],
         x=df_year['AREAKM2'],
         orientation='h',
-        marker_color=['green' if municipio in selected_states else 'DarkSeaGreen' for municipio in df_year['TERRA_INDI']],
+        marker_color=['green' if municipio in selected_states else 'DarkSeaGreen' for municipio in df_year['MUNICIPIO']],
         text=[f"{value} km² ({percent}%)" for value, percent in zip(df_year['AREAKM2'], df_year['PERCENTUAL'])],
         textposition='auto'
     ))
 
     bar_yearly_fig.update_layout(
         xaxis_title='Área (km²)',
-        yaxis_title='Terras Indígenas',
+        yaxis_title='Município',
         bargap=0.1,
         font=dict(size=10),
         title={
-        'text': f'Taxas de Desmatamentos acumulados - Terras Indígenas ({selected_year})' if not selected_state else f'Taxas de Desmatamentos acumulados - Terras Indígenas ({", ".join(selected_state)}) ({selected_year})',
+        'text': f'SAD Alertas de Degradação Florestal Acumulado - Municípios ({selected_year})' if not selected_state else f'SAD Alertas de Degradação Florestal Acumulado- Municípios ({", ".join(selected_state)}) ({selected_year})',
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
         }
     )
 
-    df_map = df_year[df_year['TERRA_INDI'].isin(selected_states)] if selected_states else df_year
+    df_map = df_year[df_year['MUNICIPIO'].isin(selected_states)] if selected_states else df_year
 
     map_fig = px.choropleth_mapbox(
         df_map, geojson=brazil_states, color='AREAKM2',
-        locations="TERRA_INDI", featureidkey="properties.nome_uc",
+        locations="MUNICIPIO", featureidkey="properties.NM_MUN",
         mapbox_style="open-street-map",
         center={"lat": -14, "lon": -55},
         color_continuous_scale='YlOrRd',  
@@ -234,7 +233,7 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     
     map_fig.update_layout(
         title={
-            'text': f"Mapa de Desmatamento (km²) - {selected_year}",
+            'text': f"Mapa de Degradação Ambiental (km²) - {selected_year}",
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
@@ -250,20 +249,20 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
 
     if selected_state:
         df_line = df_acumulado_ano_municipio[df_acumulado_ano_municipio['ESTADO'].isin(selected_state)]
-        line_title = f'Taxas de Desmatamento Terras Indígenas por Estado ({", ".join(selected_state)})'
+        line_title = f'SAD Alertas de Degradação Florestal Municípios por Estado ({", ".join(selected_state)})'
     else:
         df_line = df_acumulado_ano_municipio.copy()
-        line_title = 'Taxas de Desmatamento - Terras Indígenas por Estado'
+        line_title = 'SAD Alertas de Degradação Florestal- Municípios por Estado'
 
-    line_fig = px.line(df_line, x='ANO', y='AREAKM2', color='TERRA_INDI',
-                       title=line_title, labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'},
-                       template='plotly_white', line_shape='spline')
+    line_fig = px.line(df_line, x='ANO', y='AREAKM2', color='MUNICIPIO',
+                       title=line_title, labels={'AREAKM2': 'Area (km²)', 'ANO': 'Ano'},
+                       template='plotly_white', line_shape='spline', color_discrete_sequence=px.colors.sequential.Reds)
 
     line_fig.update_traces(mode='lines+markers')
 
     line_fig.update_layout(
         xaxis_title='Ano',
-        yaxis_title='Taxas (km²)',
+        yaxis_title='Area (km²)',
         font=dict(size=10),
         yaxis=dict(tickformat=".0f"),
         legend=dict(itemsizing='constant'),
@@ -282,23 +281,23 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         df_filtered = df_degrad.copy()
 
     if selected_states:
-        df_filtered = df_filtered[df_filtered['TERRA_INDI'].isin(selected_states)]
+        df_filtered = df_filtered[df_filtered['MUNICIPIO'].isin(selected_states)]
 
     df_degrad_accum_total = df_filtered.groupby('ANO')['AREAKM2'].sum().reset_index()
     df_degrad_accum_total['AREAKM2'] = df_degrad_accum_total['AREAKM2'].round(2)
     df_degrad_accum_total['ANO'] = df_degrad_accum_total['ANO'].astype(int)
 
     if selected_state and selected_states:
-        title_text = f'Taxas de Desmatamento acumuladas - Terras Indígenas ({", ".join(selected_states)}) ({", ".join(selected_state)})'
+        title_text = f'SAD Alertas de Degradação Florestal - Municípios ({", ".join(selected_states)}) ({", ".join(selected_state)})'
     elif selected_state:
-        title_text = f'Taxas de Desmatamento acumuladas - Terras Indígenas ({", ".join(selected_state)})'
+        title_text = f'SAD Alertas de Degradação Florestal - Municípios ({", ".join(selected_state)})'
     elif selected_states:
-        title_text = f'Taxas de Desmatamento acumuladas - Terras Indígenas ({", ".join(selected_states)})'
+        title_text = f'SAD Alertas de Degradação Florestal - Municípios ({", ".join(selected_states)})'
     else:
-        title_text = 'Taxas de Desmatamento acumuladas - Amazônia Legal'
+        title_text = 'SAD Alertas de Degradação Florestal - Amazônia Legal'
 
     bar_total_fig = px.bar(df_degrad_accum_total, x='ANO', y='AREAKM2', text='AREAKM2', title=title_text,
-                 labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'}, template='plotly_white')
+                 labels={'AREAKM2': 'Area (km²)', 'ANO': 'Ano'}, template='plotly_white')
 
     bar_total_fig.update_traces(marker_color='orange', marker_line_color='orange', marker_line_width=1.5, opacity=0.6,
                       texttemplate='%{text:.2s}', textangle=-45, textposition='outside', textfont=dict(size=12, color='black', family='Arial'))
@@ -317,7 +316,7 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo x
     ),
     yaxis=dict(
-        title='Taxas (km²)',
+        title='Area (km²)',
         title_font=dict(size=10),  # Tamanho da fonte do título do eixo y
         tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo y
     ),
@@ -364,7 +363,7 @@ def download_csv(n_clicks, selected_states, decimal_separator, remove_accents):
     filtered_df.to_csv(csv_buffer, index=False, sep=decimal_separator)
     csv_buffer.seek(0)
 
-    return dcc.send_data_frame(filtered_df.to_csv, "desmatamento_amazonia.csv", sep=decimal_separator)
+    return dcc.send_data_frame(filtered_df.to_csv, "degradacao_amazonia.csv", sep=decimal_separator)
 
 if __name__ == '__main__':
     app.run(debug=False, port=8050)

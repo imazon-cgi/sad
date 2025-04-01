@@ -21,17 +21,18 @@ def load_geojson(url):
 
 # Função para carregar CSVs com lazy loading
 def load_csv(url):
-    return pd.read_csv(url)
+    return pd.read_parquet(url)
 
 # Carregar GeoJSON
-brazil_states = load_geojson('https://github.com/ScriptsRemote/Amazon/raw/main/geojson/AMZ_terra_indigena.geojson')
+brazil_states = load_geojson('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_terra_indigena.geojson')
 
 # Carregar dados CSV na inicialização, sem pré-processar
-df_degrad = load_csv('https://github.com/ScriptsRemote/Amazon/raw/main/csv/alertas_sad_degradacao_09_2008_04_2024_terraIndigena.csv')
+df_degrad = load_csv('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_degradacao_09_2008_04_2024_terraIndigena.parquet')
 
 list_states = df_degrad['ESTADO'].unique()
 list_anual = sorted(df_degrad['ANO'].unique())
 state_options = [{'label': state, 'value': state} for state in list_states]
+
 
 # Definir intervalo de análise inicial
 start_date = pd.to_datetime("2022-08-01")
@@ -89,31 +90,31 @@ app.layout = dbc.Container([
         ),
     ], className='mb-4 align-items-center'),
 
-    # Linha 1: Gráfico "Taxas de Degradação Ambiental - Todas as Terras Indígenas" e "Evolução da Degradação na Amazônia por Período"
+    # Linha 1: Gráfico "SAD Alerta de Degração Ambiental - Todas as Terras Indígenas" e "Evolução da Degradação na Amazônia por Período"
     dbc.Row([
         dbc.Col(dbc.Card([
             dcc.Graph(id='bar-graph-total')
-        ], className="graph-block"), width=12, lg=6),  # Gráfico "Taxas de Degradação Ambiental"
+        ], className="graph-block"), width=12, lg=6),  # Gráfico "SAD Alerta de Degração Ambiental"
         dbc.Col(dbc.Card([
             dcc.Graph(id='line-graph-period')
         ], className="graph-block"), width=12, lg=6)  # Gráfico "Evolução da Degradação na Amazônia por Período"
     ], className='mb-4'),
 
-    # Linha 2: Gráfico "Taxas de Degradação Ambiental Acumuladas - Todas as Terras indígenas" ao lado do Mapa de Degradação
+    # Linha 2: Gráfico "SAD Alerta de Degração Ambiental acumulados - Todas as Terras indígenas" ao lado do Mapa de Degradação
     dbc.Row([
         dbc.Col(dbc.Card([
             dcc.Graph(id='bar-graph-yearly')
-        ], className="graph-block"), width=12, lg=6),  # Gráfico "Taxas de Degradação Ambiental Acumuladas"
+        ], className="graph-block"), width=12, lg=6),  # Gráfico "SAD Alerta de Degração Ambiental acumulados"
         dbc.Col(dbc.Card([
             dcc.Graph(id='choropleth-map')
         ], className="graph-block"), width=12, lg=6)  # Mapa de Degradação
     ], className='mb-4'),
 
-    # Linha 3: Gráfico de linhas "Taxas de Degradação Ambiental Acumuladas"
+    # Linha 3: Gráfico de linhas "SAD Alerta de Degração Ambiental acumulados"
     dbc.Row([
         dbc.Col(dbc.Card([
             dcc.Graph(id='line-graph')
-        ], className="graph-block"), width=12)  # Gráfico de linhas "Taxas de Degradação Ambiental Acumuladas"
+        ], className="graph-block"), width=12)  # Gráfico de linhas "SAD Alerta de Degração Ambiental acumulados"
     ], className='mb-4'),
 
     dcc.Store(id='selected-states', data=[]),
@@ -294,6 +295,9 @@ def update_graphs(start_date, end_date, map_click_data, bar_click_data, total_ba
         text=[f"{value:.2f} km²" for value in df_year['AREAKM2']],
         textposition='auto'
     ))
+    
+    # Inverter a ordem para que o maior valor fique no topo
+    bar_yearly_fig.update_yaxes(autorange="reversed")
 
     bar_yearly_fig.update_layout(
         xaxis_title='Área (km²)',
@@ -302,10 +306,10 @@ def update_graphs(start_date, end_date, map_click_data, bar_click_data, total_ba
         font=dict(size=10),
         title={
             'text': (
-                f'Taxas de Degradação Ambiental acumuladas - {ti_title} <br>'
+                f'SAD Alerta de Degração Ambiental acumulados - {ti_title} <br>'
                 f'({start_date.strftime("%Y-%m")} a {end_date.strftime("%Y-%m")})'
                 if not selected_state else 
-                f'Taxas de Degradação Ambiental acumuladas - {ti_title} <br>'
+                f'SAD Alerta de Degração Ambiental acumulados - {ti_title} <br>'
                 f'({" e ".join(selected_state)}) ({start_date.strftime("%Y-%m")} a {end_date.strftime("%Y-%m")})'
             ),
             'x': 0.5,
@@ -341,19 +345,23 @@ def update_graphs(start_date, end_date, map_click_data, bar_click_data, total_ba
         }
     )
 
-    # Cálculo do acumulado anual
-    df_line = df_filtered.groupby(['ANO', 'TERRA_INDI', 'ESTADO'])['AREAKM2'].sum().reset_index()
+     # Cálculo do acumulado anual
+    df_line = df_filtered.groupby(['ANO', 'MES', 'TERRA_INDI', 'ESTADO'])['AREAKM2'].sum().reset_index()
+
+    # Criar uma coluna "DATA" com o formato "ANO-MÊS"
+    df_line['DATA'] = pd.to_datetime(df_line['ANO'].astype(str) + '-' + df_line['MES'].astype(str).str.zfill(2) + '-01')
+    df_line = df_line.sort_values(by='DATA')
 
     if selected_state:
         df_line = df_line[df_line['ESTADO'].isin(selected_state)]
-        line_title = f'Taxas de Degradação Ambiental Acumuladas - <br> {", ".join(selected_state)} ({ti_title})'
+        line_title = f'SAD Alerta de Degração Ambiental acumulados - <br> {", ".join(selected_state)} ({ti_title})'
     else:
-        line_title = f'Taxas de Degradação Ambiental Acumuladas - <br> {ti_title}'
+        line_title = f'SAD Alerta de Degração Ambiental acumulados - <br> {ti_title}'
 
-    # Gráfico de linhas acumuladas por ano
-    line_fig = px.line(df_line, x='ANO', y='AREAKM2', color='TERRA_INDI',
+    # Gráfico de linhas acumulados por ano
+    line_fig = px.line(df_line, x='DATA', y='AREAKM2', color='TERRA_INDI',
                        title=line_title, labels={'AREAKM2': 'Área acumulada (km²)', 'ANO': 'Ano'},
-                       template='plotly_white', line_shape='spline')
+                       template='plotly_white', line_shape='spline', color_discrete_sequence=px.colors.sequential.Reds)
 
     line_fig.update_traces(mode='lines+markers')
 
@@ -377,16 +385,16 @@ def update_graphs(start_date, end_date, map_click_data, bar_click_data, total_ba
     df_degrad_accum_total['DATA'] = pd.to_datetime(df_degrad_accum_total[['ANO', 'MES']].astype(str).agg('-'.join, axis=1) + '-01')
 
     if selected_state and selected_states:
-        title_text = f'Taxas de Degradação Ambiental acumuladas - <br> {ti_title} ({", ".join(selected_states)}) ({", ".join(selected_state)})'
+        title_text = f'SAD Alerta de Degração Ambiental acumulados - <br> {ti_title} ({", ".join(selected_states)}) ({", ".join(selected_state)})'
     elif selected_state:
-        title_text = f'Taxas de Degradação Ambiental acumuladas - <br> {ti_title} ({", ".join(selected_state)})'
+        title_text = f'SAD Alerta de Degração Ambiental acumulados - <br> {ti_title} ({", ".join(selected_state)})'
     elif selected_states:
-        title_text = f'Taxas de Degradação Ambiental acumuladas - <br> {ti_title} ({", ".join(selected_states)})'
+        title_text = f'SAD Alerta de Degração Ambiental acumulados - <br> {ti_title} ({", ".join(selected_states)})'
     else:
-        title_text = f'Taxas de Degradação Ambiental acumuladas - <br> {ti_title}'
+        title_text = f'SAD Alerta de Degração Ambiental acumulados - <br> {ti_title}'
 
     bar_total_fig = px.bar(df_degrad_accum_total, x='DATA', y='AREAKM2', text='AREAKM2', title=title_text,
-                           labels={'AREAKM2': 'Taxas (km²)', 'DATA': 'Data'}, template='plotly_white')
+                           labels={'AREAKM2': 'Área (km²)', 'DATA': 'Data'}, template='plotly_white')
 
     bar_total_fig.update_traces(marker_color='orange', marker_line_color='orange', marker_line_width=1.5, opacity=0.6,
                                 texttemplate='%{text:.2f}', textangle=-45, textposition='outside', textfont=dict(size=10, color='black', family='Arial'))
@@ -399,7 +407,7 @@ def update_graphs(start_date, end_date, map_click_data, bar_click_data, total_ba
             'yanchor': 'top'
         },
         xaxis=dict(
-            title='Data',
+            title=f'Período de Análise ({start_date.strftime("%Y-%m")} a {end_date.strftime("%Y-%m")})',
             tickmode='linear',
             tickangle=-45,
             title_font=dict(size=10),
@@ -408,7 +416,7 @@ def update_graphs(start_date, end_date, map_click_data, bar_click_data, total_ba
             dtick="M1"
         ),
         yaxis=dict(
-            title='Taxas (km²)',
+            title='Área (km²)',
             title_font=dict(size=10),
             tickfont=dict(size=10)
         ),

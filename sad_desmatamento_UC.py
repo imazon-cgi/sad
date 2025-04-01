@@ -20,13 +20,13 @@ def load_geojson(url):
 
 # Função para carregar CSVs com lazy loading
 def load_csv(url):
-    return pd.read_csv(url)
+    return pd.read_parquet(url)
 
 # Carregar GeoJSON
-brazil_states = load_geojson('https://github.com/ScriptsRemote/Amazon/raw/main/geojson/AMZ_municipios.geojson')
+brazil_states = load_geojson('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_unidade_conservacao.geojson')
 
 # Carregar dados CSV na inicialização, sem pré-processar
-df_degrad = load_csv('https://media.githubusercontent.com/media/ScriptsRemote/Amazon/main/csv/alertas_sad_degradacao_09_2008_04_2024_municipio.csv')
+df_degrad = load_csv('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_desmatamento_08_2008_04_2024_unidadeConservacao.parquet')
 
 list_states = df_degrad['ESTADO'].unique()
 list_anual = sorted(df_degrad['ANO'].unique())
@@ -37,7 +37,7 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(dbc.Card([
             dbc.CardBody([
-                html.H1("Análise de Degradação - Amazônia Legal", className="text-center mb-4"),
+                html.H1("Análise de Desmatamento - Amazônia Legal", className="text-center mb-4"),
                 dbc.Row([
                     dbc.Col(
                         dbc.Button(
@@ -90,9 +90,17 @@ app.layout = dbc.Container([
             tooltip={"placement": "bottom", "always_visible": True}
         ), width=12)
     ], className='mb-4'),
+    dbc.Row([
+        dbc.Col(dbc.Card([
+            dcc.Graph(id='pie-graph-uso')
+        ], className="graph-block"), width=12, lg=6),
+        dbc.Col(dbc.Card([
+            dcc.Graph(id='pie-graph-unid-conse')
+        ], className="graph-block"), width=12, lg=6)
+    ], className='mb-4'),
     dcc.Store(id='selected-states', data=[]),
     dbc.Modal([
-        dbc.ModalHeader(dbc.ModalTitle("Escolha os Municípios da Amazônia Legal")),
+        dbc.ModalHeader(dbc.ModalTitle("Escolha Unidades de Conservação da Amazônia Legal")),
         dbc.ModalBody([
             dcc.Dropdown(
                 options=state_options,
@@ -106,7 +114,7 @@ app.layout = dbc.Container([
         ])
     ], id="state-modal", is_open=False),
     dbc.Modal([
-        dbc.ModalHeader(dbc.ModalTitle("Escolha os Municípios da Amazônia Legal")),
+        dbc.ModalHeader(dbc.ModalTitle("Escolha as Unidades de Conservação da Amazônia Legal")),
         dbc.ModalBody([
             dbc.Checklist(
                 options=state_options,
@@ -145,6 +153,8 @@ app.layout = dbc.Container([
      Output('bar-graph-yearly', 'figure'),
      Output('choropleth-map', 'figure'),
      Output('line-graph', 'figure'),
+     Output('pie-graph-uso', 'figure'),
+     Output('pie-graph-unid-conse', 'figure'),
      Output('selected-states', 'data'),
      Output('state-dropdown-modal', 'value'),
      Output('year-slider', 'value')],
@@ -161,7 +171,7 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     
     if triggered_id == 'reset-button-top.n_clicks':
         selected_states = []
-        selected_state = None
+        selected_state = []
         selected_year = int(max(list_anual))
     else:
         if triggered_id == 'choropleth-map.clickData' and map_click_data:
@@ -181,6 +191,9 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         if triggered_id == 'bar-graph-total.clickData' and total_bar_click_data:
             selected_year = total_bar_click_data['points'][0]['x']
 
+    if not selected_state:
+        selected_state = []
+
     # Pré-processamento dos dados
     df_acumulado_ano = df_degrad.groupby(['ESTADO', 'ANO'])['AREAKM2'].sum().reset_index()
     df_acumulado_ano['AREAKM2'] = df_acumulado_ano['AREAKM2'].round(2)
@@ -188,44 +201,44 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     df_acumulado_ano['PERCENTUAL'] = df_acumulado_ano.groupby('ANO')['AREAKM2'].transform(lambda x: (x / x.sum()) * 100)
     df_acumulado_ano['PERCENTUAL'] = df_acumulado_ano['PERCENTUAL'].round(2)
 
-    df_acumulado_ano_municipio = df_degrad.groupby(['MUNICIPIO', 'ESTADO', 'ANO'])['AREAKM2'].sum().reset_index()
+    df_acumulado_ano_municipio = df_degrad.groupby(['UNID_CONSE', 'ESTADO', 'ANO'])['AREAKM2'].sum().reset_index()
     df_acumulado_ano_municipio['AREAKM2'] = df_acumulado_ano_municipio['AREAKM2'].round(2)
     df_acumulado_ano_municipio['ANO'] = df_acumulado_ano_municipio['ANO'].astype(int)
     df_acumulado_ano_municipio['PERCENTUAL'] = df_acumulado_ano_municipio.groupby('ANO')['AREAKM2'].transform(lambda x: (x / x.sum()) * 100)
     df_acumulado_ano_municipio['PERCENTUAL'] = df_acumulado_ano_municipio['PERCENTUAL'].round(2)
 
     if selected_state:
-        df_year = df_acumulado_ano_municipio[(df_acumulado_ano_municipio['ANO'] == selected_year) & (df_acumulado_ano_municipio['ESTADO'].isin(selected_state))].sort_values(by='AREAKM2', ascending=False).head(10)
+        df_year = df_acumulado_ano_municipio[(df_acumulado_ano_municipio['ANO'] == selected_year) & (df_acumulado_ano_municipio['ESTADO'].isin(selected_state))].sort_values(by='AREAKM2', ascending=True).head(15)
     else:
-        df_year = df_acumulado_ano_municipio[df_acumulado_ano_municipio['ANO'] == selected_year].sort_values(by='AREAKM2', ascending=False).head(10)
+        df_year = df_acumulado_ano_municipio[df_acumulado_ano_municipio['ANO'] == selected_year].sort_values(by='AREAKM2', ascending=True).head(15)
     
     bar_yearly_fig = go.Figure(go.Bar(
-        y=df_year['MUNICIPIO'],
+        y=df_year['UNID_CONSE'],
         x=df_year['AREAKM2'],
         orientation='h',
-        marker_color=['green' if municipio in selected_states else 'DarkSeaGreen' for municipio in df_year['MUNICIPIO']],
+        marker_color=['green' if municipio in selected_states else 'DarkSeaGreen' for municipio in df_year['UNID_CONSE']],
         text=[f"{value} km² ({percent}%)" for value, percent in zip(df_year['AREAKM2'], df_year['PERCENTUAL'])],
         textposition='auto'
     ))
 
     bar_yearly_fig.update_layout(
         xaxis_title='Área (km²)',
-        yaxis_title='Município',
+        yaxis_title='Unidades de Conservação',
         bargap=0.1,
         font=dict(size=10),
         title={
-        'text': f'Taxas de Degradação acumulados - Municípios ({selected_year})' if not selected_state else f'Taxas de Degradação acumulados - Municípios ({", ".join(selected_state)}) ({selected_year})',
+        'text': f'SAD Alerta de Desmatamento acumulados<br>Unidades de Conservação ({selected_year})' if not selected_state else f'SAD Alerta de Desmatamento acumulados<br>Unidades de Conservação ({", ".join(selected_state)}) ({selected_year})',
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
         }
     )
 
-    df_map = df_year[df_year['MUNICIPIO'].isin(selected_states)] if selected_states else df_year
+    df_map = df_year[df_year['UNID_CONSE'].isin(selected_states)] if selected_states else df_year
 
     map_fig = px.choropleth_mapbox(
         df_map, geojson=brazil_states, color='AREAKM2',
-        locations="MUNICIPIO", featureidkey="properties.NM_MUN",
+        locations="UNID_CONSE", featureidkey="properties.nome_uc",
         mapbox_style="open-street-map",
         center={"lat": -14, "lon": -55},
         color_continuous_scale='YlOrRd',  
@@ -234,13 +247,13 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     
     map_fig.update_layout(
         title={
-            'text': f"Mapa de Degradação Ambiental (km²) - {selected_year}",
+            'text': f"Mapa de Desmatamento (km²) - {selected_year}",
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
             'font': {'size': 14}
         },
-        margin={"r":0, "t":50, "l":0, "b":0},  # Ajuste de margem superior para incluir o título
+        margin={"r":0, "t":50, "l":0, "b":0},
         mapbox={
             'zoom': 3,
             'center': {"lat": -14, "lon": -55},
@@ -250,26 +263,26 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
 
     if selected_state:
         df_line = df_acumulado_ano_municipio[df_acumulado_ano_municipio['ESTADO'].isin(selected_state)]
-        line_title = f'Taxas de Degradação Municípios por Estado ({", ".join(selected_state)})'
+        line_title = f'SAD Alerta de Desmatamento<br>Unidades de Conservação por Estado ({", ".join(selected_state)})'
     else:
         df_line = df_acumulado_ano_municipio.copy()
-        line_title = 'Taxas de Degradação - Municípios por Estado'
+        line_title = 'SAD Alerta de Desmatamento - Unidades de Conservação por Estado'
 
-    line_fig = px.line(df_line, x='ANO', y='AREAKM2', color='MUNICIPIO',
-                       title=line_title, labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'},
-                       template='plotly_white', line_shape='spline')
+    line_fig = px.line(df_line, x='ANO', y='AREAKM2', color='UNID_CONSE',
+                       title=line_title, labels={'AREAKM2': 'Área (km²)', 'ANO': 'Ano'},
+                       template='plotly_white', line_shape='spline',color_discrete_sequence=px.colors.sequential.Reds)
 
     line_fig.update_traces(mode='lines+markers')
 
     line_fig.update_layout(
         xaxis_title='Ano',
-        yaxis_title='Taxas (km²)',
+        yaxis_title='Área (km²)',
         font=dict(size=10),
         yaxis=dict(tickformat=".0f"),
         legend=dict(itemsizing='constant'),
         title={
         'text': line_title,
-        'x': 0.5,  # Centraliza o título horizontalmente
+        'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
     }
@@ -282,23 +295,23 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         df_filtered = df_degrad.copy()
 
     if selected_states:
-        df_filtered = df_filtered[df_filtered['MUNICIPIO'].isin(selected_states)]
+        df_filtered = df_filtered[df_filtered['UNID_CONSE'].isin(selected_states)]
 
     df_degrad_accum_total = df_filtered.groupby('ANO')['AREAKM2'].sum().reset_index()
     df_degrad_accum_total['AREAKM2'] = df_degrad_accum_total['AREAKM2'].round(2)
     df_degrad_accum_total['ANO'] = df_degrad_accum_total['ANO'].astype(int)
 
     if selected_state and selected_states:
-        title_text = f'Taxas de Degradação acumuladas - Municípios ({", ".join(selected_states)}) ({", ".join(selected_state)})'
+        title_text = f'SAD Alerta de Desmatamento acumulados - Unidades de Conservação ({", ".join(selected_states)}) ({", ".join(selected_state)})'
     elif selected_state:
-        title_text = f'Taxas de Degradação acumuladas - Municípios ({", ".join(selected_state)})'
+        title_text = f'SAD Alerta de Desmatamento acumulados - Unidades de Conservação ({", ".join(selected_state)})'
     elif selected_states:
-        title_text = f'Taxas de Degradação acumuladas - Municípios ({", ".join(selected_states)})'
+        title_text = f'SAD Alerta de Desmatamento acumulados - Unidades de Conservação ({", ".join(selected_states)})'
     else:
-        title_text = 'Taxas de Degradação acumuladas - Amazônia Legal'
+        title_text = 'SAD Alerta de Desmatamento acumulados - Amazônia Legal'
 
     bar_total_fig = px.bar(df_degrad_accum_total, x='ANO', y='AREAKM2', text='AREAKM2', title=title_text,
-                 labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'}, template='plotly_white')
+                 labels={'AREAKM2': 'Área (km²)', 'ANO': 'Ano'}, template='plotly_white')
 
     bar_total_fig.update_traces(marker_color='orange', marker_line_color='orange', marker_line_width=1.5, opacity=0.6,
                       texttemplate='%{text:.2s}', textangle=-45, textposition='outside', textfont=dict(size=12, color='black', family='Arial'))
@@ -313,19 +326,70 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         title='Ano',
         tickmode='linear',
         tickangle=-45,
-        title_font=dict(size=10),  # Tamanho da fonte do título do eixo x
-        tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo x
+        title_font=dict(size=10),
+        tickfont=dict(size=10)
     ),
     yaxis=dict(
-        title='Taxas (km²)',
-        title_font=dict(size=10),  # Tamanho da fonte do título do eixo y
-        tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo y
+        title='Área (km²)',
+        title_font=dict(size=10),
+        tickfont=dict(size=10)
     ),
     font=dict(size=10),
-    autosize=True  # Torna o gráfico responsivo
+    autosize=True
     )
 
-    return bar_total_fig, bar_yearly_fig, map_fig, line_fig, selected_states, selected_state, selected_year
+    # Data processing for pie charts
+    if selected_state:
+        df_uso = df_degrad[(df_degrad['ANO'] == selected_year) & (df_degrad['ESTADO'].isin(selected_state))].copy()
+        df_unid_conse = df_degrad[(df_degrad['ANO'] == selected_year) & (df_degrad['ESTADO'].isin(selected_state))].copy()
+    else:
+        df_uso = df_degrad[df_degrad['ANO'] == selected_year].copy()
+        df_unid_conse = df_degrad[df_degrad['ANO'] == selected_year].copy()
+
+    df_uso = df_uso.groupby(['USO', 'JURISDICAO'])['AREAKM2'].sum().reset_index().nlargest(10, 'AREAKM2')
+    df_unid_conse = df_unid_conse.groupby(['UNID_CONSE', 'USO'])['AREAKM2'].sum().reset_index().nlargest(10, 'AREAKM2')
+
+    # Definindo uma paleta de cores para os gráficos de pizza
+    pie_colors = px.colors.qualitative.Plotly
+
+    # Pie chart for USO
+    pie_uso_fig = px.pie(df_uso, values='AREAKM2', names='USO', color='JURISDICAO', title='Área Desmatada por<br>Tipo de Uso e Jurisdição')
+    pie_uso_fig.update_traces(textinfo='percent+label', marker=dict(colors=pie_colors), textfont=dict(size=8))
+    pie_uso_fig.update_layout(
+        title_font=dict(size=12),
+        legend=dict(
+            font=dict(size=8),
+            orientation="v",
+            yanchor="top",
+            y=1.1,
+            xanchor="left",
+            x=1.1,
+            itemwidth=30,
+            itemsizing='constant',
+            traceorder='normal'
+        )
+    )
+
+    # Pie chart for UNID_CONSE
+    pie_unid_conse_fig = px.pie(df_unid_conse, values='AREAKM2', names='UNID_CONSE', color='USO', title='Área Desmatada por<br>Unidade de Conservação e Uso')
+    pie_unid_conse_fig.update_traces(textinfo='percent+label', marker=dict(colors=pie_colors), textfont=dict(size=8))
+    pie_unid_conse_fig.update_layout(
+        title_font=dict(size=12),
+        legend=dict(
+            font=dict(size=8),
+            orientation="v",
+            yanchor="top",
+            y=1.1,
+            xanchor="left",
+            x=1.1,
+            itemwidth=30,
+            itemsizing='constant',
+            traceorder='normal'
+        )
+    )
+
+    return bar_total_fig, bar_yearly_fig, map_fig, line_fig, pie_uso_fig, pie_unid_conse_fig, selected_states, selected_state, selected_year
+
 
 @app.callback(
     Output("state-modal", "is_open"),
@@ -365,6 +429,7 @@ def download_csv(n_clicks, selected_states, decimal_separator, remove_accents):
     csv_buffer.seek(0)
 
     return dcc.send_data_frame(filtered_df.to_csv, "degradacao_amazonia.csv", sep=decimal_separator)
+
 
 if __name__ == '__main__':
     app.run(debug=False, port=8050)

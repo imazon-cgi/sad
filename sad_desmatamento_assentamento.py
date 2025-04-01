@@ -20,13 +20,13 @@ def load_geojson(url):
 
 # Função para carregar CSVs com lazy loading
 def load_csv(url):
-    return pd.read_csv(url)
+    return pd.read_parquet(url)
 
 # Carregar GeoJSON
-brazil_states = load_geojson('https://github.com/ScriptsRemote/Amazon/raw/main/geojson/AMZ_assentamentos.geojson?download=')
+brazil_states = load_geojson('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_assentamentos.geojson')
 
 # Carregar dados CSV na inicialização, sem pré-processar
-df_degrad = load_csv('https://github.com/ScriptsRemote/Amazon/raw/main/csv/alertas_sad_degradacao_09_2008_04_2024_assentamento.csv')
+df_degrad = load_csv('https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_desmatamento_08_2008_04_2024_assentamentos.parquet')
 
 list_states = df_degrad['ESTADO'].unique()
 list_anual = sorted(df_degrad['ANO'].unique())
@@ -37,7 +37,7 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(dbc.Card([
             dbc.CardBody([
-                html.H1("Análise de Degradação Ambiental - Amazônia Legal", className="text-center mb-4"),
+                html.H1("Análise de Desmatamento - Amazônia Legal", className="text-center mb-4"),
                 dbc.Row([
                     dbc.Col(
                         dbc.Button(
@@ -208,13 +208,16 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         textposition='auto'
     ))
 
+    # Inverter a ordem para que o maior valor fique no topo
+    bar_yearly_fig.update_yaxes(autorange="reversed")
+    
     bar_yearly_fig.update_layout(
         xaxis_title='Área (km²)',
         yaxis_title='Assentamentos',
         bargap=0.1,
         font=dict(size=10),
         title={
-        'text': f'Taxas de Degradação Ambiental acumuladas<br>Assentamentos ({selected_year})' if not selected_state else f'Taxas de Degradação Ambiental acumuladas<br>Assentamentos ({", ".join(selected_state)}) ({selected_year})',
+        'text': f'SAD Alerta de Desmatamento Acumulado<br>Assentamentos ({selected_year})' if not selected_state else f'SAD Alerta de Desmatamento Acumulado<br>Assentamentos ({", ".join(selected_state)}) ({selected_year})',
         'x': 0.5,
         'xanchor': 'center',
         'yanchor': 'top'
@@ -234,7 +237,7 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     
     map_fig.update_layout(
         title={
-            'text': f"Mapa de Degradação Ambiental (km²) - {selected_year}",
+            'text': f"Mapa de Desmatamento (km²) - {selected_year}",
             'x': 0.5,
             'xanchor': 'center',
             'yanchor': 'top',
@@ -250,21 +253,22 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
 
     if selected_state:
         df_line = df_acumulado_ano_municipio[df_acumulado_ano_municipio['ESTADO'].isin(selected_state)]
-        line_title = f'Taxas de Degradação Ambiental<br> Assentamentos por Estado ({", ".join(selected_state)})'
+        line_title = f'SAD Alerta de Desmatamento Acumulado<br> Assentamentos por Estado ({", ".join(selected_state)})'
     else:
         df_line = df_acumulado_ano_municipio.copy()
-        line_title = 'Taxas de Degradação Ambiental<br> Assentamentos por Estado'
+        line_title = 'SAD Alerta de Desmatamento Acumulado<br> Assentamentos por Estado'
 
+    
     line_fig = px.line(df_line, x='ANO', y='AREAKM2', color='ASSENTAMEN',
-                       title=line_title, labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'},
-                       template='plotly_white', line_shape='spline')
+                       title=line_title, labels={'AREAKM2': 'Área (km²)', 'ANO': 'Ano'},
+                       template='plotly_white', line_shape='spline', color_discrete_sequence=px.colors.sequential.Reds)
 
     line_fig.update_traces(mode='lines+markers')
 
     line_fig.update_layout(
         xaxis_title='Ano',
-        yaxis_title='Taxas (km²)',
-        font=dict(size=10),
+        yaxis_title='Área (km²)',
+        font=dict(size=7.5),
         yaxis=dict(tickformat=".0f"),
         legend=dict(itemsizing='constant'),
         title={
@@ -289,16 +293,16 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
     df_degrad_accum_total['ANO'] = df_degrad_accum_total['ANO'].astype(int)
 
     if selected_state and selected_states:
-        title_text = f'Taxas de Degradação Ambiental acumuladas<br>Assentamentos ({", ".join(selected_states)}) ({", ".join(selected_state)})'
+        title_text = f'SAD Alerta de Desmatamento Acumulado<br>Assentamentos ({", ".join(selected_states)}) ({", ".join(selected_state)})'
     elif selected_state:
-        title_text = f'Taxas de Degradação Ambiental acumuladas<br>Assentamentos ({", ".join(selected_state)})'
+        title_text = f'SAD Alerta de Desmatamento Acumulado<br>Assentamentos ({", ".join(selected_state)})'
     elif selected_states:
-        title_text = f'Taxas de Degradação Ambiental acumuladas<br>Assentamentos ({", ".join(selected_states)})'
+        title_text = f'SAD Alerta de Desmatamento Acumulado<br>Assentamentos ({", ".join(selected_states)})'
     else:
-        title_text = 'Taxas de Degradação Ambiental acumuladas - Amazônia Legal'
+        title_text = 'SAD Alerta de Desmatamento Acumulado - Amazônia Legal'
 
     bar_total_fig = px.bar(df_degrad_accum_total, x='ANO', y='AREAKM2', text='AREAKM2', title=title_text,
-                 labels={'AREAKM2': 'Taxas (km²)', 'ANO': 'Ano'}, template='plotly_white')
+                 labels={'AREAKM2': 'Área (km²)', 'ANO': 'Ano'}, template='plotly_white')
 
     bar_total_fig.update_traces(marker_color='orange', marker_line_color='orange', marker_line_width=1.5, opacity=0.6,
                       texttemplate='%{text:.2s}', textangle=-45, textposition='outside', textfont=dict(size=12, color='black', family='Arial'))
@@ -317,11 +321,11 @@ def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click
         tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo x
     ),
     yaxis=dict(
-        title='Taxas (km²)',
+        title='Área (km²)',
         title_font=dict(size=10),  # Tamanho da fonte do título do eixo y
         tickfont=dict(size=10)     # Tamanho da fonte dos ticks do eixo y
     ),
-    font=dict(size=10),
+    font=dict(size=7),
     autosize=True  # Torna o gráfico responsivo
     )
 
