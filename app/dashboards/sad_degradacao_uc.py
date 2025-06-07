@@ -140,6 +140,7 @@ def register_sad_degradacao_uc(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dbc.Row(
                 [
@@ -155,6 +156,7 @@ def register_sad_degradacao_uc(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             # slider de ano
             dbc.Row(
@@ -183,6 +185,7 @@ def register_sad_degradacao_uc(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             # dois gráficos de pizza
             dbc.Row(
@@ -202,6 +205,7 @@ def register_sad_degradacao_uc(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dcc.Store(id="selected-states", data=[]),
             # modal seleção estado (dropdown)

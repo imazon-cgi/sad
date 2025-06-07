@@ -137,6 +137,7 @@ def register_sad_degradacao_terras_indigenas(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dbc.Row(
                 [
@@ -152,6 +153,7 @@ def register_sad_degradacao_terras_indigenas(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dbc.Row(
                 [
@@ -179,6 +181,7 @@ def register_sad_degradacao_terras_indigenas(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dcc.Store(id="selected-states", data=[]),
             dbc.Modal(

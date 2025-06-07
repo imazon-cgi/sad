@@ -159,6 +159,7 @@ def register_sad_degradacao_assentamento(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dbc.Row(
                 [
@@ -174,6 +175,7 @@ def register_sad_degradacao_assentamento(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             # ---- slider de ano ----------------------------------------------
             dbc.Row(
@@ -202,6 +204,7 @@ def register_sad_degradacao_assentamento(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             # ---- componentes invisíveis ------------------------------------
             dcc.Store(id="selected-states", data=[]),

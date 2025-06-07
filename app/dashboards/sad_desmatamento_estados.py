@@ -134,6 +134,7 @@ def register_sad_desmatamento_estados(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dbc.Row(
                 [
@@ -149,6 +150,7 @@ def register_sad_desmatamento_estados(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             # slider ano
             dbc.Row(
@@ -177,6 +179,7 @@ def register_sad_desmatamento_estados(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dcc.Store(id="selected-states", data=[]),
             # modal download

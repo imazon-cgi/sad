@@ -136,6 +136,7 @@ def register_sad_degradacao_estados(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dbc.Row(
                 [
@@ -151,6 +152,7 @@ def register_sad_degradacao_estados(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             # ---- slider de ano --------------------------------------------
             dbc.Row(
@@ -179,6 +181,7 @@ def register_sad_degradacao_estados(server):
                     ),
                 ],
                 className="mb-4",
+    style={"border": "none"}
             ),
             dcc.Store(id="selected-states", data=[]),
             # ---- modal de download ----------------------------------------
