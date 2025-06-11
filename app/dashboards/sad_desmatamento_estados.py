@@ -1,10 +1,3 @@
-# app/dashboards/sad_desmatamento_estados.py
-"""
-Dashboard SAD – Desmatamento por Estados (Amazônia Legal)
----------------------------------------------------------
-Rota Flask: /sad/desmatamento_estados/
-"""
-
 from __future__ import annotations
 
 import io
@@ -18,7 +11,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import unidecode
 from dash import Input, Output, State, callback_context, dcc, html
-
 
 # ────────────────────────────────────────────────────────────────────────────
 def register_sad_desmatamento_estados(server):
@@ -76,10 +68,6 @@ def register_sad_desmatamento_estados(server):
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                html.H1(
-                                    "Análise de Desmatamento - Amazônia Legal",
-                                    className="text-center mb-4",
-                                ),
                                 dbc.Row(
                                     [
                                         dbc.Col(
@@ -90,7 +78,7 @@ def register_sad_desmatamento_estados(server):
                                                 ],
                                                 id="reset-button-top",
                                                 n_clicks=0,
-                                                color="primary",
+                                                color="success",
                                                 className="btn-sm custom-button",
                                             ),
                                             width="auto",
@@ -103,7 +91,9 @@ def register_sad_desmatamento_estados(server):
                                                     "Baixar CSV",
                                                 ],
                                                 id="open-modal-button",
-                                                className="btn btn-secondary btn-sm custom-button",
+                                                n_clicks=0,
+                                                color="success",
+                                                className="btn-sm custom-button",
                                             ),
                                             width="auto",
                                             className="d-flex justify-content-end",
@@ -134,7 +124,7 @@ def register_sad_desmatamento_estados(server):
                     ),
                 ],
                 className="mb-4",
-    style={"border": "none"}
+                style={"border": "none"},
             ),
             dbc.Row(
                 [
@@ -150,7 +140,7 @@ def register_sad_desmatamento_estados(server):
                     ),
                 ],
                 className="mb-4",
-    style={"border": "none"}
+                style={"border": "none"},
             ),
             # slider ano
             dbc.Row(
@@ -165,10 +155,7 @@ def register_sad_desmatamento_estados(server):
                             marks={
                                 str(y): {
                                     "label": str(y),
-                                    "style": {
-                                        "transform": "rotate(-45deg)",
-                                        "margin-top": "15px",
-                                    },
+                                    "style": {"transform": "rotate(-45deg)", "margin-top": "15px"},
                                 }
                                 for y in list_anual
                             },
@@ -179,7 +166,7 @@ def register_sad_desmatamento_estados(server):
                     ),
                 ],
                 className="mb-4",
-    style={"border": "none"}
+                style={"border": "none"},
             ),
             dcc.Store(id="selected-states", data=[]),
             # modal download
@@ -248,7 +235,7 @@ def register_sad_desmatamento_estados(server):
             x="ANO",
             y="AREAKM2",
             text="AREAKM2",
-            title="SAD Alerta de Desmatamento<br>Amazônia Legal - Estados",
+            title="SAD Alerta de Desmatamento<br>Amazonia Legal - Estados",
             labels={"AREAKM2": "Área (km²)", "ANO": "Ano"},
             template="plotly_white",
         )
@@ -263,7 +250,7 @@ def register_sad_desmatamento_estados(server):
             textfont=dict(size=10, color="black", family="Arial"),
         )
         fig.update_layout(
-            title=dict(text="SAD Alerta de Desmatamento<br>Amazônia Legal - Estados", x=0.5),
+            title=dict(text="SAD Alerta de Desmatamento<br>Amazonia Legal - Estados", x=0.5),
             xaxis=dict(
                 title="Ano",
                 tickmode="linear",
@@ -282,19 +269,8 @@ def register_sad_desmatamento_estados(server):
         return fig
 
     @app.callback(
-        [
-            Output("bar-graph-yearly", "figure"),
-            Output("choropleth-map", "figure"),
-            Output("line-graph", "figure"),
-            Output("selected-states", "data"),
-        ],
-        [
-            Input("year-slider", "value"),
-            Input("choropleth-map", "clickData"),
-            Input("bar-graph-yearly", "clickData"),
-            Input("bar-graph-total", "clickData"),
-            Input("reset-button-top", "n_clicks"),
-        ],
+        [Output("bar-graph-yearly", "figure"), Output("choropleth-map", "figure"), Output("line-graph", "figure"), Output("selected-states", "data")],
+        [Input("year-slider", "value"), Input("choropleth-map", "clickData"), Input("bar-graph-yearly", "clickData"), Input("bar-graph-total", "clickData"), Input("reset-button-top", "n_clicks")],
         [State("selected-states", "data")],
     )
     def update_graphs(
@@ -312,38 +288,22 @@ def register_sad_desmatamento_estados(server):
         else:
             if triggered_id == "choropleth-map.clickData" and map_click_data:
                 state = map_click_data["points"][0]["location"]
-                selected_states = (
-                    [s for s in selected_states if s != state]
-                    if state in selected_states
-                    else selected_states + [state]
-                )
+                selected_states = ([s for s in selected_states if s != state] if state in selected_states else selected_states + [state])
             if triggered_id == "bar-graph-yearly.clickData" and bar_click_data:
                 state = bar_click_data["points"][0]["y"]
-                selected_states = (
-                    [s for s in selected_states if s != state]
-                    if state in selected_states
-                    else selected_states + [state]
-                )
+                selected_states = ([s for s in selected_states if s != state] if state in selected_states else selected_states + [state])
             if triggered_id == "bar-graph-total.clickData" and total_bar_click_data:
                 selected_year = total_bar_click_data["points"][0]["x"]
 
         # barra horizontal ano
-        df_year = df_acumulado_ano[df_acumulado_ano["ANO"] == selected_year].sort_values(
-            by="AREAKM2", ascending=True
-        )
+        df_year = df_acumulado_ano[df_acumulado_ano["ANO"] == selected_year].sort_values(by="AREAKM2", ascending=True)
         bar_fig = go.Figure(
             go.Bar(
                 y=df_year["ESTADO"],
                 x=df_year["AREAKM2"],
                 orientation="h",
-                marker_color=[
-                    "green" if s in selected_states else "DarkSeaGreen"
-                    for s in df_year["ESTADO"]
-                ],
-                text=[
-                    f"{v} km² ({p}%)"
-                    for v, p in zip(df_year["AREAKM2"], df_year["PERCENTUAL"])
-                ],
+                marker_color=["green" if s in selected_states else "DarkSeaGreen" for s in df_year["ESTADO"]],
+                text=[f"{v} km² ({p}%)" for v, p in zip(df_year["AREAKM2"], df_year["PERCENTUAL"])],
                 textposition="auto",
             )
         )
@@ -352,10 +312,7 @@ def register_sad_desmatamento_estados(server):
             yaxis_title="Estado",
             bargap=0.1,
             font=dict(size=10),
-            title=dict(
-                text=f"SAD Alerta de Desmatamento<br>acumulados - Estados ({selected_year})",
-                x=0.5,
-            ),
+            title=dict(text=f"SAD Alerta de Desmatamento<br>acumulados - Estados ({selected_year})", x=0.5),
         )
 
         # mapa
@@ -372,25 +329,15 @@ def register_sad_desmatamento_estados(server):
             zoom=3,
         )
         map_fig.update_layout(
-            title=dict(
-                text=f"Mapa de Desmatamento (km²) - {selected_year}",
-                x=0.5,
-                font={"size": 14},
-            ),
+            title=dict(text=f"Mapa de Desmatamento (km²) - {selected_year}", x=0.5, font={"size": 14}),
             margin={"r": 0, "t": 50, "l": 0, "b": 0},
             mapbox={"zoom": 3, "center": {"lat": -14, "lon": -55}},
         )
 
         # linha temporal
-        df_line = (
-            df_acumulado_ano[df_acumulado_ano["ESTADO"].isin(selected_states)]
-            if selected_states
-            else df_acumulado_ano.copy()
-        )
+        df_line = df_acumulado_ano[df_acumulado_ano["ESTADO"].isin(selected_states)] if selected_states else df_acumulado_ano.copy()
         line_title = (
-            "SAD Alerta de Desmatamento - Estados Selecionados"
-            if selected_states
-            else "SAD Alerta de Desmatamento<br>Amazônia Legal - Estados"
+            "SAD Alerta de Desmatamento - Estados Selecionados" if selected_states else "SAD Alerta de Desmatamento<br>Amazônia Legal - Estados"
         )
         line_fig = px.line(
             df_line,
@@ -415,7 +362,6 @@ def register_sad_desmatamento_estados(server):
 
         return bar_fig, map_fig, line_fig, selected_states
 
-    # ---------------------------------------------------------------- adicionais
     @app.callback(Output("year-slider", "value"), Input("bar-graph-total", "clickData"))
     def update_year_slider(click_data):
         if click_data:
@@ -437,11 +383,7 @@ def register_sad_desmatamento_estados(server):
     @app.callback(
         Output("download-dataframe-csv", "data"),
         [Input("download-button", "n_clicks")],
-        [
-            State("state-checklist", "value"),
-            State("decimal-separator", "value"),
-            State("remove-accents", "value"),
-        ],
+        [State("state-checklist", "value"), State("decimal-separator", "value"), State("remove-accents", "value")],
     )
     def download_csv(n_clicks, selected_states, decimal_separator, remove_accents):
         if n_clicks is None:
@@ -449,9 +391,7 @@ def register_sad_desmatamento_estados(server):
 
         filtered_df = df_degrad[df_degrad["ESTADO"].isin(selected_states)]
         if remove_accents:
-            filtered_df = filtered_df.applymap(
-                lambda x: unidecode.unidecode(x) if isinstance(x, str) else x
-            )
+            filtered_df = filtered_df.applymap(lambda x: unidecode.unidecode(x) if isinstance(x, str) else x)
 
         return dcc.send_data_frame(
             filtered_df.to_csv,
@@ -460,5 +400,4 @@ def register_sad_desmatamento_estados(server):
             index=False,
         )
 
-    # não chamamos app.run(); o Flask principal faz isso
     return app

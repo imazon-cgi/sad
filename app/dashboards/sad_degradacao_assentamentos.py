@@ -7,7 +7,6 @@ Rota Flask: /sad/degradacao_assentamento/
 
 from __future__ import annotations
 
-import io
 from typing import List
 
 import dash
@@ -19,21 +18,20 @@ import plotly.graph_objects as go
 import unidecode
 from dash import Input, Output, State, callback_context, dcc, html
 
-
 # ──────────────────────────────────────────────────────────────────────────────
 # Função de registro – chame-a dentro do seu create_app()
 # ──────────────────────────────────────────────────────────────────────────────
+
 def register_sad_degradacao_assentamento(server):
-    """
-    Registra o dashboard no servidor Flask que for passado.
-    Retorna a instância Dash criada (caso queira usar em testes).
-    """
+    """Registra o dashboard no servidor Flask que for passado.
+    Retorna a instância Dash criada (caso queira usar em testes)."""
+
     external_css = [
         dbc.themes.BOOTSTRAP,
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
+        "/assets/responsive.css",  # arquivo de responsividade
     ]
 
-    # Cria o app Dash acoplado ao Flask
     app = dash.Dash(
         __name__,
         server=server,
@@ -42,9 +40,9 @@ def register_sad_degradacao_assentamento(server):
         suppress_callback_exceptions=True,
     )
 
-    # ----------------------------------------------------------------------
-    # Funções utilitárias de carregamento
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
+    # Carregamento de dados
+    # ------------------------------------------------------------------
     def load_geojson(url: str):
         try:
             return gpd.read_file(url)
@@ -52,16 +50,13 @@ def register_sad_degradacao_assentamento(server):
             print(f"Erro ao carregar {url}: {e}")
             return None
 
-    def load_csv(url: str):
+    def load_parquet(url: str):
         return pd.read_parquet(url)
 
-    # ----------------------------------------------------------------------
-    # Dados estáticos
-    # ----------------------------------------------------------------------
     brazil_states = load_geojson(
         "https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/geojson/AMZ_assentamentos.geojson"
     )
-    df_degrad = load_csv(
+    df_degrad = load_parquet(
         "https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_degradacao_09_2008_04_2024_assentamento.parquet"
     )
 
@@ -69,115 +64,95 @@ def register_sad_degradacao_assentamento(server):
     list_anual: List[int] = sorted(df_degrad["ANO"].unique())
     state_options = [{"label": s, "value": s} for s in list_states]
 
-    # ----------------------------------------------------------------------
-    # Layout
-    # ----------------------------------------------------------------------
+    # ------------------------------------------------------------------
+    # Layout helper – gera um gráfico plotly responsivo dentro de Card
+    # ------------------------------------------------------------------
+    def graph_card(graph_id: str):
+        return dbc.Card(
+            dcc.Graph(
+                id=graph_id,
+                config={"displayModeBar": False, "responsive": True},
+                style={"height": "100%", "width": "100%", "minHeight": "300px"},
+            ),
+            className="graph-block h-100 shadow-sm",
+        )
+
+    # ------------------------------------------------------------------
+    # Layout principal
+    # ------------------------------------------------------------------
     app.layout = dbc.Container(
         [
             html.Meta(name="viewport", content="width=device-width, initial-scale=1"),
-            # ---- título e botões superiores ---------------------------------
+            # ------------------ linha de botões -------------------------
             dbc.Row(
-                [
-                    dbc.Col(
-                        dbc.Card(
-                            dbc.CardBody(
-                                [
-                                    html.H1(
-                                        "Análise de Degradação Ambiental - Amazônia Legal",
-                                        className="text-center mb-4",
-                                    ),
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                dbc.Button(
-                                                    [
-                                                        html.I(
-                                                            className="fa fa-filter mr-1"
-                                                        ),
-                                                        "Remover Filtros",
-                                                    ],
-                                                    id="reset-button-top",
-                                                    n_clicks=0,
-                                                    color="primary",
-                                                    className="btn-sm custom-button",
-                                                ),
-                                                width="auto",
-                                                className="d-flex justify-content-end",
+                dbc.Col(
+                    dbc.Card(
+                        dbc.CardBody(
+                            [
+                                dbc.Row(
+                                    [
+                                        dbc.Col(
+                                            dbc.Button(
+                                                [html.I(className="fa fa-filter me-1"), "Remover Filtros"],
+                                                id="reset-button-top",
+                                                n_clicks=0,
+                                                color="success",
+                                                className="btn-sm w-100 custom-button",
                                             ),
-                                            dbc.Col(
-                                                dbc.Button(
-                                                    [
-                                                        html.I(
-                                                            className="fa fa-map mr-1"
-                                                        ),
-                                                        "Selecione o Estado",
-                                                    ],
-                                                    id="open-state-modal-button",
-                                                    className="btn btn-secondary btn-sm custom-button",
-                                                ),
-                                                width="auto",
-                                                className="d-flex justify-content-end",
+                                            xs=12,
+                                            sm="auto",
+                                            className="mb-2 mb-sm-0",
+                                        ),
+                                        dbc.Col(
+                                            dbc.Button(
+                                                [html.I(className="fa fa-map me-1"), "Selecione o Estado"],
+                                                id="open-state-modal-button",
+                                                n_clicks=0,
+                                                color="success",
+                                                className="btn-sm w-100 custom-button",
                                             ),
-                                            dbc.Col(
-                                                dbc.Button(
-                                                    [
-                                                        html.I(
-                                                            className="fa fa-download mr-1"
-                                                        ),
-                                                        "Baixar CSV",
-                                                    ],
-                                                    id="open-modal-button",
-                                                    className="btn btn-secondary btn-sm custom-button",
-                                                ),
-                                                width="auto",
-                                                className="d-flex justify-content-end",
+                                            xs=12,
+                                            sm="auto",
+                                            className="mb-2 mb-sm-0",
+                                        ),
+                                        dbc.Col(
+                                            dbc.Button(
+                                                [html.I(className="fa fa-download me-1"), "Baixar CSV"],
+                                                id="open-modal-button",
+                                                n_clicks=0,
+                                                color="success",
+                                                className="btn-sm w-100 custom-button",
                                             ),
-                                        ],
-                                        justify="end",
-                                    ),
-                                    dcc.Download(id="download-dataframe-csv"),
-                                ]
-                            ),
-                            className="mb-4 title-card",
+                                            xs=12,
+                                            sm="auto",
+                                        ),
+                                    ],
+                                    className="gy-1 gx-2 flex-wrap",
+                                ),
+                                dcc.Download(id="download-dataframe-csv"),
+                            ]
                         ),
-                        width=12,
-                    )
-                ]
+                        className="mb-3",
+                    ),
+                    width=12,
+                )
             ),
-            # ---- gráficos ---------------------------------------------------
+            # ------------------ gráficos --------------------------------
             dbc.Row(
                 [
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="bar-graph-total"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="bar-graph-yearly"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
+                    dbc.Col(graph_card("bar-graph-total"), xs=12, lg=6, className="mb-3 mb-lg-0"),
+                    dbc.Col(graph_card("bar-graph-yearly"), xs=12, lg=6),
                 ],
-                className="mb-4",
-    style={"border": "none"}
+                className="g-3",
             ),
             dbc.Row(
                 [
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="line-graph"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="choropleth-map"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
+                    dbc.Col(graph_card("line-graph"), xs=12, lg=6, className="mb-3 mb-lg-0"),
+                    dbc.Col(graph_card("choropleth-map"), xs=12, lg=6),
                 ],
-                className="mb-4",
-    style={"border": "none"}
+                className="g-3",
             ),
-            # ---- slider de ano ----------------------------------------------
+            # ------------------ slider de ano ---------------------------
             dbc.Row(
                 [
                     dbc.Col(html.Label("Selecione o Ano:"), width=12),
@@ -188,14 +163,7 @@ def register_sad_degradacao_assentamento(server):
                             max=int(max(list_anual)),
                             value=int(max(list_anual)),
                             marks={
-                                str(y): {
-                                    "label": str(y),
-                                    "style": {
-                                        "transform": "rotate(-45deg)",
-                                        "margin-top": "15px",
-                                    },
-                                }
-                                for y in list_anual
+                                str(y): {"label": str(y), "style": {"fontSize": "8px"}} for y in list_anual
                             },
                             step=None,
                             tooltip={"placement": "bottom", "always_visible": True},
@@ -203,76 +171,55 @@ def register_sad_degradacao_assentamento(server):
                         width=12,
                     ),
                 ],
-                className="mb-4",
-    style={"border": "none"}
+                className="my-4",
             ),
-            # ---- componentes invisíveis ------------------------------------
+            # ------------------ storage e modais ------------------------
             dcc.Store(id="selected-states", data=[]),
-            # ---- modal de seleção de estado ---------------------------------
+            # modal de estado
             dbc.Modal(
                 [
-                    dbc.ModalHeader(
-                        dbc.ModalTitle("Escolha os Assentamentos da Amazônia Legal")
-                    ),
+                    dbc.ModalHeader(dbc.ModalTitle("Escolha os Assentamentos da Amazônia Legal")),
                     dbc.ModalBody(
                         dcc.Dropdown(
-                            options=state_options,
                             id="state-dropdown-modal",
+                            options=state_options,
                             placeholder="Selecione o Estado",
                             multi=True,
                         )
                     ),
                     dbc.ModalFooter(
-                        dbc.Button("Fechar", id="close-state-modal-button", color="danger")
+                        dbc.Button("Fechar", id="close-state-modal-button", color="danger"),
                     ),
                 ],
                 id="state-modal",
                 is_open=False,
             ),
-            # ---- modal de download ------------------------------------------
+            # modal de download
             dbc.Modal(
                 [
-                    dbc.ModalHeader(
-                        dbc.ModalTitle("Escolha os Assentamentos da Amazônia Legal")
-                    ),
+                    dbc.ModalHeader(dbc.ModalTitle("Configurações de Download")),
                     dbc.ModalBody(
                         [
-                            dbc.Checklist(
-                                options=state_options,
-                                id="state-checklist",
-                                inline=True,
-                            ),
+                            dbc.Checklist(options=state_options, id="state-checklist", inline=True),
                             html.Hr(),
                             html.Div(
                                 [
-                                    html.Label("Configurações para gerar o CSV"),
+                                    html.Label("Separador decimal"),
                                     dbc.RadioItems(
-                                        options=[
-                                            {"label": "Ponto", "value": "."},
-                                            {"label": "Vírgula", "value": ","},
-                                        ],
+                                        options=[{"label": "Ponto", "value": "."}, {"label": "Vírgula", "value": ","}],
                                         value=".",
                                         id="decimal-separator",
                                         inline=True,
                                         className="mb-2",
                                     ),
-                                    dbc.Checkbox(
-                                        label="Sem acentuação",
-                                        id="remove-accents",
-                                        value=False,
-                                    ),
+                                    dbc.Checkbox(label="Sem acentuação", id="remove-accents", value=False),
                                 ]
                             ),
                         ]
                     ),
                     dbc.ModalFooter(
                         [
-                            dbc.Button(
-                                "Download",
-                                id="download-button",
-                                className="mr-2",
-                                color="success",
-                            ),
+                            dbc.Button("Download", id="download-button", color="success", className="me-2"),
                             dbc.Button("Fechar", id="close-modal-button", color="danger"),
                         ]
                     ),
@@ -282,7 +229,11 @@ def register_sad_degradacao_assentamento(server):
             ),
         ],
         fluid=True,
+        className="px-2 px-lg-3",
     )
+
+
+
 
     # ----------------------------------------------------------------------
     # Callbacks

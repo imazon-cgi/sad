@@ -6,8 +6,6 @@ Rota Flask: /sad/degradacao_estados/
 """
 
 from __future__ import annotations
-
-import io
 from typing import List
 
 import dash
@@ -19,14 +17,15 @@ import plotly.graph_objects as go
 import unidecode
 from dash import Input, Output, State, callback_context, dcc, html
 
-
 # ──────────────────────────────────────────────────────────────────────────────
 # Função de registro – chame-a no seu create_app()
 # ──────────────────────────────────────────────────────────────────────────────
+
 def register_sad_degradacao_estados(server):
     external_css = [
         dbc.themes.BOOTSTRAP,
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
+        "/assets/responsive.css",  # CSS compartilhado para responsividade
     ]
 
     app = dash.Dash(
@@ -54,107 +53,96 @@ def register_sad_degradacao_estados(server):
         "https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_degradacao_09_2008_04_2024_municipio.parquet"
     )
 
+    # pré‑agregação anual (reutilizada nos callbacks)
     df_acumulado_ano = (
         df_degrad.groupby(["ESTADO", "ANO"])["AREAKM2"].sum().reset_index()
     )
     df_acumulado_ano["AREAKM2"] = df_acumulado_ano["AREAKM2"].round(2)
     df_acumulado_ano["ANO"] = df_acumulado_ano["ANO"].astype(int)
-    df_acumulado_ano["PERCENTUAL"] = df_acumulado_ano.groupby("ANO")[
-        "AREAKM2"
-    ].transform(lambda x: (x / x.sum()) * 100)
-    df_acumulado_ano["PERCENTUAL"] = df_acumulado_ano["PERCENTUAL"].round(2)
+    df_acumulado_ano["PERCENTUAL"] = df_acumulado_ano.groupby("ANO")["AREAKM2"].transform(lambda x: (x / x.sum()) * 100).round(2)
 
     list_states = df_degrad.ESTADO.unique()
     list_anual: List[int] = sorted(df_degrad.ANO.unique())
     state_options = [{"label": s, "value": s} for s in list_states]
 
+    # ------------------------------------------------------------------ helper
+    def graph_card(graph_id: str):
+        """Retorna um Card com um Graph responsivo."""
+        return dbc.Card(
+            dcc.Graph(
+                id=graph_id,
+                config={"displayModeBar": False, "responsive": True},
+                style={"height": "100%", "width": "100%", "minHeight": "300px"},
+            ),
+            className="graph-block h-100 shadow-sm",
+        )
+
     # ------------------------------------------------------------------ layout
     app.layout = dbc.Container(
         [
             html.Meta(name="viewport", content="width=device-width, initial-scale=1"),
-            # ---- título + botões -----------------------------------------
+            # ---- título + botões --------------------------------------
             dbc.Row(
                 dbc.Col(
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                html.H1(
-                                    "Análise de Degradação - Amazônia Legal",
-                                    className="text-center mb-4",
-                                ),
+                                #html.H1(
+                                #    "Análise de Degradação - Amazônia Legal",
+                                #    className="text-center mb-4",
+                                #),
                                 dbc.Row(
                                     [
                                         dbc.Col(
                                             dbc.Button(
-                                                [
-                                                    html.I(className="fa fa-filter mr-1"),
-                                                    "Remover Filtros",
-                                                ],
+                                                [html.I(className="fa fa-filter me-1"), "Remover Filtros"],
                                                 id="reset-button-top",
                                                 n_clicks=0,
-                                                color="primary",
-                                                className="btn-sm custom-button",
+                                                color="success",  # verde
+                                                className="btn-sm w-100 custom-button",
                                             ),
-                                            width="auto",
-                                            className="d-flex justify-content-end",
+                                            xs=12,
+                                            sm="auto",
+                                            className="mb-2 mb-sm-0",
                                         ),
                                         dbc.Col(
                                             dbc.Button(
-                                                [
-                                                    html.I(className="fa fa-download mr-1"),
-                                                    "Baixar CSV",
-                                                ],
+                                                [html.I(className="fa fa-download me-1"), "Baixar CSV"],
                                                 id="open-modal-button",
-                                                className="btn btn-secondary btn-sm custom-button",
+                                                n_clicks=0,
+                                                color="success",  # verde
+                                                className="btn-sm w-100 custom-button",
                                             ),
-                                            width="auto",
-                                            className="d-flex justify-content-end",
+                                            xs=12,
+                                            sm="auto",
                                         ),
                                     ],
-                                    justify="end",
+                                    className="gy-1 gx-2 flex-wrap",
                                 ),
                                 dcc.Download(id="download-dataframe-csv"),
                             ]
                         ),
-                        className="mb-4 title-card",
+                        className="mb-3",
                     ),
                     width=12,
                 )
             ),
-            # ---- blocos de gráficos ---------------------------------------
+            # ---- gráficos ---------------------------------------------
             dbc.Row(
                 [
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="bar-graph-total"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="bar-graph-yearly"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
+                    dbc.Col(graph_card("bar-graph-total"), xs=12, lg=6, className="mb-3 mb-lg-0"),
+                    dbc.Col(graph_card("bar-graph-yearly"), xs=12, lg=6),
                 ],
-                className="mb-4",
-    style={"border": "none"}
+                className="g-3",
             ),
             dbc.Row(
                 [
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="line-graph"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
-                    dbc.Col(
-                        dbc.Card(dcc.Graph(id="choropleth-map"), className="graph-block"),
-                        width=12,
-                        lg=6,
-                    ),
+                    dbc.Col(graph_card("line-graph"), xs=12, lg=6, className="mb-3 mb-lg-0"),
+                    dbc.Col(graph_card("choropleth-map"), xs=12, lg=6),
                 ],
-                className="mb-4",
-    style={"border": "none"}
+                className="g-3",
             ),
-            # ---- slider de ano --------------------------------------------
+            # ---- slider de ano ----------------------------------------
             dbc.Row(
                 [
                     dbc.Col(html.Label("Selecione o Ano:"), width=12),
@@ -164,69 +152,42 @@ def register_sad_degradacao_estados(server):
                             min=int(min(list_anual)),
                             max=int(max(list_anual)),
                             value=int(max(list_anual)),
-                            marks={
-                                str(y): {
-                                    "label": str(y),
-                                    "style": {
-                                        "transform": "rotate(-45deg)",
-                                        "margin-top": "15px",
-                                    },
-                                }
-                                for y in list_anual
-                            },
+                            marks={str(y): {"label": str(y), "style": {"fontSize": "8px"}} for y in list_anual},
                             step=None,
                             tooltip={"placement": "bottom", "always_visible": True},
                         ),
                         width=12,
                     ),
                 ],
-                className="mb-4",
-    style={"border": "none"}
+                className="my-4",
             ),
+            # ---- storage & modal download -----------------------------
             dcc.Store(id="selected-states", data=[]),
-            # ---- modal de download ----------------------------------------
             dbc.Modal(
                 [
-                    dbc.ModalHeader(
-                        dbc.ModalTitle("Escolha os estados da Amazônia Legal")
-                    ),
+                    dbc.ModalHeader(dbc.ModalTitle("Escolha os estados da Amazônia Legal")),
                     dbc.ModalBody(
                         [
-                            dbc.Checklist(
-                                options=state_options,
-                                id="state-checklist",
-                                inline=True,
-                            ),
+                            dbc.Checklist(options=state_options, id="state-checklist", inline=True),
                             html.Hr(),
                             html.Div(
                                 [
                                     html.Label("Configurações para gerar o CSV"),
                                     dbc.RadioItems(
-                                        options=[
-                                            {"label": "Ponto", "value": "."},
-                                            {"label": "Vírgula", "value": ","},
-                                        ],
+                                        options=[{"label": "Ponto", "value": "."}, {"label": "Vírgula", "value": ","}],
                                         value=".",
                                         id="decimal-separator",
                                         inline=True,
                                         className="mb-2",
                                     ),
-                                    dbc.Checkbox(
-                                        label="Sem acentuação",
-                                        id="remove-accents",
-                                    ),
+                                    dbc.Checkbox(label="Sem acentuação", id="remove-accents", value=False),
                                 ]
                             ),
                         ]
                     ),
                     dbc.ModalFooter(
                         [
-                            dbc.Button(
-                                "Download",
-                                id="download-button",
-                                className="mr-2",
-                                color="success",
-                            ),
+                            dbc.Button("Download", id="download-button", color="success", className="me-2"),
                             dbc.Button("Fechar", id="close-modal-button", color="danger"),
                         ]
                     ),
@@ -236,6 +197,7 @@ def register_sad_degradacao_estados(server):
             ),
         ],
         fluid=True,
+        className="px-2 px-lg-3",
     )
 
     # ------------------------------------------------------------------ callbacks
@@ -364,7 +326,7 @@ def register_sad_degradacao_estados(server):
             bargap=0.1,
             font=dict(size=10),
             title=dict(
-                text=f"SAD Alertas de Degradação Florestal Acumulado - Estados ({selected_year})",
+                text=f"SAD Alertas <br> Degradação Florestal Acumulado <br> Estados ({selected_year})",
                 x=0.5,
             ),
         )
@@ -399,9 +361,9 @@ def register_sad_degradacao_estados(server):
             else df_acumulado_ano.copy()
         )
         line_title = (
-            "SAD Alertas de Degradação Florestal - Estados Selecionados"
+            "SAD Alertas <br> Degradação Florestal <br> Estados Selecionados"
             if selected_states
-            else "SAD Alertas de Degradação Florestal - Amazônia Legal - Estados"
+            else "SAD Alertas <br> Degradação Florestal <br> Amazônia Legal - Estados"
         )
         line_fig = px.line(
             df_line,

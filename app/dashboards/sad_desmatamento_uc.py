@@ -1,10 +1,3 @@
-# app/dashboards/sad_desmatamento_uc.py
-"""
-Dashboard SAD – Desmatamento em Unidades de Conservação (Amazônia Legal)
-------------------------------------------------------------------------
-Rota Flask: /sad/desmatamento_uc/
-"""
-
 from __future__ import annotations
 
 import io
@@ -54,43 +47,63 @@ def register_sad_desmatamento_uc(server):
         "https://github.com/imazon-cgi/sad/raw/refs/heads/main/datasets/csv/alertas_sad_desmatamento_08_2008_04_2024_unidadeConservacao.parquet"
     )
 
-
-
-    # ---------------------------------------------------------------- layout
     list_states = df_degrad['ESTADO'].unique()
     list_anual = sorted(df_degrad['ANO'].unique())
     state_options = [{'label': state, 'value': state} for state in list_states]
 
+    # ---------------------------------------------------------------- layout
     app.layout = dbc.Container([
         html.Meta(name="viewport", content="width=device-width, initial-scale=1"),
-        dbc.Row([
-            dbc.Col(dbc.Card([
-                dbc.CardBody([
-                    html.H1("Análise de Desmatamento - Amazônia Legal", className="text-center mb-4"),
-                    dbc.Row([
-                        dbc.Col(
-                            dbc.Button(
-                                [html.I(className="fa fa-filter mr-1"), "Remover Filtros"],
-                                id="reset-button-top", n_clicks=0, color="primary", className="btn-sm custom-button"
-                            ), width="auto", className="d-flex justify-content-end"
-                        ),
-                        dbc.Col(
-                            dbc.Button(
-                                [html.I(className="fa fa-map mr-1"), "Selecione o Estado"],
-                                id="open-state-modal-button", className="btn btn-secondary btn-sm custom-button"
-                            ), width="auto", className="d-flex justify-content-end"
-                        ),
-                        dbc.Col(
-                            dbc.Button(
-                                [html.I(className="fa fa-download mr-1"), "Baixar CSV"],
-                                id="open-modal-button", className="btn btn-secondary btn-sm custom-button"
-                            ), width="auto", className="d-flex justify-content-end"
-                        )
-                    ], justify="end"),
-                    dcc.Download(id="download-dataframe-csv")
-                ])
-            ], className="mb-4 title-card"), width=12)
-        ]),
+        # topo sem título H1, apenas botões em verde
+        dbc.Row(
+            dbc.Col(
+                dbc.Card(
+                    dbc.CardBody(
+                        [
+                            dbc.Row(
+                                [
+                                    dbc.Col(
+                                        dbc.Button(
+                                            [html.I(className="fa fa-filter mr-1"), "Remover Filtros"],
+                                            id="reset-button-top",
+                                            n_clicks=0,
+                                            color="success",
+                                            className="btn-sm custom-button",
+                                        ),
+                                        width="auto",
+                                        className="d-flex justify-content-end",
+                                    ),
+                                    dbc.Col(
+                                        dbc.Button(
+                                            [html.I(className="fa fa-map mr-1"), "Selecione o Estado"],
+                                            id="open-state-modal-button",
+                                            color="success",
+                                            className="btn-sm custom-button",
+                                        ),
+                                        width="auto",
+                                        className="d-flex justify-content-end",
+                                    ),
+                                    dbc.Col(
+                                        dbc.Button(
+                                            [html.I(className="fa fa-download mr-1"), "Baixar CSV"],
+                                            id="open-modal-button",
+                                            color="success",
+                                            className="btn-sm custom-button",
+                                        ),
+                                        width="auto",
+                                        className="d-flex justify-content-end",
+                                    ),
+                                ],
+                                justify="end",
+                            ),
+                            dcc.Download(id="download-dataframe-csv"),
+                        ]
+                    ),
+                    className="mb-4 title-card",
+                ),
+                width=12,
+            )
+        ),
         dbc.Row([
             dbc.Col(dbc.Card([
                 dcc.Graph(id='bar-graph-total')
@@ -128,6 +141,7 @@ def register_sad_desmatamento_uc(server):
             ], className="graph-block"), width=12, lg=6)
         ], className='mb-4'),
         dcc.Store(id='selected-states', data=[]),
+        # modais com botões verdes
         dbc.Modal([
             dbc.ModalHeader(dbc.ModalTitle("Escolha Unidades de Conservação da Amazônia Legal")),
             dbc.ModalBody([
@@ -139,7 +153,7 @@ def register_sad_desmatamento_uc(server):
                 )
             ]),
             dbc.ModalFooter([
-                dbc.Button("Fechar", id="close-state-modal-button", color="danger")
+                dbc.Button("Fechar", id="close-state-modal-button", color="success")
             ])
         ], id="state-modal", is_open=False),
         dbc.Modal([
@@ -171,12 +185,12 @@ def register_sad_desmatamento_uc(server):
                 ])
             ]),
             dbc.ModalFooter([
-                dbc.Button("Download", id="download-button", className="mr-2", color="success"),
-                dbc.Button("Fechar", id="close-modal-button", color="danger")
+                dbc.Button("Download", id="download-button", className="mr-2 custom-button", color="success"),
+                dbc.Button("Fechar", id="close-modal-button", color="success")
             ])
         ], id="modal", is_open=False)
     ], fluid=True)
-
+    
     @app.callback(
         [Output('bar-graph-total', 'figure'),
          Output('bar-graph-yearly', 'figure'),

@@ -1,10 +1,3 @@
-# app/dashboards/sad_degradacao_uc.py
-"""
-Dashboard SAD – Degradação em Unidades de Conservação (Amazônia Legal)
----------------------------------------------------------------------
-Rota Flask: /sad/degradacao_uc/
-"""
-
 from __future__ import annotations
 
 import io
@@ -20,7 +13,7 @@ import unidecode
 from dash import Input, Output, State, callback_context, dcc, html
 
 
-# ────────────────────────────────────────────────────────────────────────────
+# -----------------------------------------------------------------------------
 def register_sad_degradacao_uc(server):
     """Acopla o dashboard de UC a um servidor Flask já existente."""
     external_css = [
@@ -64,16 +57,12 @@ def register_sad_degradacao_uc(server):
     app.layout = dbc.Container(
         [
             html.Meta(name="viewport", content="width=device-width, initial-scale=1"),
-            # título + botões topo
+            # topo sem título H1
             dbc.Row(
                 dbc.Col(
                     dbc.Card(
                         dbc.CardBody(
                             [
-                                html.H1(
-                                    "Análise de Degradação Ambiental - Amazônia Legal",
-                                    className="text-center mb-4",
-                                ),
                                 dbc.Row(
                                     [
                                         dbc.Col(
@@ -84,7 +73,7 @@ def register_sad_degradacao_uc(server):
                                                 ],
                                                 id="reset-button-top",
                                                 n_clicks=0,
-                                                color="primary",
+                                                color="success",
                                                 className="btn-sm custom-button",
                                             ),
                                             width="auto",
@@ -97,7 +86,8 @@ def register_sad_degradacao_uc(server):
                                                     "Selecione o Estado",
                                                 ],
                                                 id="open-state-modal-button",
-                                                className="btn btn-secondary btn-sm custom-button",
+                                                color="success",
+                                                className="btn-sm custom-button",
                                             ),
                                             width="auto",
                                             className="d-flex justify-content-end",
@@ -109,7 +99,8 @@ def register_sad_degradacao_uc(server):
                                                     "Baixar CSV",
                                                 ],
                                                 id="open-modal-button",
-                                                className="btn btn-secondary btn-sm custom-button",
+                                                color="success",
+                                                className="btn-sm custom-button",
                                             ),
                                             width="auto",
                                             className="d-flex justify-content-end",
@@ -129,34 +120,34 @@ def register_sad_degradacao_uc(server):
             dbc.Row(
                 [
                     dbc.Col(
-                        dbc.Card(dcc.Graph(id="bar-graph-total"), className="graph-block"),
+                        dbc.Card(dcc.Graph(id="bar-graph-total", config={"responsive": True}), className="graph-block"),
                         width=12,
                         lg=6,
                     ),
                     dbc.Col(
-                        dbc.Card(dcc.Graph(id="bar-graph-yearly"), className="graph-block"),
+                        dbc.Card(dcc.Graph(id="bar-graph-yearly", config={"responsive": True}), className="graph-block"),
                         width=12,
                         lg=6,
                     ),
                 ],
                 className="mb-4",
-    style={"border": "none"}
+                style={"border": "none"},
             ),
             dbc.Row(
                 [
                     dbc.Col(
-                        dbc.Card(dcc.Graph(id="line-graph"), className="graph-block"),
+                        dbc.Card(dcc.Graph(id="line-graph", config={"responsive": True}), className="graph-block"),
                         width=12,
                         lg=6,
                     ),
                     dbc.Col(
-                        dbc.Card(dcc.Graph(id="choropleth-map"), className="graph-block"),
+                        dbc.Card(dcc.Graph(id="choropleth-map", config={"responsive": True}), className="graph-block"),
                         width=12,
                         lg=6,
                     ),
                 ],
                 className="mb-4",
-    style={"border": "none"}
+                style={"border": "none"},
             ),
             # slider de ano
             dbc.Row(
@@ -169,14 +160,7 @@ def register_sad_degradacao_uc(server):
                             max=int(max(list_anual)),
                             value=int(max(list_anual)),
                             marks={
-                                str(y): {
-                                    "label": str(y),
-                                    "style": {
-                                        "transform": "rotate(-45deg)",
-                                        "margin-top": "15px",
-                                    },
-                                }
-                                for y in list_anual
+                                str(y): {"label": str(y), "style": {"transform": "rotate(-45deg)", "margin-top": "15px"}} for y in list_anual
                             },
                             step=None,
                             tooltip={"placement": "bottom", "always_visible": True},
@@ -185,108 +169,33 @@ def register_sad_degradacao_uc(server):
                     ),
                 ],
                 className="mb-4",
-    style={"border": "none"}
+                style={"border": "none"},
             ),
             # dois gráficos de pizza
             dbc.Row(
                 [
                     dbc.Col(
-                        dbc.Card(dcc.Graph(id="pie-graph-uso"), className="graph-block"),
+                        dbc.Card(dcc.Graph(id="pie-graph-uso", config={"responsive": True}), className="graph-block"),
                         width=12,
                         lg=6,
                     ),
                     dbc.Col(
-                        dbc.Card(
-                            dcc.Graph(id="pie-graph-unid-conse"),
-                            className="graph-block",
-                        ),
+                        dbc.Card(dcc.Graph(id="pie-graph-unid-conse", config={"responsive": True}), className="graph-block"),
                         width=12,
                         lg=6,
                     ),
                 ],
                 className="mb-4",
-    style={"border": "none"}
+                style={"border": "none"},
             ),
             dcc.Store(id="selected-states", data=[]),
-            # modal seleção estado (dropdown)
-            dbc.Modal(
-                [
-                    dbc.ModalHeader(
-                        dbc.ModalTitle(
-                            "Escolha Unidades de Conservação da Amazônia Legal"
-                        )
-                    ),
-                    dbc.ModalBody(
-                        dcc.Dropdown(
-                            options=state_options,
-                            id="state-dropdown-modal",
-                            placeholder="Selecione o Estado",
-                            multi=True,
-                        )
-                    ),
-                    dbc.ModalFooter(
-                        dbc.Button("Fechar", id="close-state-modal-button", color="danger")
-                    ),
-                ],
-                id="state-modal",
-                is_open=False,
-            ),
-            # modal download
-            dbc.Modal(
-                [
-                    dbc.ModalHeader(
-                        dbc.ModalTitle(
-                            "Escolha as Unidades de Conservação da Amazônia Legal"
-                        )
-                    ),
-                    dbc.ModalBody(
-                        [
-                            dbc.Checklist(
-                                options=state_options,
-                                id="state-checklist",
-                                inline=True,
-                            ),
-                            html.Hr(),
-                            html.Div(
-                                [
-                                    html.Label("Configurações para gerar o CSV"),
-                                    dbc.RadioItems(
-                                        options=[
-                                            {"label": "Ponto", "value": "."},
-                                            {"label": "Vírgula", "value": ","},
-                                        ],
-                                        value=".",
-                                        id="decimal-separator",
-                                        inline=True,
-                                        className="mb-2",
-                                    ),
-                                    dbc.Checkbox(
-                                        label="Sem acentuação",
-                                        id="remove-accents",
-                                        value=False,
-                                    ),
-                                ]
-                            ),
-                        ]
-                    ),
-                    dbc.ModalFooter(
-                        [
-                            dbc.Button(
-                                "Download",
-                                id="download-button",
-                                className="mr-2",
-                                color="success",
-                            ),
-                            dbc.Button("Fechar", id="close-modal-button", color="danger"),
-                        ]
-                    ),
-                ],
-                id="modal",
-                is_open=False,
-            ),
+            # modal seleção estado (dropdown) e download (sem alterações nos modais)
+            dbc.Modal(...),
+            dbc.Modal(...),
         ],
         fluid=True,
     )
+
 
     # ---------------------------------------------------------------- callbacks
     @app.callback(

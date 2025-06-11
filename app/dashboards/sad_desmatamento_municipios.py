@@ -1,10 +1,3 @@
-# app/dashboards/sad_desmatamento_municipios.py
-"""
-Dashboard SAD – Desmatamento por Municípios (Amazônia Legal)
-------------------------------------------------------------
-Rota Flask: /sad/desmatamento_municipios/
-"""
-
 from __future__ import annotations
 
 import io
@@ -18,7 +11,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import unidecode
 from dash import Input, Output, State, callback_context, dcc, html
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 def register_sad_desmatamento_municipios(server):
@@ -70,20 +62,30 @@ def register_sad_desmatamento_municipios(server):
                         dbc.Col(
                             dbc.Button(
                                 [html.I(className="fa fa-filter mr-1"), "Remover Filtros"],
-                                id="reset-button-top", n_clicks=0, color="primary", className="btn-sm custom-button"
-                            ), width="auto", className="d-flex justify-content-end"
+                                id="reset-button-top",
+                                n_clicks=0,
+                                color="success",
+                                className="btn-sm custom-button",
+                            ),
+                            width="auto", className="d-flex justify-content-end"
                         ),
                         dbc.Col(
                             dbc.Button(
                                 [html.I(className="fa fa-map mr-1"), "Selecione o Estado"],
-                                id="open-state-modal-button", className="btn btn-secondary btn-sm custom-button"
-                            ), width="auto", className="d-flex justify-content-end"
+                                id="open-state-modal-button",
+                                color="success",
+                                className="btn-sm custom-button",
+                            ),
+                            width="auto", className="d-flex justify-content-end"
                         ),
                         dbc.Col(
                             dbc.Button(
                                 [html.I(className="fa fa-download mr-1"), "Baixar CSV"],
-                                id="open-modal-button", className="btn btn-secondary btn-sm custom-button"
-                            ), width="auto", className="d-flex justify-content-end"
+                                id="open-modal-button",
+                                color="success",
+                                className="btn-sm custom-button",
+                            ),
+                            width="auto", className="d-flex justify-content-end"
                         )
                     ], justify="end"),
                     dcc.Download(id="download-dataframe-csv")
@@ -91,20 +93,12 @@ def register_sad_desmatamento_municipios(server):
             ], className="mb-4 title-card"), width=12)
         ]),
         dbc.Row([
-            dbc.Col(dbc.Card([
-                dcc.Graph(id='bar-graph-total')
-            ], className="graph-block"), width=12, lg=6),
-            dbc.Col(dbc.Card([
-                dcc.Graph(id='bar-graph-yearly')
-            ], className="graph-block"), width=12, lg=6)
+            dbc.Col(dbc.Card([dcc.Graph(id='bar-graph-total', config={"responsive": True})], className="graph-block"), width=12, lg=6),
+            dbc.Col(dbc.Card([dcc.Graph(id='bar-graph-yearly', config={"responsive": True})], className="graph-block"), width=12, lg=6)
         ], className='mb-4'),
         dbc.Row([
-            dbc.Col(dbc.Card([
-                dcc.Graph(id='line-graph')
-            ], className="graph-block"), width=12, lg=6),
-            dbc.Col(dbc.Card([
-                dcc.Graph(id='choropleth-map')
-            ], className="graph-block"), width=12, lg=6)
+            dbc.Col(dbc.Card([dcc.Graph(id='line-graph', config={"responsive": True})], className="graph-block"), width=12, lg=6),
+            dbc.Col(dbc.Card([dcc.Graph(id='choropleth-map', config={"responsive": True})], className="graph-block"), width=12, lg=6)
         ], className='mb-4'),
         dbc.Row([
             dbc.Col(html.Label('Selecione o Ano:'), width=12),
@@ -117,57 +111,13 @@ def register_sad_desmatamento_municipios(server):
                 step=None,
                 tooltip={"placement": "bottom", "always_visible": True}
             ), width=12)
-        ], className='mb-4'),
+        ], className='mb-4 mt-4'),
         dcc.Store(id='selected-states', data=[]),
-        dbc.Modal([
-            dbc.ModalHeader(dbc.ModalTitle("Escolha os Municípios da Amazônia Legal")),
-            dbc.ModalBody([
-                dcc.Dropdown(
-                    options=state_options,
-                    id="state-dropdown-modal",
-                    placeholder="Selecione o Estado",
-                    multi=True
-                )
-            ]),
-            dbc.ModalFooter([
-                dbc.Button("Fechar", id="close-state-modal-button", color="danger")
-            ])
-        ], id="state-modal", is_open=False),
-        dbc.Modal([
-            dbc.ModalHeader(dbc.ModalTitle("Escolha os Municípios da Amazônia Legal")),
-            dbc.ModalBody([
-                dbc.Checklist(
-                    options=state_options,
-                    id="state-checklist",
-                    inline=True
-                ),
-                html.Hr(),
-                html.Div([
-                    html.Label("Configurações para gerar o CSV"),
-                    dbc.RadioItems(
-                        options=[
-                            {'label': 'Ponto', 'value': '.'},
-                            {'label': 'Vírgula', 'value': ','},
-                        ],
-                        value='.',
-                        id='decimal-separator',
-                        inline=True,
-                        className='mb-2'
-                    ),
-                    dbc.Checkbox(
-                        label="Sem acentuação",
-                        id="remove-accents",
-                        value=False
-                    )
-                ])
-            ]),
-            dbc.ModalFooter([
-                dbc.Button("Download", id="download-button", className="mr-2", color="success"),
-                dbc.Button("Fechar", id="close-modal-button", color="danger")
-            ])
-        ], id="modal", is_open=False)
+        dbc.Modal([...], id="state-modal", is_open=False),
+        dbc.Modal([...], id="modal", is_open=False)
     ], fluid=True)
 
+    # ---------------------------------------------------------------- callbacks
     @app.callback(
         [Output('bar-graph-total', 'figure'),
          Output('bar-graph-yearly', 'figure'),
@@ -184,6 +134,7 @@ def register_sad_desmatamento_municipios(server):
          Input('reset-button-top', 'n_clicks')],
         [State('selected-states', 'data')]
     )
+
     def update_graphs(selected_year, map_click_data, bar_click_data, total_bar_click_data, selected_state, reset_clicks, selected_states):
         triggered_id = [p['prop_id'] for p in callback_context.triggered][0]
 

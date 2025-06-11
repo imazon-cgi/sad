@@ -1,10 +1,3 @@
-# app/dashboards/sad_desmatamento_terras_indigenas.py
-"""
-Dashboard SAD – Desmatamento em Terras Indígenas (Amazônia Legal)
------------------------------------------------------------------
-Rota Flask: /sad/desmatamento_terras_indigenas/
-"""
-
 from __future__ import annotations
 
 import io
@@ -61,13 +54,14 @@ def register_sad_desmatamento_terras_indigenas(server):
     list_anual = sorted(df_desmat['ANO'].unique())
     state_options = [{'label': state, 'value': state} for state in list_states]
 
-
     # Definir intervalo de análise inicial
     start_date = pd.to_datetime("2022-08-01")
     end_date = pd.to_datetime("2024-07-31")
 
     app.layout = dbc.Container([
         html.Meta(name="viewport", content="width=device-width, initial-scale=1"),
+
+        # topo sem H1, apenas botões em verde
         dbc.Row([
             dbc.Col(dbc.Card([
                 dbc.CardBody([
@@ -75,25 +69,29 @@ def register_sad_desmatamento_terras_indigenas(server):
                         dbc.Col(
                             dbc.Button(
                                 [html.I(className="fa fa-filter mr-1"), "Remover Filtros"],
-                                id="reset-button-top", n_clicks=0, color="primary", className="btn-sm custom-button"
+                                id="reset-button-top", n_clicks=0,
+                                color="success", className="btn-sm custom-button"
                             ), width="auto", className="d-flex justify-content-end"
                         ),
                         dbc.Col(
                             dbc.Button(
                                 [html.I(className="fa fa-map mr-1"), "Selecione o Estado"],
-                                id="open-state-modal-button", className="btn btn-secondary btn-sm custom-button"
+                                id="open-state-modal-button",
+                                color="success", className="btn-sm custom-button"
                             ), width="auto", className="d-flex justify-content-end"
                         ),
                         dbc.Col(
                             dbc.Button(
                                 [html.I(className="fa fa-map mr-1"), "Selecionar Terras Indígenas"],
-                                id="open-ti-modal-button", className="btn btn-secondary btn-sm custom-button"
+                                id="open-ti-modal-button",
+                                color="success", className="btn-sm custom-button"
                             ), width="auto", className="d-flex justify-content-end"
                         ),
                         dbc.Col(
                             dbc.Button(
                                 [html.I(className="fa fa-download mr-1"), "Baixar CSV"],
-                                id="open-modal-button", className="btn btn-secondary btn-sm custom-button"
+                                id="open-modal-button",
+                                color="success", className="btn-sm custom-button"
                             ), width="auto", className="d-flex justify-content-end"
                         )
                     ], justify="end"),
@@ -101,6 +99,8 @@ def register_sad_desmatamento_terras_indigenas(server):
                 ])
             ], className="mb-4 title-card"), width=12)
         ]),
+
+        # intervalo de datas
         dbc.Row([
             dbc.Col(html.Label('Alterar o intervalo:'), width="auto", className="d-flex align-items-center"),
             dbc.Col(dcc.DatePickerRange(
@@ -113,7 +113,8 @@ def register_sad_desmatamento_terras_indigenas(server):
             dbc.Col(
                 dbc.Button(
                     [html.I(className="fa fa-refresh mr-1"), "Atualizar Intervalo"],
-                    id="refresh-button", n_clicks=0, color="success", className="btn-sm custom-button"
+                    id="refresh-button", n_clicks=0,
+                    color="success", className="btn-sm custom-button"
                 ), width="auto", className="d-flex justify-content-end ml-2"
             ),
         ], className='mb-4 align-items-center'),
