@@ -1,4 +1,4 @@
-ALERTA,MES,ANO,SENSOR,ESTADO,AREAKM2,MUNICIPIO,TERRA_INDI
+ALERTA,MES,ANO,SENSOR,ESTADO,AREAKM2,MUNICIPIO,TI
 degradacao,"1","2023",Sentinel-2,MT,0.47,Rondolândia,TI Zoró
 degradacao,"1","2023",Sentinel-2,RO,0.35,Alta Floresta D'Oeste,TI Massaco
 degradacao,"1","2023",Sentinel-2,MT,0.21,Rondolândia,TI Zoró
