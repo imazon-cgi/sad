@@ -227,13 +227,33 @@
     </div>
   </div>
 
-  <!-- Stats -->
-  <div class="row mb-4">
-    <div class="col-md-3"><div class="stat-card"><div class="stat-label">Área Total</div><div class="stat-value" id="total-area">0 km²</div><div>no período selecionado</div></div></div>
-    <div class="col-md-3"><div class="stat-card" style="background:#e65100;"><div class="stat-label">Área Média Mensal</div><div class="stat-value" id="avg-area">0 km²</div><div>em 2024</div></div></div>
-    <div class="col-md-3"><div class="stat-card" style="background:#006064;"><div class="stat-label">Territórios Afetados</div><div class="stat-value" id="affected-territories">0</div><div>no período</div></div></div>
-    <div class="col-md-3"><div class="stat-card" style="background:#37474f;"><div class="stat-label">Variação Anual</div><div class="stat-value" id="annual-change">0%</div><div>em relação a 2023</div></div></div>
+  
+<!-- Stats -->
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="stat-card">
+      <div class="stat-label">Área Total</div>
+      <div class="stat-value" id="total-area">0 km²</div>
+      <div>no período selecionado</div>
+    </div>
   </div>
+  <div class="col-md-4">
+    <div class="stat-card" style="background:#e65100;">
+      <div class="stat-label">Área Média Mensal</div>
+      <div class="stat-value" id="avg-area">0 km²</div>
+      <div>em 2024</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="stat-card" style="background:#006064;">
+      <div class="stat-label">Territórios Afetados</div>
+      <div class="stat-value" id="affected-territories">0</div>
+      <div>no período</div>
+    </div>
+  </div>
+  <!-- removido o card "Variação Anual" -->
+</div>
+
 
   <!-- Charts & Map -->
   <div class="row g-4">
@@ -331,7 +351,11 @@
 
 <script>
 Chart.register(ChartDataLabels);
-
+Chart.defaults.elements.line.tension = 0;
+Chart.defaults.datasets.line.cubicInterpolationMode = 'default';
+Chart.defaults.font.family = "'Montserrat', sans-serif";
+Chart.defaults.font.size = 12;       
+Chart.defaults.font.weight = '500';  
 const DEGRADACAO_COLOR_STOPS=[
  {p:0.00,c:'#F4F2F8'},{p:0.15,c:'#990FF9'},{p:0.30,c:'#DAD0ED'},{p:0.50,c:'#B7A7DB'},
  {p:0.65,c:'#8D7CC2'},{p:0.80,c:'#684EA7'},{p:0.92,c:'#362563'},{p:1.00,c:'#1F114D'}
@@ -354,7 +378,79 @@ function softWrap(s){
   t = t.replace(/(\S{14})(?=\S)/g, '$1' + zwsp);
   return t;
 }
+const LINECHART_PRESET = {
+  datasetStyle: (color) => ({
+    borderColor: color,
+    backgroundColor: color,
+    borderWidth: 2.5,
+    fill: false,
+    pointRadius: 3.5,
+    pointHoverRadius: 6,
+    pointBorderColor: '#fff',
+    pointBorderWidth: 1.5,
+    pointStyle: 'circle',
+    spanGaps: true,
+    tension: 0,
+    cubicInterpolationMode: 'default',
+    clip: false
+  }),
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    elements: { line: { tension: 0 } },
+    plugins: {
+      
+      legend: {
+  display: true,
+  position: 'top',
+  align: 'end', 
+  labels: {
+    usePointStyle: true,
+    pointStyle: 'circle',
+    boxWidth: 10,
+    boxHeight: 10,
+    padding: 14,
+    font: { family: "'Montserrat', sans-serif", size: 11, weight: '600' },
+    color: '#1f2937'
+  }
 
+
+      },
+      datalabels: false,
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const v = ctx.parsed.y ?? 0;
+            return v.toLocaleString('pt-BR', { maximumFractionDigits: 2 }) + ' ha';
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+         grid: { display: false }, 
+        title: {
+          display: true,
+          text: 'Área (ha)',
+          font: { family: "'Montserrat', sans-serif", size: 12, weight: '600' },
+          color: '#374151'
+        },
+        ticks: { callback: v => Number(v).toLocaleString('pt-BR') }
+      },
+      x: {
+        grid: { display: false },
+        title: {
+          display: true,
+          text: 'Ano',
+          font: { family: "'Montserrat', sans-serif", size: 12, weight: '600' },
+          color: '#374151'
+        },
+        ticks: { maxRotation: 40, minRotation: 40, autoSkip: false }
+      }
+    }
+  }
+};
 document.addEventListener('DOMContentLoaded',function(){
   
   const startPeriodInput=document.getElementById('startPeriod');
@@ -389,7 +485,7 @@ document.addEventListener('DOMContentLoaded',function(){
   const totalAreaEl=document.getElementById('total-area');
   const avgAreaEl=document.getElementById('avg-area');
   const affectedTerritoriesEl=document.getElementById('affected-territories');
-  const annualChangeEl=document.getElementById('annual-change');
+
 
   const infoPanel=document.getElementById('info-panel');
   const selectedTerritoryEl=document.getElementById('selected-territory');
@@ -489,7 +585,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   function updateStatistics(aggregatedData,filteredData){
     const totalArea=Object.values(aggregatedData).reduce((s,v)=>s+v,0);
-    totalAreaEl.textContent=totalArea.toLocaleString('pt-BR',{maximumFractionDigits:2})+' km²';
+    totalAreaEl.textContent=totalArea.toLocaleString('pt-BR',{maximumFractionDigits:1})+' km²';
     const anos=[...new Set(filteredData.map(d=>+d.ANO))].filter(Boolean).sort((a,b)=>a-b);
     const anoAtual=Math.max(...anos); const anoAnterior=anoAtual-1;
     const dadosAtual=filteredData.filter(d=>+d.ANO===anoAtual);
@@ -498,10 +594,8 @@ document.addEventListener('DOMContentLoaded',function(){
     const media=meses? somaAtual/meses : 0;
     avgAreaEl.textContent=media.toLocaleString('pt-BR',{maximumFractionDigits:2})+' km²';
     affectedTerritoriesEl.textContent=Object.keys(aggregatedData).length;
-    const dadosAnt=filteredData.filter(d=>+d.ANO===anoAnterior);
-    const somaAnt=dadosAnt.reduce((s,d)=>s+(+d.AREAKM2),0);
-    let variacao=0; if(somaAnt>0) variacao=(somaAtual-somaAnt)/somaAnt*100; else if(somaAtual>0) variacao=100;
-    annualChangeEl.textContent=variacao.toFixed(2)+'%';
+    
+    
   }
 
   let rankDT = null;
@@ -577,6 +671,8 @@ function updateBarChart(labels, dataValues){
       plugins: {
         legend: { display: false },
         tooltip: {
+          bodyFont: { family: "'Montserrat', sans-serif" },
+          titleFont: { family: "'Montserrat', sans-serif", weight: '600' },
           backgroundColor: 'rgba(0,0,0,.8)',
           titleColor: '#fff',
           bodyColor: '#fff',
@@ -611,6 +707,7 @@ function updateBarChart(labels, dataValues){
           title: {
             display: true,
             text: 'Área (km²)',
+            font: { family: "'Montserrat', sans-serif", weight: '600', size: 12 },
             padding: { top: 8 },
             font: { weight: '600', size: 12 },
             color: '#374151'
@@ -633,19 +730,19 @@ function updateBarChart(labels, dataValues){
   });
 }
 
-  function updateLineChart(csvData, territoryType){
+function updateLineChart(csvData, territoryType){
   const canvas = document.getElementById('lineChart');
   if (!canvas) return;
 
-  // Destroy existing chart safely
   const prev = Chart.getChart(canvas);
   if (prev) prev.destroy();
 
   const ctx = canvas.getContext('2d');
 
-  // Years & grouping
   const years = Array.from(new Set(csvData.map(d => d.ANO))).sort((a,b)=>a-b);
   const nameKey = territoryNameMapping[territoryType];
+
+  // Agrupa por território e ano
   const grouped = {};
   csvData.forEach(d => {
     const key = d[nameKey];
@@ -655,70 +752,30 @@ function updateBarChart(labels, dataValues){
     grouped[key][year] = (grouped[key][year] || 0) + area;
   });
 
-  // Palettes per data type
   const palettes = { desmatamento: d3.schemeTableau10, degradacao: d3.schemeSet2 };
   const dataType = (typeof getSelectedDataType === 'function'
     ? getSelectedDataType()
     : (document.querySelector('.filter-btn.active[data-type="desmatamento"], .filter-btn.active[data-type="degradacao"]')?.getAttribute('data-type') || 'desmatamento'));
   const pal = palettes[dataType] || d3.schemeTableau10;
 
-  // Datasets (Top-10 conforme ranking)
-  const datasets = currentTopTerritories.slice(0, 10).map((k, i) => {
-    const color = pal[i % pal.length];
-    return {
-      label: estadoNomes[k] || k,
-      data: years.map(y => grouped[k]?.[y] || 0),
-      borderColor: color,
-      backgroundColor: color + '33',
-      pointBackgroundColor: color,
-      pointBorderColor: '#fff',
-      pointRadius: 4,
-      pointHoverRadius: 6,
-      borderWidth: 2,
-      fill: false,
-      tension: .35
-    };
-  });
+  const colors = d3.schemeTableau10; // já usa isso
+const datasets = currentTopTerritories.slice(0, 10).map((k, i) => {
+  const c = colors[i % colors.length];
+  return {
+    label: estadoNomes[k] || k,
+    data: years.map(y => grouped[k]?.[y] || 0),
+    ...LINECHART_PRESET.datasetStyle(c)
+  };
+});
 
-  lineChart = new Chart(ctx, {
-    type: 'line',
-    data: { labels: years, datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-          labels: { usePointStyle: true, pointStyle: 'circle', padding: 20 }
-        },
-        datalabels: { display: false }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          grid: { display: false },
-          title: {
-            display: true,
-            text: 'Área (km²)',
-            padding: { bottom: 8 },
-            font: { weight: '600', size: 12 },
-            color: '#374151'
-          }
-        },
-        x: {
-          grid: { display: false },
-          title: {
-            display: true,
-            text: 'Ano',
-            padding: { top: 8 },
-            font: { weight: '600', size: 12 },
-            color: '#374151'
-          }
-        }
-      }
-    }
-  });
+
+  
+    lineChart = new Chart(ctx, {
+  type: 'line',
+  data: { labels: years, datasets },
+  options: LINECHART_PRESET.options
+});
+   
 }
 
 
