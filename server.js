@@ -1,10 +1,10 @@
 // server.js (Linux-ready)
-// Executar com: NODE_ENV=production node server.js
-// Opcional:
-//   - CSP_REPORT_ONLY=1 (só reporta violações, não bloqueia)
-//   - TRUST_PROXY=1      (se estiver atrás de Nginx/Apache)
-//   - PORT=3000
-//   - DATASET_DIR=/caminho/absoluto/para/dataset (se quiser sobrescrever)
+// Executar: NODE_ENV=production node server.js
+// Variáveis opcionais:
+//   PORT=3000
+//   DATASET_DIR=/caminho/absoluto/para/dataset
+//   TRUST_PROXY=1                (se estiver atrás de Nginx/Apache/ALB/ELB/Cloudflare)
+//   CSP_REPORT_ONLY=1            (CSP em modo "report only")
 
 const path = require('path');
 const fs = require('fs');
@@ -18,15 +18,14 @@ const PORT = parseInt(process.env.PORT || '3000', 10);
 // Diretórios (Linux é case-sensitive)
 const ROOT_DIR = __dirname;
 const DATASET_DIR = process.env.DATASET_DIR || path.join(ROOT_DIR, 'dataset');
+const SAD_DIR = path.join(DATASET_DIR, 'sad');
 
-// Se estiver atrás de proxy (Nginx/Apache), habilite para ter IP correto
+// Se estiver atrás de proxy (Nginx/Apache/Cloudflare), habilite para obter IP correto
 if (process.env.TRUST_PROXY) {
   app.set('trust proxy', true);
 }
 
 // ======== Content Security Policy (CSP) ========
-// Inclui CDNs usados e tiles OSM/CARTO. Libera data:/blob: para imagens.
-// Em Linux, verifique se não há proxy injetando outro CSP.
 const cspDirectives = {
   "default-src": ["'self'"],
 
@@ -58,7 +57,6 @@ const cspDirectives = {
     "https://cdnjs.cloudflare.com"
   ],
 
-  // IMPORTANTE: sem placeholders (<URL>) aqui
   "img-src": [
     "'self'",
     "data:",
@@ -72,7 +70,6 @@ const cspDirectives = {
     "https://imazongeo3-web.s3.sa-east-1.amazonaws.com"
   ],
 
-  // Inclui fetch de source-maps do DevTools (unpkg/jsdelivr/cdnjs)
   "connect-src": [
     "'self'",
     "https://*.tile.openstreetmap.org",
@@ -82,13 +79,10 @@ const cspDirectives = {
     "https://unpkg.com"
   ],
 
-  // Workers (html2canvas/leaflet-image, se utilizados)
   "worker-src": ["'self'", "blob:"],
-
   "object-src": ["'none'"],
   "frame-ancestors": ["'self'"]
 };
-
 const useReportOnly = !!process.env.CSP_REPORT_ONLY;
 
 app.use(
@@ -113,7 +107,6 @@ function setStaticHeaders(res, filePath) {
   const lower = filePath.toLowerCase();
 
   if (lower.endsWith('.geojson')) {
-    // GeoJSON com MIME correto
     res.type('application/geo+json; charset=utf-8');
   } else if (lower.endsWith('.csv')) {
     res.type('text/csv; charset=utf-8');
@@ -129,17 +122,27 @@ function setStaticHeaders(res, filePath) {
     // Assets: 7 dias, immutable
     res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
   } else {
-    // HTML e outros: sem cache
+    // HTML/outros: sem cache agressivo
     res.setHeader('Cache-Control', 'no-cache');
   }
 }
 
-// ======== Servir /dataset (Linux: nomes exatos!) ========
-app.use('/dataset', express.static(DATASET_DIR, { setHeaders: setStaticHeaders }));
-// Alias (se necessário para compatibilidade)
-app.use('/dataset/sad', express.static(DATASET_DIR, { setHeaders: setStaticHeaders }));
+// ======== Logs úteis de caminho ========
+console.log('ROOT_DIR:', ROOT_DIR);
+console.log('DATASET_DIR:', DATASET_DIR);
+console.log('SAD_DIR:', SAD_DIR);
 
-// ======== Raiz (HTML/estáticos) ========
+// ======== Servir /dataset (Linux: nomes exatos!) ========
+// Monta o diretório inteiro do dataset em /dataset
+app.use('/dataset', express.static(DATASET_DIR, { setHeaders: setStaticHeaders }));
+// Monta explicitamente /dataset/sad -> <DATASET_DIR>/sad (útil para evitar confusão de docroot externos)
+app.use('/dataset/sad', express.static(SAD_DIR, {
+  setHeaders: setStaticHeaders,
+  index: false,
+  maxAge: 0
+}));
+
+// ======== Raiz (HTML/estáticos do app) ========
 app.use(express.static(ROOT_DIR, {
   setHeaders: setStaticHeaders,
   extensions: ['html'] // permite /rota → /rota.html
@@ -148,22 +151,14 @@ app.use(express.static(ROOT_DIR, {
 // ======== Healthcheck ========
 app.get('/healthz', (_req, res) => res.status(200).send('ok'));
 
-// ======== Rotas de debug (úteis na VM Linux) ========
-// 1) Mostrar o CSP que este processo realmente enviou
+// ======== Rotas de debug ========
+// 1) CSP efetivo (ver o cabeçalho enviado por este processo)
 app.get('/__csp', (req, res) => {
   res.type('text/plain');
   res.send(res.get('content-security-policy') || 'sem CSP');
 });
 
-const SAD_DIR = path.join(DATASET_DIR, 'sad');
-app.use('/dataset/sad', express.static(SAD_DIR, {
-  index: false,
-  maxAge: '0',          // evita cache
-  etag: false,
-  lastModified: false,
-  cacheControl: false
-}));
-// 2) Listar conteúdo do dataset (para checar nomes/case)
+// 2) Listar conteúdo do dataset (para checar nomes/case no servidor)
 app.get('/__ls', (req, res) => {
   const sub = req.query.dir || '';
   const dir = path.join(DATASET_DIR, sub);
@@ -174,6 +169,7 @@ app.get('/__ls', (req, res) => {
 });
 
 // ======== SPA fallback ========
+// Se pedir uma rota sem extensão, devolve index.html (se for SPA)
 app.use((req, res, next) => {
   if (path.extname(req.path)) return next(); // pede arquivo com extensão → deixa 404 padrão
   res.sendFile(path.join(ROOT_DIR, 'index.html'));
@@ -181,7 +177,6 @@ app.use((req, res, next) => {
 
 // ======== Start ========
 app.listen(PORT, () => {
-  console.log(`✅ Server (Linux) em http://localhost:${PORT}`);
-  console.log(`📦 DATASET_DIR: ${DATASET_DIR}`);
+  console.log(`✅ Server em http://localhost:${PORT}`);
   console.log(`🛡️ CSP ${useReportOnly ? '(Report-Only)' : '(Enforcing)'} ativo`);
 });
