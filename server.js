@@ -54,22 +54,31 @@ app.use(
         ],
 
         // IMAGENS: permite data:/blob: e os tiles de mapa (OSM + CARTO)
-        "img-src": [
-          "'self'",
-          "data:",
-          "blob:",
-          "https://*.tile.openstreetmap.org",
-          "https://*.basemaps.cartocdn.com"
-        ],
+        // ...
+"img-src": [
+  "'self'",
+  "data:",
+  "blob:",
+  "https://*.tile.openstreetmap.org",        // OSM
+  "https://*.basemaps.cartocdn.com",         // Carto (a|b|c|d)
+  "https://unpkg.com",                        // ícones do Leaflet (se vindos de lá)
+  "https://imazongeo3-web.s3.sa-east-1.amazonaws.com"
+],
 
-        // FETCH/XHR/tiles/sourcemaps: permita OSM/CARTO e (opcional) CDNs p/ baixar *.map no DevTools
-        "connect-src": [
-          "'self'",
-          "https://*.tile.openstreetmap.org",
-          "https://*.basemaps.cartocdn.com",
-          "https://cdn.jsdelivr.net",
-          "https://unpkg.com"
-        ],
+
+
+"connect-src": [
+  "'self'",
+  "https://*.tile.openstreetmap.org",
+  "https://cdn.datatables.net",
+  "https://cdnjs.cloudflare.com",
+  "https://cdn.jsdelivr.net",
+  "https://unpkg.com" // ok
+],
+
+
+
+
 
         // para html2canvas/leaflet-image e workers que possam ser usados
         "worker-src": ["'self'", "blob:"],
@@ -97,10 +106,12 @@ function setStaticHeaders(res, filePath) {
     res.type('application/geo+json; charset=utf-8');
   } else if (filePath.endsWith('.csv')) {
     res.type('text/csv; charset=utf-8');
+  } else if (filePath.endsWith('.json')) {
+    res.type('application/json; charset=utf-8');
   }
 
   // Cache-control adequado
-  if (/\/dataset\//.test(filePath) || filePath.endsWith('.csv') || filePath.endsWith('.geojson')) {
+  if (/\/dataset\//.test(filePath) || filePath.endsWith('.csv') || filePath.endsWith('.geojson') || filePath.endsWith('.json')) {
     // Dados: curtos (10 min) + stale-while-revalidate
     res.setHeader('Cache-Control', 'public, max-age=600, stale-while-revalidate=120');
   } else if (/\.(js|css|png|jpg|jpeg|webp|svg|ico|woff2?|ttf)$/.test(filePath)) {
