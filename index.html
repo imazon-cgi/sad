@@ -471,7 +471,7 @@ let __bgLayer = null;
 
 async function updateBackgroundOutlines(){
   try{ if(__bgLayer){ map.removeLayer(__bgLayer); __bgLayer = null; } }catch{}
-  const url = "dataset/geojson/AMZ_legal_amz_legal.geojson";
+  const url = "./dataset/geojson/AMZ_legal_amz_legal.geojson";
   if(__bgCache[url]){
     __bgLayer = L.geoJSON(__bgCache[url], { style:{ color:'#9aa0a6', weight:1.2, fillOpacity:0 }, interactive:false }).addTo(map);
     try{ __bgLayer.bringToBack(); }catch{}
