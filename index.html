@@ -13,7 +13,7 @@
 
   <style>
     :root{
-      --primary-color:#008055;--primary-dark:#003300;--accent-color:#FF6D00;
+       --primary-color:#008055;--primary-dark:#003300;--accent-color:#FF6D00;
       --text-color:#212121;--background-color:#F5F5F5;--card-color:#FFFFFF;
       --border-radius:12px;--box-shadow:0 4px 20px rgba(0,0,0,.1);
       --chart-h-desktop:450px;--chart-h-tablet:360px;--chart-h-phone:300px;
@@ -41,17 +41,14 @@
     .rank-pager .btn{padding:.25rem .5rem}
     .muted{color:#6b7280}
     .small-label{font-size:.825rem;color:#6b7280}
-
     .dataset-select-group .btn { height:42px; margin-top:0; }
     .dataset-select-group .filter-label { display:none; }
     .filter-item.align-self-end { align-self:end; }
-
     .settlement-list { border: 1px solid #dee2e6; border-radius: 8px; }
     .settlement-item { padding: 10px 15px; border-bottom: 1px solid #eee; cursor: pointer; transition: all 0.2s; }
     .settlement-item:hover { background: #f8f9fa; }
     .settlement-item.selected { background: #e3f2fd; font-weight: 600; }
     .selection-info { padding: 10px 0; font-weight: 500; color: var(--text-color); }
-
     @media (max-width: 992px){
       .chart-container{height:var(--chart-h-tablet)}
       #map{height:var(--map-h-tablet)}
@@ -91,14 +88,12 @@
       <div class="filter-item span-2">
         <label class="filter-label fw-bold" for="sadFilter">SAD</label>
         <select id="sadFilter" class="form-select">
-          <option value="todos">Todos </option>
+          <option value="todos">Todos</option>
           <option value="desmatamento">Desmatamento</option>
           <option value="degradacao">Degradação</option>
-          <!-- NOVO: modo combinado -->
         </select>
       </div>
 
-      <!-- Estado -->
       <div class="filter-item span-2">
         <label class="filter-label fw-bold" for="estadoFilter">Estado</label>
         <select id="estadoFilter" class="form-select">
@@ -108,17 +103,12 @@
           <option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="TO">Tocantins</option>
         </select>
       </div>
-      <!-- Município -->
-      <div class="filter-item span-2">
-        <label class="filter-label fw-bold" for="municipioFilter">Município</label>
-        <select id="municipioFilter" class="form-select">
-          <option value="all">Todos</option>
-        </select>
-      </div>
-      <!-- Modalidade territorial -->
+
       <div class="filter-item span-2">
         <label class="filter-label fw-bold" for="categoriaFilter">Modalidade Territorial</label>
         <select id="categoriaFilter" class="form-select">
+          <!-- Removido: <option value="municipios">Municípios</option> -->
+          <option value="estados">Estados</option>
           <option value="terrasIndigenas">Terras Indígenas</option>
           <option value="unidadesConservacao">Unidades de Conservação</option>
           <option value="assentamentos">Assentamentos</option>
@@ -162,7 +152,7 @@
         <select id="monthEnd" class="form-select"></select>
       </div>
 
-      <!-- Botões Seleção Múltipla -->
+      <!-- Botões seleção múltipla (deixei iguais; não há mais “municípios”) -->
       <div class="filter-item span-3 dataset-select-group align-self-end" id="terrasIndigenasSelectGroup" style="display:none">
         <button class="btn btn-primary w-100" id="open-terras-indigenas-modal">
           <i class="fas fa-campground me-2"></i>Selecionar Terras Indígenas
@@ -243,7 +233,7 @@
               <button class="btn btn-sm btn-outline-secondary" id="btn-bar-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
               <button class="btn btn-sm btn-outline-secondary" id="btn-bar-csv" title="CSV (todos)"><i class="fa-solid fa-file-csv me-1"></i>CSV</button>
             </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="true" title="Mostrar downloads"><i class="fas fa-eye me-1"></i>Mostrar</button>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
           </div>
         </div>
         <div class="card-body"><div class="chart-container"><canvas id="barChart"></canvas></div></div>
@@ -258,7 +248,7 @@
             <div class="download-group">
               <button class="btn btn-sm btn-outline-secondary" id="btn-map-png" title="PNG (toda a camada)"><i class="fa-solid fa-image me-1"></i>PNG</button>
             </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="true" title="Mostrar downloads"><i class="fas fa-eye me-1"></i>Mostrar</button>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
           </div>
         </div>
         <div class="card-body p-2 position-relative">
@@ -277,11 +267,11 @@
           <div class="d-flex align-items-center">
             <div class="download-group">
               <button class="btn btn-sm btn-outline-secondary" id="btn-line-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
-              <button class="btn btn-sm btn-outline-secondary" id="btn-line-csv" title="CSV (desabilitado)" disabled aria-disabled="true">
+              <button class="btn btn-sm btn-outline-secondary" id="btn-line-csv" title="CSV" disabled aria-disabled="true">
                 <i class="fa-solid fa-file-csv me-1"></i>CSV
               </button>
             </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="true" title="Mostrar downloads"><i class="fas fa-eye me-1"></i>Mostrar</button>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
           </div>
         </div>
         <div class="card-body"><div class="chart-container"><canvas id="lineChart"></canvas></div></div>
@@ -297,7 +287,7 @@
               <button class="btn btn-sm btn-outline-secondary" id="btn-yearly-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
               <button class="btn btn-sm btn-outline-secondary" id="btn-yearly-csv" title="CSV"><i class="fa-solid fa-file-csv me-1"></i>CSV</button>
             </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="true" title="Mostrar downloads"><i class="fas fa-eye me-1"></i>Mostrar</button>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
           </div>
         </div>
         <div class="card-body"><div class="chart-container"><canvas id="yearlyChart"></canvas></div></div>
@@ -316,65 +306,41 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
 
-<!-- Modais para Seleção Múltipla -->
+<!-- Modais (sem o de Municípios) -->
 <div class="modal fade" id="terrasIndigenasModal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Selecionar Terras Indígenas (máx. 10)</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="terras-indigenas-search" class="form-control mb-3" placeholder="Buscar terra indígena...">
-        <div class="selection-info"><span id="selected-terras-indigenas-count">0</span> de 10 selecionadas</div>
-        <div id="terras-indigenas-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="apply-terras-indigenas-selection">Aplicar</button>
-      </div>
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Selecionar Terras Indígenas (máx. 10)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" id="terras-indigenas-search" class="form-control mb-3" placeholder="Buscar terra indígena...">
+      <div class="selection-info"><span id="selected-terras-indigenas-count">0</span> de 10 selecionadas</div>
+      <div id="terras-indigenas-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
     </div>
-  </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" id="apply-terras-indigenas-selection">Aplicar</button></div>
+  </div></div>
 </div>
 
 <div class="modal fade" id="ucModal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Selecionar Unidades de Conservação (máx. 10)</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="uc-search" class="form-control mb-3" placeholder="Buscar UC...">
-        <div class="selection-info"><span id="selected-uc-count">0</span> de 10 selecionadas</div>
-        <div id="uc-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="apply-uc-selection">Aplicar</button>
-      </div>
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Selecionar Unidades de Conservação (máx. 10)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" id="uc-search" class="form-control mb-3" placeholder="Buscar UC...">
+      <div class="selection-info"><span id="selected-uc-count">0</span> de 10 selecionadas</div>
+      <div id="uc-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
     </div>
-  </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" id="apply-uc-selection">Aplicar</button></div>
+  </div></div>
 </div>
 
 <div class="modal fade" id="assentamentosModal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Selecionar Assentamentos (máx. 10)</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="assentamentos-search" class="form-control mb-3" placeholder="Buscar assentamento...">
-        <div class="selection-info"><span id="selected-assentamentos-count">0</span> de 10 selecionados</div>
-        <div id="assentamentos-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="apply-assentamentos-selection">Aplicar</button>
-      </div>
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Selecionar Assentamentos (máx. 10)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" id="assentamentos-search" class="form-control mb-3" placeholder="Buscar assentamento...">
+      <div class="selection-info"><span id="selected-assentamentos-count">0</span> de 10 selecionados</div>
+      <div id="assentamentos-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
     </div>
-  </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" id="apply-assentamentos-selection">Aplicar</button></div>
+  </div></div>
 </div>
 
 <script>
@@ -389,97 +355,57 @@ const isTabletScreen = () => window.matchMedia('(max-width: 992px)').matches;
 const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const estadoNomes={AC:"Acre",AM:"Amazonas",AP:"Amapá",MA:"Maranhão",MT:"Mato Grosso",PA:"Pará",RO:"Rondônia",RR:"Roraima",TO:"Tocantins"};
 const amazoniaLegalStates=['AC','AP','AM','MA','MT','PA','RO','RR','TO'];
-const territoryNameMapping={
-  assentamentos:'ASSENTAMEN',
-  terrasIndigenas:'TERRA_INDI',
-  unidadesConservacao:'UNID_CONSE'
-};
+const territoryNameMapping={assentamentos:'ASSENTAMEN',estados:'ESTADO',municipios:'MUNICIPIO',terrasIndigenas:'TERRA_INDI',unidadesConservacao:'UNID_CONSE'};
 
-// --- NEW: chaves possíveis de município (tentará na ordem)
-const MUNIC_KEYS = ['MUNICIPIO','MUNICÍPIO','NM_MUN','MUN','MUNIC','MUNIC_NOME'];
-
+let selectedMunicipios = []; // não é mais utilizado pois a opção foi removida
 let selectedTerrasIndigenas = [];
 let selectedUCs = [];
 let selectedAssentamentos = [];
 let csvData = [];
 
-function showLoader(msg="Carregando Dados..."){
-  const ov = document.getElementById('loader-overlay');
-  if(!ov) return; ov.style.display='flex';
-  const t = ov.querySelector('.loader-text'); if(t) t.textContent = msg;
-}
-function hideLoader(){ const ov = document.getElementById('loader-overlay'); if(ov) ov.style.display='none'; }
+function showLoader(msg="Carregando Dados..."){ const ov=document.getElementById('loader-overlay'); if(!ov) return; ov.style.display='flex'; const t=ov.querySelector('.loader-text'); if(t) t.textContent=msg; }
+function hideLoader(){ const ov=document.getElementById('loader-overlay'); if(ov) ov.style.display='none'; }
 function slugify(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
 function nowStamp(){const d=new Date();const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}`;}
 function toCSV(rows, sep=';'){ return rows.map(r => r.map(v=>{ if(v==null) return ''; const s=String(v); return (s.includes(sep)||/["\n]/.test(s))?`"${s.replace(/"/g,'""')}"`:s;}).join(sep)).join('\n'); }
 function monthName(m){const i=Math.max(1,Math.min(12,parseInt(m,10)))-1; return MONTHS[i];}
 
-/* ====== NOVO: corte em D-2 ====== */
-function getTwoMonthsAgo(){
-  const d = new Date();
-  d.setMonth(d.getMonth() - 2);
-  return { 
-    year: d.getFullYear(),
-    month: String(d.getMonth() + 1).padStart(2, '0')
-  };
-}
-function clampEndToCutoff(){
-  const cutoff = getTwoMonthsAgo();
-  const yEndEl = document.getElementById('yearEnd');
-  const mEndEl = document.getElementById('monthEnd');
-  const curEnd = parseInt((yEndEl.value||'0') + (mEndEl.value||'00'), 10);
-  const cutEnd = parseInt(String(cutoff.year) + cutoff.month, 10);
-  if (curEnd > cutEnd){
-    yEndEl.value = String(cutoff.year);
-    mEndEl.value = cutoff.month;
-  }
-}
-
 const DEGRADACAO_COLOR_STOPS=[
   {p:0.00,c:'#F4F2F8'},{p:0.15,c:'#990FF9'},{p:0.30,c:'#DAD0ED'},{p:0.50,c:'#B7A7DB'},
   {p:0.65,c:'#8D7CC2'},{p:0.80,c:'#684EA7'},{p:0.92,c:'#362563'},{p:1.00,c:'#1F114D'}
 ];
+
 const PALETTE = {
   desmatamento: { type:'sequential', interpolator: d3.interpolateReds },
   degradacao:   { type:'stops',      stops: DEGRADACAO_COLOR_STOPS },
-  // NOVO: “todos” usa um sequencial (Reds/OrRd) para manter leitura simples
-  todos:        { type:'sequential', interpolator: d3.interpolateOrRd }
+  todos:        { type:'sequential', interpolator: d3.interpolateOranges }
 };
+
 function buildColorScale(kind, values){
   const maxVal = values && values.length ? Math.max(...values) : 1;
-  if (PALETTE[kind]?.type === 'sequential'){
-    const interp = PALETTE[kind].interpolator || d3.interpolateReds;
+  const spec = PALETTE[kind] || PALETTE.desmatamento;
+  if (spec.type === 'sequential'){
+    const interp = spec.interpolator || d3.interpolateReds;
     return d3.scaleSequential().domain([0, maxVal]).interpolator(interp);
   }
-  const stops = (PALETTE[kind]?.stops || DEGRADACAO_COLOR_STOPS);
+  const stops = spec.stops || DEGRADACAO_COLOR_STOPS;
   const domain = stops.map(s => s.p * maxVal);
   const range  = stops.map(s => s.c);
   return d3.scaleLinear().domain(domain).range(range).clamp(true);
 }
 const currentColorScale = values => buildColorScale(dataTypeAtual(), values);
+
 const withHeadroom = (maxVal, pad=0.12) => (maxVal>0 ? maxVal*(1+pad) : 1);
 
-// ---------- MAPA + BASE ----------
 const amazoniaBounds = L.latLngBounds([[-18,-75],[6,-44]]);
 const map = L.map('map',{zoomControl:true});
-// Pane exclusivo para a Amazônia Legal (sempre atrás dos dados do ranking)
-map.createPane('amzBase');
-map.getPane('amzBase').style.zIndex = 350;
-map.getPane('amzBase').style.pointerEvents = 'none';
-
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   subdomains: 'abcd', maxZoom: 20, crossOrigin: true
 }).addTo(map);
-
-// BASE FIXA
-const BASE_GEOJSON_URL = 'dataset/sad/geojson/AMZ_legal_amz_legal.geojson';
-
-let baseLayer = null;
-
 fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
-let geoJsonLayer = null;
 
+let geoJsonLayer = null;
 function fitBoundsWithExtra(mapInstance, bounds, padding = [20, 20], extra = 0){
   mapInstance.fitBounds(bounds, { padding });
   mapInstance.once('moveend', () => {
@@ -488,105 +414,77 @@ function fitBoundsWithExtra(mapInstance, bounds, padding = [20, 20], extra = 0){
   });
 }
 
-function baseStyle(){ 
-  return { color:'#00695c', weight:1.5, fillColor:'#A5D6A7', fillOpacity:0.25 };
-}
-
-async function loadBaseGeojson(){
-  try{
-    const res = await fetch(BASE_GEOJSON_URL);
-    const gj  = await res.json();
-    if (baseLayer) { try{ map.removeLayer(baseLayer); } catch(e){} }
-    baseLayer = L.geoJSON(gj, { pane:'amzBase', style: baseStyle, interactive:false }).addTo(map);
-    baseLayer.bringToBack();
-
-    const b = baseLayer.getBounds?.();
-    if (b && b.isValid()) {
-      fitBoundsWithExtra(map, b, [20,20], 0);
-    }
-  }catch(e){
-    console.error('Erro ao carregar base da Amazônia Legal:', e);
-  }
-}
-
 function zoomToTopItems(n = 5){
   try{
     const gj = window._lastGeo;
     const ag = window._lastAggreg || {};
     if (!gj || !gj.features || !Object.keys(ag).length){
-      const bBase = baseLayer?.getBounds?.();
-      if (bBase && bBase.isValid()) fitBoundsWithExtra(map, bBase, [20,20], 0);
-      else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
+      fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
       return;
     }
-    const ttype = (typeof categoriaAtual === 'function') ? categoriaAtual() : 'terrasIndigenas';
+    const ttype = (typeof categoriaAtual === 'function') ? categoriaAtual() : 'estados';
     const nameKey = territoryNameMapping[ttype];
-
     const pageKeys = (window.currentTopTerritories && window.currentTopTerritories.length)
       ? window.currentTopTerritories.slice(0, n)
       : Object.entries(ag).sort(([,a],[,b]) => b - a).slice(0, n).map(([k]) => k);
-
     const feats = gj.features.filter(f => pageKeys.includes(f.properties?.[nameKey]));
-    if (!feats.length){
-      const bBase = baseLayer?.getBounds?.();
-      if (bBase && bBase.isValid()) fitBoundsWithExtra(map, bBase, [20,20], 0);
-      else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
-      return;
-    }
+    if (!feats.length){ fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0); return; }
     const layer = L.geoJSON({ type: 'FeatureCollection', features: feats });
     const b = layer.getBounds();
-    if (b && b.isValid()){
-      fitBoundsWithExtra(map, b, [20,20], 0);
-    } else {
-      const bBase2 = baseLayer?.getBounds?.();
-      if (bBase2 && bBase2.isValid()) fitBoundsWithExtra(map, bBase2, [20,20], 0);
-      else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
-    }
-  } catch {
-    const bBase = baseLayer?.getBounds?.();
-    if (bBase && bBase.isValid()) fitBoundsWithExtra(map, bBase, [20,20], 0);
-    else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
-  }
+    if (b && b.isValid()){ fitBoundsWithExtra(map, b, [20,20], 0); }
+    else { fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0); }
+  } catch { fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0); }
 }
 
 const __geoCache = {};
-async function __getGeoFor(key){
-  const t = dataTypeAtual();
-  const url = dataSources?.[t]?.[key]?.geojson;
+async function __getGeoFor(kindKey){
+  const t = dataTypeAtual()==='todos' ? 'desmatamento' : dataTypeAtual();
+  const url = dataSources?.[t]?.[kindKey]?.geojson;
   if(!url) return null;
   if(__geoCache[url]) return __geoCache[url];
-  try{
-    const gj = await fetch(url).then(r=>r.json());
-    __geoCache[url] = gj;
-    return gj;
-  }catch{ return null; }
+  try{ const gj = await fetch(url).then(r=>r.json()); __geoCache[url] = gj; return gj; }catch{ return null; }
 }
 function __featureCenter(feat){
-  try{
-    const tmp = L.geoJSON(feat);
-    const b = tmp.getBounds();
-    return b && b.isValid() ? b.getCenter() : null;
-  }catch{return null;}
+  try{ const tmp = L.geoJSON(feat); const b = tmp.getBounds(); return b && b.isValid() ? b.getCenter() : null; }catch{return null;}
 }
 
 const dataSources={
   desmatamento:{
     assentamentos:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_assentamentos.csv",geojson:"/dataset/sad/geojson/AMZ_assentamentos.geojson"},
+    estados:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_estados.geojson"},
+    municipios:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_municipios.geojson"},
     terrasIndigenas:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_terra_indigena.csv",geojson:"/dataset/sad/geojson/AMZ_terra_indigena.geojson"},
     unidadesConservacao:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_ucs.csv",geojson:"/dataset/sad/geojson/AMZ_unidade_conservacao.geojson"}
   },
   degradacao:{
     assentamentos:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_assentamento.csv",geojson:"/dataset/sad/geojson/AMZ_assentamentos.geojson"},
+    estados:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_estados.geojson"},
+    municipios:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_municipios.geojson"},
     terrasIndigenas:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_terra_indigena.csv",geojson:"/dataset/sad/geojson/AMZ_terra_indigena.geojson"},
     unidadesConservacao:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_ucs.csv",geojson:"/dataset/sad/geojson/AMZ_unidade_conservacao.geojson"}
-  },
-  // NOVO modo “todos” aponta para os mesmos GeoJSONs, CSV será combinado no loadData()
-  todos:{
-    assentamentos:{csv:null, geojson:"/dataset/sad/geojson/AMZ_assentamentos.geojson"},
-    terrasIndigenas:{csv:null, geojson:"/dataset/sad/geojson/AMZ_terra_indigena.geojson"},
-    unidadesConservacao:{csv:null, geojson:"/dataset/sad/geojson/AMZ_unidade_conservacao.geojson"}
   }
 };
+
+/* ======= FUNDO DO MAPA: contorno da Amazônia Legal ======= */
+const __bgCache = {};
+let __bgLayer = null;
+
+async function updateBackgroundOutlines(){
+  try{ if(__bgLayer){ map.removeLayer(__bgLayer); __bgLayer = null; } }catch{}
+  const url = "dataset/geojson/AMZ_legal_amz_legal.geojson";
+  if(__bgCache[url]){
+    __bgLayer = L.geoJSON(__bgCache[url], { style:{ color:'#9aa0a6', weight:1.2, fillOpacity:0 }, interactive:false }).addTo(map);
+    try{ __bgLayer.bringToBack(); }catch{}
+    return;
+  }
+  try{
+    const gj = await fetch(url).then(r=>r.json());
+    __bgCache[url] = gj;
+    __bgLayer = L.geoJSON(gj, { style:{ color:'#9aa0a6', weight:1.2, fillOpacity:0 }, interactive:false }).addTo(map);
+    try{ __bgLayer.bringToBack(); }catch{}
+  }catch{}
+}
+/* ======= FIM FUNDO ======= */
 
 function lineOptionsResponsive(suggestedMax){
   const small = isSmallScreen();
@@ -594,13 +492,8 @@ function lineOptionsResponsive(suggestedMax){
   return {
     responsive:true, maintainAspectRatio:false,
     plugins:{
-      legend:{
-        display: !small,
-        position: small?'bottom':'top',
-        align:'end',
-        labels:{usePointStyle:true, pointStyle:'circle', boxWidth:10, boxHeight:10, padding:10,
-          font:{size: small?10 : 11, weight:'600'}}
-      },
+      legend:{ display: !small, position: small?'bottom':'top', align:'end',
+        labels:{usePointStyle:true, pointStyle:'circle', boxWidth:10, boxHeight:10, padding:10, font:{size: small?10 : 11, weight:'600'}}},
       datalabels:false,
       tooltip:{callbacks:{label:ctx=> (ctx.parsed.y??0).toLocaleString('pt-BR',{maximumFractionDigits:2})+' ha'}}
     },
@@ -608,129 +501,48 @@ function lineOptionsResponsive(suggestedMax){
     scales:{
       y:{beginAtZero:true, suggestedMax: suggestedMax, grid:{display:false}, title:{display:true,text:'Área (ha)',font:{weight:'600'}}},
       x:{grid:{display:false}, title:{display:true,text:'Ano',font:{weight:'600'}},
-        ticks:{maxRotation: small?0 : 40, minRotation: small?0 : 40, autoSkip:true, maxTicksLimit: small?6 : (tablet?10:14)}}
+         ticks:{maxRotation: small?0 : 40, minRotation: small?0 : 40, autoSkip:true, maxTicksLimit: small?6 : (tablet?10:14)}}
     }
   };
 }
 
-function categoriaAtual(){ return document.getElementById('categoriaFilter').value || 'terrasIndigenas'; }
-function dataTypeAtual(){ return document.getElementById('sadFilter').value || 'desmatamento'; }
+function categoriaAtual(){ return document.getElementById('categoriaFilter').value || 'estados'; }
+function dataTypeAtual(){ return (document.getElementById('sadFilter').value || 'desmatamento'); }
 
-// --- Helpers de UF e Município
-function getUF(rec){
-  return (rec.ESTADO ?? rec.UF ?? rec.SIGLA ?? rec.UF_SIGLA ?? '').toString().trim().toUpperCase();
-}
-function getMunicipio(rec){
-  for (const k of MUNIC_KEYS){
-    if (rec.hasOwnProperty(k) && rec[k] != null){
-      return String(rec[k]).trim();
+/* Carrega CSV (ou combina os dois quando 'todos') e o geojson */
+async function loadData(){
+  const sad = dataTypeAtual();
+  const territoryType = categoriaAtual();
+
+  const geoUrl = dataSources.desmatamento?.[territoryType]?.geojson;
+
+  async function loadCsv(url){ const rows = await d3.csv(url); rows.forEach(d=>{ d.AREAKM2=+d.AREAKM2||0; d.ANO=+d.ANO; d.MES=+d.MES; }); return rows; }
+
+  try{
+    let data = [];
+    if (sad === 'todos'){
+      const urlDes = dataSources.desmatamento?.[territoryType]?.csv;
+      const urlDeg = dataSources.degradacao?.[territoryType]?.csv;
+      const [a,b] = await Promise.all([ loadCsv(urlDes), loadCsv(urlDeg) ]);
+      data = a.concat(b);
+    } else {
+      const url = dataSources[sad]?.[territoryType]?.csv;
+      data = await loadCsv(url);
     }
+    const geojsonData = geoUrl ? await fetch(geoUrl).then(r=>r.json()) : null;
+    csvData = data;
+    return { csvData:data, geojsonData };
+  }catch(e){
+    console.error('Erro ao carregar dados:', e);
+    return { csvData:[], geojsonData:null };
   }
-  const keys = Object.keys(rec);
-  const alvo = ['municipio','município','nm_mun','mun','munic','munic_nome'];
-  const found = keys.find(k => alvo.includes(k.toLowerCase()));
-  return found ? String(rec[found]).trim() : '';
-}
-
-function extractMunicipios(data, ufSel){
-  let rows = data;
-  if (ufSel && ufSel!=='all' && ufSel!=='__AMAZONIA_LEGAL__'){
-    rows = rows.filter(r => getUF(r) === ufSel);
-  } else if (ufSel==='__AMAZONIA_LEGAL__'){
-    rows = rows.filter(r => amazoniaLegalStates.includes(getUF(r)));
-  }
-  const set = new Set();
-  rows.forEach(r => {
-    const m = getMunicipio(r);
-    if (m) set.add(m);
-  });
-  return Array.from(set).sort((a,b)=> a.localeCompare(b,'pt-BR'));
-}
-
-// Popula o select de municípios preservando a seleção quando possível
-function populateMunicipioSelect(){
-  const sel = document.getElementById('municipioFilter');
-  if (!sel) return;
-  const prev = sel.value || 'all';
-  const ufSel = document.getElementById('estadoFilter').value;
-  const list = extractMunicipios(csvData || [], ufSel);
-  sel.innerHTML = '<option value="all">Todos</option>' + list.map(n=>`<option value="${n.replace(/"/g,'&quot;')}">${n}</option>`).join('');
-  const canRestore = list.includes(prev);
-  sel.value = canRestore ? prev : 'all';
-}
-
-/** NOVO: carrega CSV(s) conforme o SAD selecionado.
- *  - desmatamento/degradacao: comportamento original
- *  - todos: busca CSV de ambos, concatena linhas e devolve em um único array
- *  GeoJSON: é único por categoria (pode usar o do desmatamento, pois a malha é a mesma)
- */
-function loadData(){
-  const dType = dataTypeAtual();
-  const tType = categoriaAtual();
-
-  // função auxiliar para carregar um CSV (se existir) e normalizar tipos
-  const loadCsv = async (csvUrl) => {
-    const rows = await d3.csv(csvUrl);
-    rows.forEach(d=>{
-      d.AREAKM2 = +d.AREAKM2 || 0;
-      d.ANO     = parseInt(d.ANO,10);
-      d.MES     = parseInt(d.MES,10);
-    });
-    return rows;
-  };
-
-  // GeoJSON sempre vem do mapeamento da categoria (pode usar o do “desmatamento”/“degradação”; no “todos” usamos o apontado em dataSources.todos)
-  const geoUrl = (dataSources[dType] && dataSources[dType][tType] && dataSources[dType][tType].geojson)
-                  || (dataSources.desmatamento[tType]?.geojson);
-
-  if (dType !== 'todos') {
-    // Modo normal (um CSV)
-    if(!dataSources[dType] || !dataSources[dType][tType]) {
-      return Promise.resolve({ csvData:[], geojsonData:null });
-    }
-    return Promise.all([
-      loadCsv(dataSources[dType][tType].csv),
-      fetch(geoUrl).then(r=>r.json())
-    ]).then(([csv, geojsonData])=>{
-      csvData = csv;
-      populateMunicipioSelect();
-      return { csvData: csv, geojsonData };
-    }).catch(e=>{
-      console.error('Erro ao carregar dados:', e);
-      return { csvData: [], geojsonData: null };
-    });
-  }
-
-  // --- Modo “todos”: carrega desmatamento + degradação e concatena
-  const dCsv = dataSources.desmatamento[tType]?.csv;
-  const gCsv = dataSources.degradacao[tType]?.csv;
-
-  if (!dCsv || !gCsv) {
-    console.warn('URLs de CSV para modo "todos" ausentes para', tType);
-    return Promise.resolve({ csvData: [], geojsonData: null });
-  }
-
-  return Promise.all([
-    loadCsv(dCsv),
-    loadCsv(gCsv),
-    fetch(geoUrl).then(r=>r.json())
-  ]).then(([csvDes, csvDeg, geojsonData])=>{
-    // concatena linhas (mesmas colunas), a agregação por território virá depois
-    const combined = csvDes.concat(csvDeg);
-    csvData = combined;
-    populateMunicipioSelect();
-    return { csvData: combined, geojsonData };
-  }).catch(e=>{
-    console.error('Erro no modo "todos":', e);
-    return { csvData: [], geojsonData: null };
-  });
 }
 
 function applySpecificFilters(data,territoryType){
   let filtered=[...data];
-
   const ufSel = document.getElementById('estadoFilter').value;
-  if(ufSel && ufSel!=='all'){
+  if(territoryType!=='estados' && ufSel && ufSel!=='all'){
+    const getUF = (rec)=> (rec.ESTADO ?? rec.UF ?? rec.SIGLA ?? rec.UF_SIGLA ?? '').trim().toUpperCase();
     if(ufSel==='__AMAZONIA_LEGAL__'){
       filtered = filtered.filter(d => amazoniaLegalStates.includes(getUF(d)));
     }else{
@@ -738,29 +550,18 @@ function applySpecificFilters(data,territoryType){
     }
   }
 
-  const munSel = document.getElementById('municipioFilter').value;
-  if (munSel && munSel!=='all'){
-    filtered = filtered.filter(d => getMunicipio(d) === munSel);
-  }
-
   const key = territoryNameMapping[territoryType];
-
-  if(territoryType==='terrasIndigenas' && selectedTerrasIndigenas.length > 0) {
-    filtered = filtered.filter(d => selectedTerrasIndigenas.includes(String(d[key]||'').trim()));
-  }
-  else if(territoryType==='unidadesConservacao'){
+  if(territoryType==='terrasIndigenas'){
+    if (selectedTerrasIndigenas.length > 0) filtered = filtered.filter(d => selectedTerrasIndigenas.includes(String(d[key]||'').trim()));
+  } else if(territoryType==='unidadesConservacao'){
     const j = document.getElementById('jurisdicaoFilter').value;
     const m = document.getElementById('modalidadeFilter').value;
     if(j && j!=='all') filtered = filtered.filter(d=> d.JURISDICAO===j);
     if(m && m!=='all') filtered = filtered.filter(d=> d.USO===m);
-    if (selectedUCs.length > 0) {
-      filtered = filtered.filter(d => selectedUCs.includes(String(d[key]||'').trim()));
-    }
+    if (selectedUCs.length > 0) filtered = filtered.filter(d => selectedUCs.includes(String(d[key]||'').trim()));
+  } else if(territoryType==='assentamentos'){
+    if (selectedAssentamentos.length > 0) filtered = filtered.filter(d => selectedAssentamentos.includes(String(d[key]||'').trim()));
   }
-  else if(territoryType==='assentamentos' && selectedAssentamentos.length > 0) {
-    filtered = filtered.filter(d => selectedAssentamentos.includes(String(d[key]||'').trim()));
-  }
-
   return filtered;
 }
 
@@ -798,7 +599,7 @@ async function setRankPage(p){
 
   const slice = rankingAll.slice(startIdx, endIdxEx);
   const ttype = categoriaAtual();
-  const labels = slice.map(([k]) => k);
+  const labels = slice.map(([k]) => ttype==='estados' ? (estadoNomes[k]||k) : k);
   const values = slice.map(([,v]) => v);
   window.currentTopTerritories = slice.map(([k]) => k);
 
@@ -834,16 +635,9 @@ function updateBarChart(labels, values){
       },
       layout:{ padding: isSmallScreen()? {left:0,right:10,top:0,bottom:0} : {right:14} },
       scales:{
-        x:{
-          beginAtZero:true,
-          suggestedMax: withHeadroom(maxVal, 0.12),
-          grid:{display:false}, title:{display:true,text:'Área (km²)'},
-          ticks:{autoSkip:true, maxTicksLimit: isSmallScreen()?4 : (isTabletScreen()?6:8)}
-        },
-        y:{
-          grid:{display:false},
-          ticks:{autoSkip: isSmallScreen(), maxTicksLimit: isSmallScreen()?8:undefined}
-        }
+        x:{beginAtZero:true, suggestedMax: withHeadroom(maxVal, 0.12), grid:{display:false}, title:{display:true,text:'Área (km²)'},
+           ticks:{autoSkip:true, maxTicksLimit: isSmallScreen()?4 : (isTabletScreen()?6:8)}},
+        y:{grid:{display:false}, ticks:{autoSkip: isSmallScreen(), maxTicksLimit: isSmallScreen()?8:undefined}}
       }
     }
   });
@@ -876,7 +670,7 @@ function updateLineChart(csvDataCompleto, territoryType){
   const colors=d3.schemeTableau10;
   const labelsSelecionadas=(window.currentTopTerritories||[]).slice(0,10);
   const datasets=labelsSelecionadas.map((k,i)=>({
-    label:k,
+    label:estadoNomes[k]||k,
     data:years.map(y=>grouped[k]?.[y]||0),
     borderColor:colors[i%colors.length],
     backgroundColor:colors[i%colors.length],
@@ -910,19 +704,15 @@ function updateYearlyChart(csvDataCompleto){
   const values=years.map(y=> yearly[y]||0);
   const maxVal = Math.max(...values, 1);
 
-  // Paleta por modo
-  const mode = dataTypeAtual();
-  const palettes = {
-    desmatamento: {bg:'rgba(198,40,40,.7)', br:'rgba(198,40,40,1)'},
-    degradacao:   {bg:'rgba(104,78,167,.7)', br:'rgba(31,17,77,1)'},
-    todos:        {bg:'rgba(255,167,38,.75)', br:'rgba(230,81,0,1)'} // laranja para o combinado
-  };
-  const sel = palettes[mode] || palettes.desmatamento;
+  const isTodos = dataTypeAtual()==='todos';
+  const isDesmat = dataTypeAtual()==='desmatamento';
+  const bg = isTodos ? 'rgba(255,140,0,.7)' : (isDesmat ? 'rgba(198,40,40,.7)' : 'rgba(104,78,167,.7)');
+  const br = isTodos ? 'rgba(255,140,0,1)' : (isDesmat ? 'rgba(198,40,40,1)' : 'rgba(31,17,77,1)');
 
   yearlyChart=new Chart(ctx,{
     type:'bar',
     plugins: (typeof ChartDataLabels!=='undefined') ? [ChartDataLabels] : [],
-    data:{labels:years,datasets:[{label:'Área Total (km²)',data:values,backgroundColor:sel.bg,borderColor:sel.br,borderWidth:2,borderRadius:4}]},
+    data:{labels:years,datasets:[{label:'Área Total (km²)',data:values,backgroundColor:bg,borderColor:br,borderWidth:2,borderRadius:4}]},
     options:{
       responsive:true, maintainAspectRatio:false,
       plugins:{
@@ -939,34 +729,25 @@ function updateYearlyChart(csvDataCompleto){
       scales:{
         y:{beginAtZero:true, suggestedMax: withHeadroom(maxVal, 0.12), grid:{display:false},title:{display:true,text:'Área (km²)'}},
         x:{grid:{display:false},title:{display:true,text:'Ano'},
-          ticks:{maxRotation: isSmallScreen()?0:40, minRotation: isSmallScreen()?0:40, autoSkip:true, maxTicksLimit: isSmallScreen()?6 : (isTabletScreen()?10:14)}}
+           ticks:{maxRotation: isSmallScreen()?0:40, minRotation: isSmallScreen()?0:40, autoSkip:true, maxTicksLimit: isSmallScreen()?6 : (isTabletScreen()?10:14)}}
       }
     }
   });
   window.yearlyChart = yearlyChart;
 }
 
-// -------- UPDATE MAP --------
 function updateMap(geojsonData, aggregatedData, territoryType){
-  if (baseLayer) { try{ baseLayer.bringToBack(); }catch(e){} }
-
   if(geoJsonLayer){ try{map.removeLayer(geoJsonLayer);}catch(e){} }
-
   const nameKey = territoryNameMapping[territoryType];
   const shownKeys = window.currentTopTerritories || [];
   const values = (shownKeys.length ? shownKeys : Object.keys(aggregatedData))
-                .map(k => aggregatedData[k]||0)
-                .filter(v => v>=0);
+                 .map(k => aggregatedData[k]||0)
+                 .filter(v => v>=0);
   const scale = currentColorScale(values);
 
   const feats = geojsonData.features.filter(f => (shownKeys.length ? shownKeys : Object.keys(aggregatedData))
                     .includes(f.properties[nameKey]));
-  if(!feats.length){
-    const bBase = baseLayer?.getBounds?.();
-    if (bBase && bBase.isValid()) fitBoundsWithExtra(map, bBase, [20,20], 0);
-    else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
-    return;
-  }
+  if(!feats.length){ fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);return;}
 
   geoJsonLayer = L.geoJSON({type:'FeatureCollection',features:feats},{
     style:f=>{
@@ -980,43 +761,32 @@ function updateMap(geojsonData, aggregatedData, territoryType){
   }).addTo(map);
 
   try{
-    geoJsonLayer.bringToFront();
-    if (baseLayer) baseLayer.bringToBack();
-
-    const b = geoJsonLayer.getBounds?.();
+    const b = geoJsonLayer.getBounds();
     if (b && b.isValid()) fitBoundsWithExtra(map, b, [20,20], 0);
-    else {
-      const bBase = baseLayer?.getBounds?.();
-      if (bBase && bBase.isValid()) fitBoundsWithExtra(map, bBase, [20,20], 0);
-      else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
-    }
-  } catch(e){
-    const bBase = baseLayer?.getBounds?.();
-    if (bBase && bBase.isValid()) fitBoundsWithExtra(map, bBase, [20,20], 0);
     else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
+  } catch(e){
+    fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
+    return;
   }
+
+  updateBackgroundOutlines();
 }
 
-const territoryNaming={
-  terrasIndigenas:{nome:'Terras Indígenas',genero:'f'}, 
-  unidadesConservacao:{nome:'Unidades de Conservação',genero:'f'}, 
-  assentamentos:{nome:'Assentamentos',genero:'m'}
-};
+const territoryNaming={estados:{nome:'Estados',genero:'m'}, terrasIndigenas:{nome:'Terras Indígenas',genero:'f'}, unidadesConservacao:{nome:'Unidades de Conservação',genero:'f'}, assentamentos:{nome:'Assentamentos',genero:'m'}};
 const dataTypeLabel={
-  desmatamento:{m:'Mais Desmatados',f:'Mais Desmatadas'},
+  desmatamento:{m:'Mais Desmatados',f:'Mais Degradadas'},
   degradacao:{m:'Mais Degradados',f:'Mais Degradadas'},
-  // NOVO: rótulo para o modo combinado
-  todos:{m:'Mais Impactados', f:'Mais Impactadas'}
+  todos:{m:'Mais Impactados',f:'Mais Impactadas'}
 };
-const territorySingular={
-  terrasIndigenas:'Terra Indígena',
-  unidadesConservacao:'Unidade de Conservação',
-  assentamentos:'Assentamento'
-};
+const territorySingular={estados:'Estado',terrasIndigenas:'Terra Indígena',unidadesConservacao:'Unidade de Conservação',assentamentos:'Assentamento'};
 
 function updateTitles(){
-  const tkey=categoriaAtual(); const dkey=dataTypeAtual();
-  const {nome,genero}=territoryNaming[tkey]; const art=genero==='f'?'das':'dos'; const tipo=dataTypeLabel[dkey][genero];
+  const tkey=categoriaAtual(); 
+  const dkey=dataTypeAtual();
+  const {nome,genero}=territoryNaming[tkey]; 
+  const art = genero==='f'?'das':'dos';
+  const tipo = (dataTypeLabel[dkey] || dataTypeLabel['desmatamento'])[genero];
+
   document.getElementById('bar-chart-title').innerHTML =
     `<i class="fas fa-chart-bar me-2"></i>Ranking ${art} ${nome} ${tipo}`;
 
@@ -1024,12 +794,10 @@ function updateTitles(){
   const sM=document.getElementById('monthStart').value;
   const eM=document.getElementById('monthEnd').value;
 
-  const singular=territorySingular[tkey];
-  const labelMap = (dkey==='desmatamento') ? 'Desmatamento'
-                  : (dkey==='degradacao') ? 'Degradação'
-                  : 'Desmatamento + Degradação';
+  const singular=territorySingular[tkey]; 
+  const label = (dkey==='desmatamento') ? 'Desmatamento' : (dkey==='degradacao' ? 'Degradação' : 'Desmatamento e Degradação');
   document.getElementById('map-title').innerHTML =
-    `<i class="fas fa-map me-2"></i>Mapa de ${labelMap} por ${singular} (${monthName(sM)}/${sY} a ${monthName(eM)}/${eY})`;
+    `<i class="fas fa-map me-2"></i>Mapa de ${label} por ${singular} (${monthName(sM)}/${sY} a ${monthName(eM)}/${eY})`;
 
   const anosDisponiveis = (csvData && csvData.length)
     ? Array.from(new Set(csvData.map(d=>+d.ANO))).filter(Boolean).sort((a,b)=>a-b)
@@ -1037,12 +805,8 @@ function updateTitles(){
   const minY = anosDisponiveis.length ? anosDisponiveis[0] : '—';
   const maxY = anosDisponiveis.length ? anosDisponiveis[anosDisponiveis.length-1] : '—';
 
-  const labelSerie = (dkey==='desmatamento') ? 'Desmatamento'
-                    : (dkey==='degradacao') ? 'Degradação'
-                    : 'Desmatamento + Degradação';
-
   document.getElementById('line-chart-title').innerHTML =
-    `<i class="fas fa-chart-line me-2"></i>Série Histórica de ${labelSerie} - ${nome} (${minY}–${maxY})`;
+    `<i class="fas fa-chart-line me-2"></i>Série Histórica - ${label} • ${nome} (${minY}–${maxY})`;
   document.getElementById('yearly-chart-title').innerHTML =
     `<i class="fas fa-chart-area me-2"></i>Série Histórica Anual (${minY}–${maxY})`;
 }
@@ -1056,15 +820,10 @@ async function updateDashboard(){
     const ttype=categoriaAtual();
     const key=territoryNameMapping[ttype];
 
-    let yS=parseInt(document.getElementById('yearStart').value||'2008',10);
-    let yE=parseInt(document.getElementById('yearEnd').value||String(new Date().getFullYear()),10);
-    let mS=document.getElementById('monthStart').value || '01';
-    let mE=document.getElementById('monthEnd').value   || '12';
-
-    /* NOVO: garante que fim do período não passe do corte D-2 */
-    clampEndToCutoff();
-    yE = parseInt(document.getElementById('yearEnd').value,10);
-    mE = document.getElementById('monthEnd').value;
+    const yS=parseInt(document.getElementById('yearStart').value||'2008',10);
+    const yE=parseInt(document.getElementById('yearEnd').value||String(new Date().getFullYear()),10);
+    const mS=document.getElementById('monthStart').value || '01';
+    const mE=document.getElementById('monthEnd').value   || '12';
 
     const startVal = parseInt(`${yS}${mS}`);
     const endVal   = parseInt(`${yE}${mE}`);
@@ -1072,8 +831,6 @@ async function updateDashboard(){
       new bootstrap.Modal(document.getElementById('invalidPeriodModal')).show();
       hideLoader(); return;
     }
-
-    populateMunicipioSelect();
 
     let filtered = loadedData.filter(d => (d.ANO*100 + d.MES) >= startVal && (d.ANO*100 + d.MES) <= endVal);
     filtered = applySpecificFilters(filtered, ttype);
@@ -1092,8 +849,6 @@ async function updateDashboard(){
     updateLineChart(loadedData, ttype);
     updateYearlyChart(loadedData);
 
-    zoomToTopItems(5);
-
   }catch(e){ console.error('Erro ao atualizar dashboard:',e); }
   finally{ setTimeout(hideLoader,300); }
 }
@@ -1110,12 +865,8 @@ function populateList(listId, searchId, selectedList, countId){
   allItem.className = `settlement-item ${selectedList.length === names.length ? 'selected' : ''}`;
   allItem.textContent = 'Todos';
   allItem.onclick = () => {
-    if (selectedList.length === names.length) {
-      selectedList.length = 0;
-    } else {
-      selectedList.length = 0;
-      names.forEach(name => selectedList.push(name));
-    }
+    if (selectedList.length === names.length) { selectedList.length = 0; }
+    else { selectedList.length = 0; names.forEach(name => selectedList.push(name)); }
     populateList(listId, searchId, selectedList, countId);
   };
   listEl.appendChild(allItem);
@@ -1126,15 +877,9 @@ function populateList(listId, searchId, selectedList, countId){
     item.className = `settlement-item ${sel ? 'selected' : ''}`;
     item.textContent = name;
     item.onclick = () => {
-      if (!sel && selectedList.length >= 10) { 
-        alert('Máximo 10 selecionados'); 
-        return; 
-      }
-      if (sel) {
-        selectedList.splice(selectedList.indexOf(name), 1);
-      } else {
-        selectedList.push(name);
-      }
+      if (!sel && selectedList.length >= 10) { alert('Máximo 10 selecionados'); return; }
+      if (sel) { selectedList.splice(selectedList.indexOf(name), 1); }
+      else { selectedList.push(name); }
       populateList(listId, searchId, selectedList, countId);
     };
     listEl.appendChild(item);
@@ -1189,16 +934,14 @@ function toggleDatasetButtonsInFilters() {
     .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
 
   const categoria = categoriaAtual();
-  if (['terrasIndigenas', 'unidadesConservacao', 'assentamentos'].includes(categoria)) {
-    const mapCatToId = {
-      terrasIndigenas: 'terrasIndigenasSelectGroup',
-      unidadesConservacao: 'ucSelectGroup',
-      assentamentos: 'assentamentosSelectGroup'
-    };
-    const targetId = mapCatToId[categoria];
-    const el = document.getElementById(targetId);
-    if (el) el.style.display = '';
-  }
+  const mapCatToId = {
+    terrasIndigenas: 'terrasIndigenasSelectGroup',
+    unidadesConservacao: 'ucSelectGroup',
+    assentamentos: 'assentamentosSelectGroup'
+  };
+  const targetId = mapCatToId[categoria];
+  const el = document.getElementById(targetId);
+  if (el) el.style.display = '';
 }
 
 function populateMonthSelect(sel){
@@ -1207,36 +950,44 @@ function populateMonthSelect(sel){
 function setCurrentYear() {
   const currentYear = new Date().getFullYear();
   document.getElementById('yearStart').value = currentYear;
-  // yearEnd é definido pelo corte D-2 em populateYearSelects()
+  document.getElementById('yearEnd').value = currentYear;
 }
 function populateYearSelects(){
   const cur = new Date().getFullYear();
-  const ys = document.getElementById('yearStart'), ye = document.getElementById('yearEnd');
-  for(let y=2008; y<=cur; y++){ ys.add(new Option(y,y)); ye.add(new Option(y,y)); }
+  const curMonth = new Date().getMonth() + 1; // mês atual (1–12)
+  const endMonth = ((curMonth - 2) <= 0) ? (12 + (curMonth - 2)) : (curMonth - 2);
+  const endYear = ((curMonth - 2) <= 0) ? (cur - 1) : cur;
+
+  const ys = document.getElementById('yearStart');
+  const ye = document.getElementById('yearEnd');
+  for(let y=2008; y<=cur; y++){ 
+    ys.add(new Option(y,y)); 
+    ye.add(new Option(y,y)); 
+  }
+
   setCurrentYear();
   populateMonthSelect(document.getElementById('monthStart'));
   populateMonthSelect(document.getElementById('monthEnd'));
+
   document.getElementById('monthStart').value = '01';
-  const cutoff = getTwoMonthsAgo();
-  document.getElementById('yearEnd').value  = String(cutoff.year);
-  document.getElementById('monthEnd').value = cutoff.month;
+  document.getElementById('monthEnd').value = String(endMonth).padStart(2,'0');
+  document.getElementById('yearEnd').value = endYear;
 }
 
+
 function clearFilters() {
+  selectedMunicipios = [];
   selectedTerrasIndigenas = [];
   selectedUCs = [];
   selectedAssentamentos = [];
   document.getElementById('sadFilter').value = 'desmatamento';
-  document.getElementById('categoriaFilter').value = 'terrasIndigenas';
+  document.getElementById('categoriaFilter').value = 'estados';
   document.getElementById('estadoFilter').value = 'all';
-  document.getElementById('municipioFilter').value = 'all';
   document.getElementById('jurisdicaoFilter').value = 'all';
   document.getElementById('modalidadeFilter').value = 'all';
   document.getElementById('monthStart').value = '01';
-  const cutoff = getTwoMonthsAgo();
-  document.getElementById('yearEnd').value  = String(cutoff.year);
-  document.getElementById('monthEnd').value = cutoff.month;
-  setCurrentYear(); // mantém o ano inicial = ano corrente
+  document.getElementById('monthEnd').value = String(new Date().getMonth()+1).padStart(2,'0');
+  setCurrentYear();
   toggleDatasetButtonsInFilters();
   updateTitles();
   updateDashboard();
@@ -1244,21 +995,14 @@ function clearFilters() {
 
 function chartPNG(target, baseName){
   let canvas = null;
-  if (!target) return;
   if (target && target.canvas instanceof HTMLCanvasElement) canvas = target.canvas;
   else if (target instanceof HTMLCanvasElement) canvas = target;
   else if (typeof target === 'string') canvas = document.getElementById(target);
   if (!canvas) { alert('Gráfico ainda não está pronto para exportar.'); return; }
   try {
     const dataURL = canvas.toDataURL('image/png', 1.0);
-    const a = document.createElement('a');
-    a.href = dataURL;
-    a.download = `${slugify(baseName)}_${nowStamp()}.png`;
-    a.click();
-  } catch (e) {
-    console.error('Falha ao exportar PNG:', e);
-    alert('Não foi possível exportar a imagem agora.');
-  }
+    const a = document.createElement('a'); a.href = dataURL; a.download = `${slugify(baseName)}_${nowStamp()}.png`; a.click();
+  } catch (e) { console.error('Falha ao exportar PNG:', e); alert('Não foi possível exportar a imagem agora.'); }
 }
 function downloadBlob(filename,blob){ const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},0); }
 function buildRankingCSV(entries){
@@ -1271,18 +1015,14 @@ function exportRankingCSVAll(){
   const csv = buildRankingCSV(rankingAll);
   downloadBlob(`ranking_completo_${nowStamp()}.csv`, new Blob([csv], {type:'text/csv;charset=utf-8'}));
 }
-
 function mapPNG() {
   try {
     const geojsonData = window._lastGeo;
     const aggregated  = window._lastAggreg || {};
-    const territoryType = (typeof categoriaAtual === 'function') ? categoriaAtual() : 'terrasIndigenas';
+    const territoryType = (typeof categoriaAtual === 'function') ? categoriaAtual() : 'estados';
     const nameKey = territoryNameMapping[territoryType];
 
-    if (!geojsonData || !geojsonData.features || !Object.keys(aggregated).length) {
-      alert('Mapa ainda não está pronto para exportar.');
-      return;
-    }
+    if (!geojsonData || !geojsonData.features || !Object.keys(aggregated).length) { alert('Mapa ainda não está pronto para exportar.'); return; }
 
     const keysFiltradas = Object.keys(aggregated);
     const feats = geojsonData.features.filter(f => keysFiltradas.includes(f.properties?.[nameKey]));
@@ -1293,75 +1033,54 @@ function mapPNG() {
     document.body.appendChild(offDiv);
 
     const offMap = L.map(offDiv, { zoomControl:false, attributionControl:false, preferCanvas:true });
-    const tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '', subdomains: 'abcd', maxZoom: 20, crossOrigin: true
+    const tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '', subdomains: 'abcd', maxZoom: 20, crossOrigin: true }).addTo(offMap);
+
+    const values = keysFiltradas.map(k => aggregated[k]||0);
+    const scale = currentColorScale(values);
+
+    const layer = L.geoJSON({ type: 'FeatureCollection', features: feats }, {
+      style: f => {
+        const nome = f.properties?.[nameKey];
+        return { fillColor: scale(aggregated[nome] || 0), weight: 1.2, opacity: 1, color: '#555', fillOpacity: .75 };
+      }
     }).addTo(offMap);
 
-    // --- BASE no PNG (fundo fixo) ---
-    let offBaseLayer = null;
-    const addBase = async () => {
-      try{
-        const r = await fetch(BASE_GEOJSON_URL);
-        const gj = await r.json();
-        offBaseLayer = L.geoJSON(gj, { style: baseStyle, interactive:false }).addTo(offMap);
-        offBaseLayer.bringToBack();
-      }catch(e){ console.warn('Falha ao carregar base no export:', e); }
-    };
+    let bounds; try { bounds = layer.getBounds(); } catch { bounds = null; }
+    if (!bounds || !bounds.isValid()) { bounds = L.latLngBounds([[-18, -75], [6, -44]]); }
 
-    const doOverlay = () => {
-      const values = keysFiltradas.map(k => aggregated[k]||0);
-      const scale = currentColorScale(values);
+    const pSW = offMap.options.crs.project(bounds.getSouthWest());
+    const pNE = offMap.options.crs.project(bounds.getNorthEast());
+    const dx  = Math.max(1, Math.abs(pNE.x - pSW.x));
+    const dy  = Math.max(1, Math.abs(pNE.y - pSW.y));
+    const aspect = dx / dy;
 
-      const layer = L.geoJSON({ type: 'FeatureCollection', features: feats }, {
-        style: f => {
-          const nome = f.properties?.[nameKey];
-          return { fillColor: scale(aggregated[nome] || 0), weight: 1.2, opacity: 1, color: '#555', fillOpacity: .75 };
-        }
-      }).addTo(offMap);
+    const MAX_W = 2200, MAX_H = 1600;
+    let outW = MAX_W, outH = Math.round(outW / aspect);
+    if (outH > MAX_H) { outH = MAX_H; outW = Math.round(outH * aspect); }
+    offDiv.style.width  = outW + 'px';
+    offDiv.style.height = outH + 'px';
+    offMap.invalidateSize(false);
+    offMap.fitBounds(bounds, { padding: [40, 40] });
 
-      let bounds; try { bounds = layer.getBounds(); } catch { bounds = null; }
-      if (!bounds || !bounds.isValid()) {
-        bounds = offBaseLayer?.getBounds?.();
+    const snap = () => {
+      if (typeof leafletImage !== 'function') {
+        html2canvas(offDiv, { useCORS: true, background: '#ffffff', scale: 1.5 })
+          .then(cv => cv.toBlob(b => { downloadBlob(`mapa_${nowStamp()}.png`, b); offMap.remove(); offDiv.remove(); }));
+        return;
       }
-      if (!bounds || !bounds.isValid()) { bounds = L.latLngBounds([[-18, -75], [6, -44]]); }
-
-      const pSW = offMap.options.crs.project(bounds.getSouthWest());
-      const pNE = offMap.options.crs.project(bounds.getNorthEast());
-      const dx  = Math.max(1, Math.abs(pNE.x - pSW.x));
-      const dy  = Math.max(1, Math.abs(pNE.y - pSW.y));
-      const aspect = dx / dy;
-
-      const MAX_W = 2200, MAX_H = 1600;
-      let outW = MAX_W, outH = Math.round(outW / aspect);
-      if (outH > MAX_H) { outH = MAX_H; outW = Math.round(outH * aspect); }
-      offDiv.style.width  = outW + 'px';
-      offDiv.style.height = outH + 'px';
-      offMap.invalidateSize(false);
-      offMap.fitBounds(bounds, { padding: [40, 40] });
-
-      const snap = () => {
-        if (typeof leafletImage !== 'function') {
+      leafletImage(offMap, (err, canvas) => {
+        if (err || !canvas) {
           html2canvas(offDiv, { useCORS: true, background: '#ffffff', scale: 1.5 })
-            .then(cv => cv.toBlob(b => { downloadBlob(`mapa_${nowStamp()}.png`, b); offMap.remove(); offDiv.remove(); }));
-          return;
+            .then(cv => cv.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b)));
+        } else {
+          canvas.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b));
         }
-        leafletImage(offMap, (err, canvas) => {
-          if (err || !canvas) {
-            html2canvas(offDiv, { useCORS: true, background: '#ffffff', scale: 1.5 })
-              .then(cv => cv.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b)));
-          } else {
-            canvas.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b));
-          }
-          offMap.remove(); offDiv.remove();
-        });
-      };
-
-      tile.once('load', () => setTimeout(snap, 80));
-      setTimeout(snap, 2000);
+        offMap.remove(); offDiv.remove();
+      });
     };
 
-    addBase().then(doOverlay);
-
+    tile.once('load', () => setTimeout(snap, 80));
+    setTimeout(snap, 2000);
   } catch (e) {
     console.error('Falha ao exportar mapa:', e);
     alert('Não foi possível exportar o mapa agora.');
@@ -1372,9 +1091,7 @@ function debounce(fn, delay){ let t; return (...args)=>{ clearTimeout(t); t=setT
 function refreshChartsOnResize(){
   try{
     if (barChart) {
-      if (barChart.options.plugins?.datalabels) {
-        barChart.options.plugins.datalabels.display = () => !isSmallScreen();
-      }
+      if (barChart.options.plugins?.datalabels) { barChart.options.plugins.datalabels.display = () => !isSmallScreen(); }
       barChart.options.scales.x.ticks.maxTicksLimit = isSmallScreen()?4:(isTabletScreen()?6:8);
       barChart.options.scales.y.ticks.autoSkip = isSmallScreen();
       barChart.update('none');
@@ -1402,35 +1119,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
   toggleDatasetButtonsInFilters();
   setUpModalListeners();
 
+  // contorno da Amazônia Legal ao carregar
+  updateBackgroundOutlines();
+
+  // ATUALIZA COMO O SAD: ao trocar a modalidade territorial
   document.getElementById('categoriaFilter').addEventListener('change', ()=>{ 
+    showLoader('Aplicando modalidade...');
+    rankPage = 0;
     toggleUCFields(); 
     updateTitles(); 
     toggleDatasetButtonsInFilters();
-    showLoader('Aplicando modalidade territorial...');
-    rankPage = 0;
-    updateDashboard();
+    updateDashboard();          // <--- atualiza dashboard ao trocar modalidade
+    updateBackgroundOutlines(); // mantém o fundo
   });
-
-  const jr = document.getElementById('jurisdicaoFilter');
-  const md = document.getElementById('modalidadeFilter');
-  if (jr) jr.addEventListener('change', ()=>{ showLoader('Filtrando por jurisdição...'); updateDashboard(); });
-  if (md) md.addEventListener('change', ()=>{ showLoader('Filtrando por tipo de uso...'); updateDashboard(); });
 
   document.getElementById('sadFilter').addEventListener('change', ()=>{
     showLoader('Aplicando filtro do SAD...');
     rankPage = 0;
     updateDashboard();
-  });
-
-  document.getElementById('estadoFilter').addEventListener('change', ()=>{
-    showLoader('Filtrando por estado...');
-    populateMunicipioSelect();
-    updateDashboard();
-  });
-
-  document.getElementById('municipioFilter').addEventListener('change', ()=>{
-    showLoader('Filtrando por município...');
-    updateDashboard();
+    updateBackgroundOutlines();
   });
 
   document.getElementById('yearStart').addEventListener('change', updateTitles);
@@ -1457,13 +1164,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('btn-bar-csv').addEventListener('click', exportRankingCSVAll);
   document.getElementById('btn-map-png').addEventListener('click', mapPNG);
 
-  // Downloads começam ocultos
-  document.querySelectorAll('.download-group').forEach(g=>g.classList.add('d-none'));
+  document.querySelectorAll('.download-group').forEach(g=> g.classList.add('d-none'));
   document.querySelectorAll('.dl-toggle').forEach(btn=>{
     btn.setAttribute('aria-pressed','true');
     btn.innerHTML = '<i class="fas fa-eye me-1"></i>Mostrar';
-  });
-  document.querySelectorAll('.dl-toggle').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const header = btn.closest('.card-header');
       const group  = header.querySelector('.download-group');
@@ -1473,11 +1177,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   });
 
-  showLoader('Carregando base da Amazônia Legal...');
-  loadBaseGeojson().then(()=>{
-    showLoader('Iniciando dashboard...');
-    setTimeout(updateDashboard, 300);
-  });
+  showLoader('Iniciando dashboard...');
+  setTimeout(updateDashboard, 350);
 });
 </script>
 
@@ -1488,14 +1189,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         <h5 class="modal-title" id="invalidPeriodLabel">Período inválido</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </div>
-      <div class="modal-body">
-        A data inicial não pode ser maior que a data final. Ajuste o período para continuar.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok, entendi</button>
-      </div>
+      <div class="modal-body">A data inicial não pode ser maior que a data final. Ajuste o período para continuar.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok, entendi</button></div>
     </div>
-  </div>  
+  </div>
 </div>
 
 </body>
