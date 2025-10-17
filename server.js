@@ -155,6 +155,14 @@ app.get('/__csp', (req, res) => {
   res.send(res.get('content-security-policy') || 'sem CSP');
 });
 
+const SAD_DIR = path.join(DATASET_DIR, 'sad');
+app.use('/dataset/sad', express.static(SAD_DIR, {
+  index: false,
+  maxAge: '0',          // evita cache
+  etag: false,
+  lastModified: false,
+  cacheControl: false
+}));
 // 2) Listar conteúdo do dataset (para checar nomes/case)
 app.get('/__ls', (req, res) => {
   const sub = req.query.dir || '';
