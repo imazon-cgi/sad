@@ -473,6 +473,15 @@ const withHeadroom = (maxVal, pad=0.12) => (maxVal>0 ? maxVal*(1+pad) : 1);
 
 const amazoniaBounds = L.latLngBounds([[-18,-75],[6,-44]]);
 const map = L.map('map',{zoomControl:true});
+
+// Criar panes para organização das camadas (igual ao SIMEX)
+map.createPane('base-legal');
+map.getPane('base-legal').style.zIndex = 300;
+map.getPane('base-legal').style.pointerEvents = 'none';
+
+map.createPane('overlay-ranked');
+map.getPane('overlay-ranked').style.zIndex = 450;
+
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   subdomains: 'abcd', maxZoom: 20, crossOrigin: true
@@ -539,25 +548,62 @@ const dataSources={
   }
 };
 
+/* ======= FUNDO AMAZÔNIA LEGAL - ATUALIZADO (IGUAL AO SIMEX) ======= */
 const __bgCache = {};
 let __bgLayer = null;
 
 async function updateBackgroundOutlines(){
-  try{ if(__bgLayer){ map.removeLayer(__bgLayer); __bgLayer = null; } }catch{}
+  try{ 
+    if(__bgLayer){ 
+      map.removeLayer(__bgLayer); 
+      __bgLayer = null; 
+    } 
+  }catch(e){}
+  
   const url = "/dataset/sad/geojson/AMZ_legal_amz_legal.geojson";
+  
+  // Criar pane específico para a base (como no SIMEX)
+  if (!map.getPane('base-legal')) {
+    map.createPane('base-legal');
+    map.getPane('base-legal').style.zIndex = 300;
+    map.getPane('base-legal').style.pointerEvents = 'none';
+  }
+
   if(__bgCache[url]){
-    __bgLayer = L.geoJSON(__bgCache[url], { style:{ color:'#9aa0a6', weight:1.2, fillOpacity:0 }, interactive:false }).addTo(map);
+    __bgLayer = L.geoJSON(__bgCache[url], { 
+      pane: 'base-legal',
+      style: { 
+        color: '#6B7280', 
+        weight: 2, 
+        opacity: 0.95, 
+        fill: false, 
+        fillOpacity: 0 
+      },
+      interactive: false 
+    }).addTo(map);
     try{ __bgLayer.bringToBack(); }catch{}
     return;
   }
+  
   try{
     const gj = await fetch(url).then(r=>r.json());
     __bgCache[url] = gj;
-    __bgLayer = L.geoJSON(gj, { style:{ color:'#9aa0a6', weight:1.2, fillOpacity:0 }, interactive:false }).addTo(map);
+    __bgLayer = L.geoJSON(gj, { 
+      pane: 'base-legal',
+      style: { 
+        color: '#6B7280', 
+        weight: 2, 
+        opacity: 0.95, 
+        fill: false, 
+        fillOpacity: 0 
+      },
+      interactive: false 
+    }).addTo(map);
     try{ __bgLayer.bringToBack(); }catch{}
-  }catch{}
+  }catch(e){
+    console.error('Erro ao carregar contorno da Amazônia Legal:', e);
+  }
 }
-/* ======= FIM FUNDO ======= */
 
 function lineOptionsResponsive(suggestedMax){
   const small = isSmallScreen();
@@ -823,6 +869,7 @@ function updateMap(geojsonData, aggregatedData, territoryType){
   if(!feats.length){ fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);return;}
 
   geoJsonLayer = L.geoJSON({type:'FeatureCollection',features:feats},{
+    pane: 'overlay-ranked', // Usando o pane para as features (igual ao SIMEX)
     style:f=>{
       const v = aggregatedData[f.properties[nameKey]]||0;
       return {fillColor:scale(v),weight:1.2,opacity:1,color:'#555',fillOpacity:.75};
