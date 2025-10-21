@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAD - Sistema de Alerta de Desmatamento</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+       --primary-color:#008055;--primary-dark:#003300;--accent-color:#FF6D00;
+      --text-color:#212121;--background-color:#F5F5F5;--card-color:#FFFFFF;
+      --border-radius:12px;--box-shadow:0 4px 20px rgba(0,0,0,.1);
+      --chart-h-desktop:450px;--chart-h-tablet:360px;--chart-h-phone:300px;
+      --map-h-desktop:500px;--map-h-tablet:380px;--map-h-phone:320px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Montserrat',sans-serif;background:var(--background-color);color:var(--text-color);padding:1.5rem}
+    .dashboard-header{background:linear-gradient(135deg,var(--card-color),var(--card-color));padding:2rem;border-radius:var(--border-radius);box-shadow:var(--box-shadow);margin-bottom:2rem;text-align:center;position:relative}
+    .dashboard-header::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:100px;height:5px;background:var(--accent-color);border-radius:5px}
+    .card{border-radius:var(--border-radius);box-shadow:var(--box-shadow);border:none}
+    .card-header{background:var(--card-color) !important;border-bottom:2px solid var(--accent-color) !important;font-weight:700 !important}
+    .filter-section{background:var(--card-color);padding:1.5rem;border-radius:var(--border-radius);box-shadow:var(--box-shadow);margin-bottom:2rem}
+    .filter-container{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;align-items:end}
+    .filter-item{display:flex;flex-direction:column;gap:6px}
+    .span-3{grid-column:span 3}.span-2{grid-column:span 2}.span-4{grid-column:span 4}.span-1{grid-column:span 1}
+    .form-select,.form-control{height:42px;border-radius:8px;border:1px solid #ddd}
+    .btn-primary{height:42px;background:var(--primary-color);border-color:var(--primary-color);border-radius:8px;font-weight:600}
+    .btn-primary:hover{background:var(--primary-dark);border-color:var(--primary-dark)}
+    .btn-secondary{height:42px;border-radius:8px;font-weight:600}
+    #map{height:var(--map-h-desktop);border-radius:12px}
+    .chart-container{position:relative;height:var(--chart-h-desktop)}
+    .download-group{display:flex;gap:6px}
+    .rank-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .rank-pager{display:flex;gap:6px;align-items:center}
+    .rank-pager .btn{padding:.25rem .5rem}
+    .muted{color:#6b7280}
+    .small-label{font-size:.825rem;color:#6b7280}
+    .dataset-select-group .btn { height:42px; margin-top:0; }
+    .dataset-select-group .filter-label { display:none; }
+    .filter-item.align-self-end { align-self:end; }
+    .settlement-list { border: 1px solid #dee2e6; border-radius: 8px; }
+    .settlement-item { padding: 10px 15px; border-bottom: 1px solid #eee; cursor: pointer; transition: all 0.2s; }
+    .settlement-item:hover { background: #f8f9fa; }
+    .settlement-item.selected { background: #e3f2fd; font-weight: 600; }
+    .selection-info { padding: 10px 0; font-weight: 500; color: var(--text-color); }
+
+    /* ===== Downloads — SAD (novo) ===== */
+    .downloads-card .card-header{
+      display:grid;
+      grid-template-columns: 1fr auto 1fr; /* título | botões | seta */
+      align-items:center;
+      gap:12px;
+      border-bottom:none !important;
+    }
+    .downloads-title{font-weight:700}
+
+    .collapse-btn{
+      position:relative;display:inline-flex;align-items:center;justify-content:center;
+      width:38px;height:38px;border-radius:999px;border:1px solid rgba(0,0,0,.08);
+      background:#fff;color:var(--primary-color);cursor:pointer;transition:all .18s ease;
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+      justify-self:end; /* seta à direita */
+    }
+    .collapse-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .collapse-btn i{font-size:15px;transition:transform .25s ease}
+    .downloads-card.collapsed .collapse-btn i{transform:rotate(180deg)} /* seta gira ao recolher */
+
+    .typebar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-self:center} /* botões centralizados */
+    .typebtn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid #e0e0e0;background:#fff;color:#2b2b2b;cursor:pointer;font-weight:600}
+    .typebtn:hover{border-color:var(--primary-color)}
+    .typebtn.active{background:var(--primary-color);color:#fff;border-color:var(--primary-color)}
+    .typebtn i{font-size:14px}
+
+    .list-divider{list-style:none;padding:8px 0 0;margin:0}
+    .list-divider > li{padding:10px 0;border-bottom:1px solid #eee}
+    .list-divider > li:last-child{border-bottom:none}
+    details{border:1px solid #e8e8e8;border-radius:12px;margin:10px 0;background:#fff}
+    summary{cursor:pointer;list-style:none;padding:12px 16px;font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    .year{font-weight:700}
+    .format-wrap{display:block;padding:0 16px 12px}
+    .format-card{border:1px dashed #e3e3e3;border-radius:12px;padding:10px 14px;background:#fafafa;margin-bottom:10px}
+    .format-title{font-size:.9rem;color:#2a2a2a;margin:0 0 6px;font-weight:700}
+    .chiplist{display:flex;flex-wrap:wrap;gap:10px;padding:8px 0 2px;margin:0;list-style:none}
+    .chiplink{display:inline-block;padding:8px 12px;border:1px solid #e0e0e0;border-radius:999px;background:#fff;font-size:.9rem;color:var(--primary-color);text-decoration:none;cursor:pointer}
+    .chiplink:hover{background:var(--primary-color);color:#fff;border-color:var(--primary-color)}
+
+    /* esconder corpo quando colapsado */
+    .downloads-card.collapsed .card-body{display:none}
+
+    @media (max-width: 992px){
+      .chart-container{height:var(--chart-h-tablet)}
+      #map{height:var(--map-h-tablet)}
+    }
+    @media (max-width: 576px){
+      .chart-container{height:var(--chart-h-phone)}
+      #map{height:var(--map-h-phone)}
+      .card-header{row-gap:.25rem}
+      .rank-header-stack{flex-direction:column; align-items:flex-start !important; gap:.5rem}
+      .rank-controls{gap:6px}
+    }
+    @media(max-width:576px){
+      .filter-container{grid-template-columns:repeat(2,1fr)}
+      .span-3,.span-2,.span-4,.span-1{grid-column:span 2}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader-overlay" style="position:fixed;inset:0;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;z-index:9999">
+  <div class="bg-white p-4 rounded-4 shadow text-center">
+    <div class="spinner-border" role="status" style="width:3rem;height:3rem;color:#008055"></div>
+    <div class="loader-text mt-2">Carregando Dados...</div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="dashboard-header">
+    <img src="../../img/sad.png" alt="Logo SAD" style="max-width:150px;height:auto;display:block;margin:0 auto">
+  </div>
+
+  <!-- Filtros -->
+  <div class="filter-section">
+    <div class="filter-container">
+
+      <div class="filter-item span-2">
+        <label class="filter-label fw-bold" for="sadFilter">SAD</label>
+        <select id="sadFilter" class="form-select">
+          <option value="todos">Todos</option>
+          <option value="desmatamento">Desmatamento</option>
+          <option value="degradacao">Degradação</option>
+        </select>
+      </div>
+
+      <div class="filter-item span-2">
+        <label class="filter-label fw-bold" for="estadoFilter">Estado</label>
+        <select id="estadoFilter" class="form-select">
+          <option value="__AMAZONIA_LEGAL__">Amazônia Legal</option>
+          <option value="AC">Acre</option><option value="AP">Amapá</option><option value="AM">Amazonas</option>
+          <option value="MA">Maranhão</option><option value="MT">Mato Grosso</option><option value="PA">Pará</option>
+          <option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="TO">Tocantins</option>
+        </select>
+      </div>
+
+      <div class="filter-item span-2">
+        <label class="filter-label fw-bold" for="categoriaFilter">Modalidade Territorial</label>
+        <select id="categoriaFilter" class="form-select">
+          <option value="estados">Estados</option>
+          <option value="terrasIndigenas">Terras Indígenas</option>
+          <option value="unidadesConservacao">Unidades de Conservação</option>
+          <option value="assentamentos">Assentamentos</option>
+        </select>
+      </div>
+
+      <!-- Jurisdição/Modalidade (apenas UCs) -->
+      <div id="jurisdicaoFilterWrap" class="filter-item span-2" style="display:none">
+        <label class="filter-label fw-bold" for="jurisdicaoFilter">Jurisdição</label>
+        <select id="jurisdicaoFilter" class="form-select">
+          <option value="all">Todos</option>
+          <option value="Federal">Federal</option>
+          <option value="Estadual">Estadual</option>
+        </select>
+      </div>
+      <div id="modalidadeFilterWrap" class="filter-item span-2" style="display:none">
+        <label class="filter-label fw-bold" for="modalidadeFilter">Tipos de Uso</label>
+        <select id="modalidadeFilter" class="form-select">
+          <option value="all">Todos</option>
+          <option value="Uso Sustentável">Uso Sustentável</option>
+          <option value="Proteção Integral">Proteção Integral</option>
+        </select>
+      </div>
+
+      <!-- Ano/Mês -->
+      <div class="filter-item span-2">
+        <label class="filter-label fw-bold" for="yearStart">Ano Inicial</label>
+        <select id="yearStart" class="form-select"></select>
+      </div>
+      <div id="monthStartWrap" class="filter-item span-2">
+        <label class="filter-label fw-bold" for="monthStart">Mês Inicial</label>
+        <select id="monthStart" class="form-select"></select>
+      </div>
+
+      <div class="filter-item span-2">
+        <label class="filter-label fw-bold" for="yearEnd">Ano Final</label>
+        <select id="yearEnd" class="form-select"></select>
+      </div>
+      <div id="monthEndWrap" class="filter-item span-2">
+        <label class="filter-label fw-bold" for="monthEnd">Mês Final</label>
+        <select id="monthEnd" class="form-select"></select>
+      </div>
+
+      <!-- Botões seleção múltipla -->
+      <div class="filter-item span-3 dataset-select-group align-self-end" id="terrasIndigenasSelectGroup" style="display:none">
+        <button class="btn btn-primary w-100" id="open-terras-indigenas-modal">
+          <i class="fas fa-campground me-2"></i>Selecionar Terras Indígenas
+        </button>
+      </div>
+      <div class="filter-item span-3 dataset-select-group align-self-end" id="ucSelectGroup" style="display:none">
+        <button class="btn btn-primary w-100" id="open-uc-modal">
+          <i class="fas fa-tree me-2"></i>Selecionar UCs
+        </button>
+      </div>
+      <div class="filter-item span-3 dataset-select-group align-self-end" id="assentamentosSelectGroup" style="display:none">
+        <button class="btn btn-primary w-100" id="open-assentamentos-modal">
+          <i class="fas fa-users me-2"></i>Selecionar Assentamentos
+        </button>
+      </div>
+
+      <!-- Ações -->
+      <div class="filter-item span-2">
+        <button id="apply-filters" class="btn btn-primary w-100">
+          <i class="fas fa-filter me-1"></i> Aplicar Filtro
+        </button>
+      </div>
+      <div class="filter-item span-2">
+        <button id="clear-filters" class="btn btn-secondary w-100">
+          <i class="fas fa-eraser me-1"></i> Limpar Filtros
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="p-3 rounded-3 text-white" style="background:#008055">
+        <div class="fw-semibold">Área Total</div>
+        <div id="total-area" style="font-size:1.8rem;font-weight:700">0 km²</div>
+        <div>no período selecionado</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 rounded-3 text-white" style="background:#e65100">
+        <div class="fw-semibold">Área Média Mensal</div>
+        <div id="avg-area" style="font-size:1.8rem;font-weight:700">0 km²</div>
+        <div>no ano mais recente do período</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 rounded-3 text-white" style="background:#006064">
+        <div class="fw-semibold">Territórios Afetados</div>
+        <div id="affected-territories" style="font-size:1.8rem;font-weight:700">0</div>
+        <div>no período</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts & Map -->
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card">
+        <!-- Ranking atualizado no formato SIMEX -->
+        <div class="card-header">
+          <div class="chart-header-container d-flex justify-content-between align-items-center w-100">
+            <div class="d-flex flex-column">
+              <div id="bar-chart-title"><i class="fas fa-chart-bar me-2"></i>Ranking</div>
+
+              <!-- Controles de paginação no padrão SIMEX -->
+              <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Paginação do ranking">
+                  <button class="btn btn-outline-secondary" id="rank-first" title="Primeira">
+                    <i class="fa-solid fa-angles-left"></i>
+                  </button>
+
+                  <button class="btn btn-outline-secondary" id="rank-prev" title="Anterior">
+                    <i class="fa-solid fa-angle-left"></i>
+                  </button>
+
+                  <!-- Rótulo de página DENTRO do grupo -->
+                  <button class="btn btn-outline-secondary" id="rank-page-label-btn" disabled
+                          style="pointer-events:none;opacity:.95;">
+                    Página 1/1
+                  </button>
+
+                  <button class="btn btn-outline-secondary" id="rank-next" title="Próxima">
+                    <i class="fa-solid fa-angle-right"></i>
+                  </button>
+                  <button class="btn btn-outline-secondary" id="rank-last" title="Última">
+                    <i class="fa-solid fa-angles-right"></i>
+                  </button>
+                </div>
+
+                <!-- Faixa "mostrando x–y de z" -->
+                <span class="small text-muted" id="rank-range-label">mostrando 0–0 de 0</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <div class="download-group d-none">
+                <button class="btn btn-sm btn-outline-secondary" id="btn-bar-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
+                <button class="btn btn-sm btn-outline-secondary" id="btn-bar-csv" title="CSV (todos)"><i class="fa-solid fa-file-csv me-1"></i>CSV</button>
+              </div>
+              <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="true" title="Mostrar downloads"><i class="fas fa-eye me-1"></i>Mostrar</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body"><div class="chart-container"><canvas id="barChart"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <div id="map-title"><i class="fas fa-map me-2"></i>Mapa</div>
+          <div class="d-flex align-items-center">
+            <div class="download-group">
+              <button class="btn btn-sm btn-outline-secondary" id="btn-map-png" title="PNG (toda a camada)"><i class="fa-solid fa-image me-1"></i>PNG</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
+          </div>
+        </div>
+        <div class="card-body p-2 position-relative">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gráficos inferiores -->
+  <div class="row g-4 mt-2">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <div id="line-chart-title"><i class="fas a-chart-line me-2"></i>Série Histórica</div>
+          <div class="d-flex align-items-center">
+            <div class="download-group">
+              <button class="btn btn-sm btn-outline-secondary" id="btn-line-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
+              <button class="btn btn-sm btn-outline-secondary" id="btn-line-csv" title="CSV" disabled aria-disabled="true">
+                <i class="fa-solid fa-file-csv me-1"></i>CSV
+              </button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
+          </div>
+        </div>
+        <div class="card-body"><div class="chart-container"><canvas id="lineChart"></canvas></div></div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <div id="yearly-chart-title"><i class="fas fa-chart-area me-2"></i>Série Histórica Anual</div>
+          <div class="d-flex align-items-center">
+            <div class="download-group">
+              <button class="btn btn-sm btn-outline-secondary" id="btn-yearly-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
+              <button class="btn btn-sm btn-outline-secondary" id="btn-yearly-csv" title="CSV"><i class="fa-solid fa-file-csv me-1"></i>CSV</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
+          </div>
+        </div>
+        <div class="card-body"><div class="chart-container"><canvas id="yearlyChart"></canvas></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Downloads — SAD -->
+  <div class="card mt-3 downloads-card collapsed" id="downloads-sad-card" aria-live="polite">
+    <div class="card-header">
+      <!-- Esquerda: título -->
+      <div class="downloads-title">Downloads</div>
+
+      <!-- Centro: botões de tipo -->
+      <div class="typebar" id="sad-typebar" role="tablist" aria-label="Tipos de arquivo do SAD">
+        <button class="typebtn active" data-type="geojson" role="tab" aria-selected="true" title="Mensal">
+          <i class="fa-regular fa-map"></i> GeoJSON
+        </button>
+        <button class="typebtn" data-type="csv" role="tab" aria-selected="false" title="CSV mensal">
+          <i class="fa-regular fa-file-lines"></i> CSV
+        </button>
+        <button class="typebtn" data-type="shp" role="tab" aria-selected="false" title="Shapefile mensal (ZIP)">
+          <i class="fa-regular fa-file-zipper"></i> Shapefile
+        </button>
+      </div>
+
+      <!-- Direita: seta (expandir/recolher) -->
+      <button class="collapse-btn" id="downloads-sad-toggle" title="Expandir / Recolher"
+              aria-expanded="false" aria-controls="downloads-sad-body">
+        <i class="fa-solid fa-angle-down" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="card-body" id="downloads-sad-body">
+      <ul id="sad-downloads-list" class="list-divider"><li class="muted">Carregando anos...</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- JS libs -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-fetch@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
+
+<!-- Modais -->
+<div class="modal fade" id="terrasIndigenasModal" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Selecionar Terras Indígenas (máx. 10)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" id="terras-indigenas-search" class="form-control mb-3" placeholder="Buscar terra indígena...">
+      <div class="selection-info"><span id="selected-terras-indigenas-count">0</span> de 10 selecionadas</div>
+      <div id="terras-indigenas-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" id="apply-terras-indigenas-selection">Aplicar</button></div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="ucModal" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Selecionar Unidades de Conservação (máx. 10)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" id="uc-search" class="form-control mb-3" placeholder="Buscar UC...">
+      <div class="selection-info"><span id="selected-uc-count">0</span> de 10 selecionadas</div>
+      <div id="uc-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" id="apply-uc-selection">Aplicar</button></div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="assentamentosModal" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+    <div class="modal-header"><h5 class="modal-title">Selecionar Assentamentos (máx. 10)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body">
+      <input type="text" id="assentamentos-search" class="form-control mb-3" placeholder="Buscar assentamento...">
+      <div class="selection-info"><span id="selected-assentamentos-count">0</span> de 10 selecionados</div>
+      <div id="assentamentos-list" class="settlement-list mt-2" style="max-height:400px;overflow-y:auto;"></div>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button><button type="button" class="btn btn-primary" id="apply-assentamentos-selection">Aplicar</button></div>
+  </div></div>
+</div>
+
+<script>
+if (typeof ChartDataLabels !== 'undefined') { Chart.register(ChartDataLabels); }
+Chart.defaults.font.family = "'Montserrat', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.font.weight = '500';
+
+const isSmallScreen  = () => window.matchMedia('(max-width: 576px)').matches;
+const isTabletScreen = () => window.matchMedia('(max-width: 992px)').matches;
+
+const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const estadoNomes={AC:"Acre",AM:"Amazonas",AP:"Amapá",MA:"Maranhão",MT:"Mato Grosso",PA:"Pará",RO:"Rondônia",RR:"Roraima",TO:"Tocantins"};
+const amazoniaLegalStates=['AC','AP','AM','MA','MT','PA','RO','RR','TO'];
+const territoryNameMapping={assentamentos:'ASSENTAMEN',estados:'ESTADO',municipios:'MUNICIPIO',terrasIndigenas:'TERRA_INDI',unidadesConservacao:'UNID_CONSE'};
+
+let selectedMunicipios = []; // não usado
+let selectedTerrasIndigenas = [];
+let selectedUCs = [];
+let selectedAssentamentos = [];
+let csvData = [];
+
+function showLoader(msg="Carregando Dados..."){ const ov=document.getElementById('loader-overlay'); if(!ov) return; ov.style.display='flex'; const t=ov.querySelector('.loader-text'); if(t) t.textContent=msg; }
+function hideLoader(){ const ov=document.getElementById('loader-overlay'); if(ov) ov.style.display='none'; }
+function slugify(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+function nowStamp(){const d=new Date();const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}`;}
+function toCSV(rows, sep=';'){ return rows.map(r => r.map(v=>{ if(v==null) return ''; const s=String(v); return (s.includes(sep)||/["\n]/.test(s))?`"${s.replace(/"/g,'""')}"`:s;}).join(sep)).join('\n'); }
+function monthName(m){const i=Math.max(1,Math.min(12,parseInt(m,10)))-1; return MONTHS[i];}
+
+const DEGRADACAO_COLOR_STOPS=[
+  {p:0.00,c:'#F4F2F8'},{p:0.15,c:'#990FF9'},{p:0.30,c:'#DAD0ED'},{p:0.50,c:'#B7A7DB'},
+  {p:0.65,c:'#8D7CC2'},{p:0.80,c:'#684EA7'},{p:0.92,c:'#362563'},{p:1.00,c:'#1F114D'}
+];
+
+const PALETTE = {
+  desmatamento: { type:'sequential', interpolator: d3.interpolateReds },
+  degradacao:   { type:'stops',      stops: DEGRADACAO_COLOR_STOPS },
+  todos:        { type:'sequential', interpolator: d3.interpolateOranges }
+};
+
+function buildColorScale(kind, values){
+  const maxVal = values && values.length ? Math.max(...values) : 1;
+  const spec = PALETTE[kind] || PALETTE.desmatamento;
+  if (spec.type === 'sequential'){
+    const interp = spec.interpolator || d3.interpolateReds;
+    return d3.scaleSequential().domain([0, maxVal]).interpolator(interp);
+  }
+  const stops = spec.stops || DEGRADACAO_COLOR_STOPS;
+  const domain = stops.map(s => s.p * maxVal);
+  const range  = stops.map(s => s.c);
+  return d3.scaleLinear().domain(domain).range(range).clamp(true);
+}
+const currentColorScale = values => buildColorScale(dataTypeAtual(), values);
+
+const withHeadroom = (maxVal, pad=0.12) => (maxVal>0 ? maxVal*(1+pad) : 1);
+
+const amazoniaBounds = L.latLngBounds([[-18,-75],[6,-44]]);
+const map = L.map('map',{zoomControl:true});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+  subdomains: 'abcd', maxZoom: 20, crossOrigin: true
+}).addTo(map);
+fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
+
+let geoJsonLayer = null;
+function fitBoundsWithExtra(mapInstance, bounds, padding = [20, 20], extra = 0){
+  mapInstance.fitBounds(bounds, { padding });
+  mapInstance.once('moveend', () => {
+    const maxZ = (typeof mapInstance.getMaxZoom === 'function') ? mapInstance.getMaxZoom() : 20;
+    mapInstance.setZoom(Math.min(mapInstance.getZoom() - extra, maxZ));
+  });
+}
+
+function zoomToTopItems(n = 5){
+  try{
+    const gj = window._lastGeo;
+    const ag = window._lastAggreg || {};
+    if (!gj || !gj.features || !Object.keys(ag).length){
+      fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
+      return;
+    }
+    const ttype = (typeof categoriaAtual === 'function') ? categoriaAtual() : 'estados';
+    const nameKey = territoryNameMapping[ttype];
+    const pageKeys = (window.currentTopTerritories && window.currentTopTerritories.length)
+      ? window.currentTopTerritories.slice(0, n)
+      : Object.entries(ag).sort(([,a],[,b]) => b - a).slice(0, n).map(([k]) => k);
+    const feats = gj.features.filter(f => pageKeys.includes(f.properties?.[nameKey]));
+    if (!feats.length){ fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0); return; }
+    const layer = L.geoJSON({ type: 'FeatureCollection', features: feats });
+    const b = layer.getBounds();
+    if (b && b.isValid()){ fitBoundsWithExtra(map, b, [20,20], 0); }
+    else { fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0); }
+  } catch { fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0); }
+}
+
+const __geoCache = {};
+async function __getGeoFor(kindKey){
+  const t = dataTypeAtual()==='todos' ? 'desmatamento' : dataTypeAtual();
+  const url = dataSources?.[t]?.[kindKey]?.geojson;
+  if(!url) return null;
+  if(__geoCache[url]) return __geoCache[url];
+  try{ const gj = await fetch(url).then(r=>r.json()); __geoCache[url] = gj; return gj; }catch{ return null; }
+}
+function __featureCenter(feat){
+  try{ const tmp = L.geoJSON(feat); const b = tmp.getBounds(); return b && b.isValid() ? b.getCenter() : null; }catch{return null;}
+}
+
+const dataSources={
+  desmatamento:{
+    assentamentos:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_assentamentos.csv",geojson:"/dataset/sad/geojson/AMZ_assentamentos.geojson"},
+    estados:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_estados.geojson"},
+    municipios:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_municipios.geojson"},
+    terrasIndigenas:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_terra_indigena.csv",geojson:"/dataset/sad/geojson/AMZ_terra_indigena.geojson"},
+    unidadesConservacao:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_ucs.csv",geojson:"/dataset/sad/geojson/AMZ_unidade_conservacao.geojson"}
+  },
+  degradacao:{
+    assentamentos:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_assentamento.csv",geojson:"/dataset/sad/geojson/AMZ_assentamentos.geojson"},
+    estados:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_estados.geojson"},
+    municipios:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_municipios.geojson"},
+    terrasIndigenas:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_terra_indigena.csv",geojson:"/dataset/sad/geojson/AMZ_terra_indigena.geojson"},
+    unidadesConservacao:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_ucs.csv",geojson:"/dataset/sad/geojson/AMZ_unidade_conservacao.geojson"}
+  }
+};
+
+const __bgCache = {};
+let __bgLayer = null;
+
+async function updateBackgroundOutlines(){
+  try{ if(__bgLayer){ map.removeLayer(__bgLayer); __bgLayer = null; } }catch{}
+  const url = "/dataset/sad/geojson/AMZ_legal_amz_legal.geojson";
+  if(__bgCache[url]){
+    __bgLayer = L.geoJSON(__bgCache[url], { style:{ color:'#9aa0a6', weight:1.2, fillOpacity:0 }, interactive:false }).addTo(map);
+    try{ __bgLayer.bringToBack(); }catch{}
+    return;
+  }
+  try{
+    const gj = await fetch(url).then(r=>r.json());
+    __bgCache[url] = gj;
+    __bgLayer = L.geoJSON(gj, { style:{ color:'#9aa0a6', weight:1.2, fillOpacity:0 }, interactive:false }).addTo(map);
+    try{ __bgLayer.bringToBack(); }catch{}
+  }catch{}
+}
+/* ======= FIM FUNDO ======= */
+
+function lineOptionsResponsive(suggestedMax){
+  const small = isSmallScreen();
+  const tablet = isTabletScreen();
+  return {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{ display: !small, position: small?'bottom':'top', align:'end',
+        labels:{usePointStyle:true, pointStyle:'circle', boxWidth:10, boxHeight:10, padding:10, font:{size: small?10 : 11, weight:'600'}}},
+      datalabels:false,
+      tooltip:{callbacks:{label:ctx=> (ctx.parsed.y??0).toLocaleString('pt-BR',{maximumFractionDigits:2})+' km²'}}
+    },
+    layout:{ padding: small? {left:0,right:6,top:0,bottom:0} : 0 },
+    scales:{
+      y:{beginAtZero:true, suggestedMax: suggestedMax, grid:{display:false}, title:{display:true,text:'Área (km²)',font:{weight:'600'}}},
+      x:{grid:{display:false}, title:{display:true,text:'Ano',font:{weight:'600'}},
+         ticks:{maxRotation: small?0 : 40, minRotation: small?0 : 40, autoSkip:true, maxTicksLimit: small?6 : (tablet?10:14)}}
+    }
+  };
+}
+
+function categoriaAtual(){ return document.getElementById('categoriaFilter').value || 'estados'; }
+function dataTypeAtual(){ return (document.getElementById('sadFilter').value || 'desmatamento'); }
+
+/* Carrega CSV (ou combina os dois quando 'todos') e o geojson */
+async function loadData(){
+  const sad = dataTypeAtual();
+  const territoryType = categoriaAtual();
+
+  const geoUrl = dataSources.desmatamento?.[territoryType]?.geojson;
+
+  async function loadCsv(url){ const rows = await d3.csv(url); rows.forEach(d=>{ d.AREAKM2=+d.AREAKM2||0; d.ANO=+d.ANO; d.MES=+d.MES; }); return rows; }
+
+  try{
+    let data = [];
+    if (sad === 'todos'){
+      const urlDes = dataSources.desmatamento?.[territoryType]?.csv;
+      const urlDeg = dataSources.degradacao?.[territoryType]?.csv;
+      const [a,b] = await Promise.all([ loadCsv(urlDes), loadCsv(urlDeg) ]);
+      data = a.concat(b);
+    } else {
+      const url = dataSources[sad]?.[territoryType]?.csv;
+      data = await loadCsv(url);
+    }
+    const geojsonData = geoUrl ? await fetch(geoUrl).then(r=>r.json()) : null;
+    csvData = data;
+    return { csvData:data, geojsonData };
+  }catch(e){
+    console.error('Erro ao carregar dados:', e);
+    return { csvData:[], geojsonData:null };
+  }
+}
+
+function applySpecificFilters(data,territoryType){
+  let filtered=[...data];
+  const ufSel = document.getElementById('estadoFilter').value;
+  if(territoryType!=='estados' && ufSel && ufSel!=='all'){
+    const getUF = (rec)=> (rec.ESTADO ?? rec.UF ?? rec.SIGLA ?? rec.UF_SIGLA ?? '').trim().toUpperCase();
+    if(ufSel==='__AMAZONIA_LEGAL__'){
+      filtered = filtered.filter(d => amazoniaLegalStates.includes(getUF(d)));
+    }else{
+      filtered = filtered.filter(d => getUF(d)===ufSel);
+    }
+  }
+
+  const key = territoryNameMapping[territoryType];
+  if(territoryType==='terrasIndigenas'){
+    if (selectedTerrasIndigenas.length > 0) filtered = filtered.filter(d => selectedTerrasIndigenas.includes(String(d[key]||'').trim()));
+  } else if(territoryType==='unidadesConservacao'){
+    const j = document.getElementById('jurisdicaoFilter').value;
+    const m = document.getElementById('modalidadeFilter').value;
+    if(j && j!=='all') filtered = filtered.filter(d=> d.JURISDICAO===j);
+    if(m && m!=='all') filtered = filtered.filter(d=> d.USO===m);
+    if (selectedUCs.length > 0) filtered = filtered.filter(d => selectedUCs.includes(String(d[key]||'').trim()));
+  } else if(territoryType==='assentamentos'){
+    if (selectedAssentamentos.length > 0) filtered = filtered.filter(d => selectedAssentamentos.includes(String(d[key]||'').trim()));
+  }
+  return filtered;
+}
+
+function updateStatistics(aggregatedData,filteredData){
+  const totalArea=Object.values(aggregatedData).reduce((s,v)=>s+v,0);
+  document.getElementById('total-area').textContent=totalArea.toLocaleString('pt-BR',{maximumFractionDigits:1})+' km²';
+
+  const anos=[...new Set(filteredData.map(d=>+d.ANO))].filter(Boolean).sort((a,b)=>a-b);
+  const anoAtual=Math.max(...anos);
+  const dadosAtual=filteredData.filter(d=>+d.ANO===anoAtual);
+  const meses=new Set(dadosAtual.map(d=>+d.MES)).size;
+  const somaAtual=dadosAtual.reduce((s,d)=>s+(+d.AREAKM2),0);
+  const media=meses? somaAtual/meses : 0;
+  document.getElementById('avg-area').textContent=media.toLocaleString('pt-BR',{maximumFractionDigits:2})+' km²';
+  document.getElementById('affected-territories').textContent=Object.keys(aggregatedData).length;
+}
+
+let barChart,lineChart,yearlyChart;
+let rankingAll = [];
+let rankPage = 0;
+let pageSize = 10;
+
+function totalPages(){ return Math.max(1, Math.ceil(rankingAll.length / pageSize)); }
+
+function setRankPage(p){
+  const tp = totalPages();
+  rankPage = Math.max(0, Math.min(tp-1, p));
+  
+  // Atualiza o rótulo da página (agora um botão desabilitado)
+  const pageLabelEl = document.getElementById('rank-page-label-btn');
+  if (pageLabelEl) {
+    pageLabelEl.textContent = `Página ${tp ? (rankPage+1) : 0}/${tp}`;
+  }
+
+  const startIdx = rankPage*pageSize;
+  const endIdxEx = Math.min(startIdx + pageSize, rankingAll.length);
+  const shownStart = rankingAll.length ? (startIdx+1) : 0;
+  const shownEnd   = endIdxEx;
+  
+  // Atualiza a faixa "mostrando x-y de z"
+  const rangeLabelEl = document.getElementById('rank-range-label');
+  if (rangeLabelEl) {
+    rangeLabelEl.textContent = `mostrando ${shownStart}–${shownEnd} de ${rankingAll.length}`;
+  }
+
+  const slice = rankingAll.slice(startIdx, endIdxEx);
+  const ttype = categoriaAtual();
+  const labels = slice.map(([k]) => ttype==='estados' ? (estadoNomes[k]||k) : k);
+  const values = slice.map(([,v]) => v);
+  window.currentTopTerritories = slice.map(([k]) => k);
+
+  updateBarChart(labels, values);
+  if(window._lastGeo && window._lastAggreg) { updateMap(window._lastGeo, window._lastAggreg, ttype); }
+  zoomToTopItems(5);
+}
+
+function updateBarChart(labels, values){
+  const c=document.getElementById('barChart'); if(!c) return;
+  const prev=Chart.getChart(c); if(prev) prev.destroy();
+  const ctx=c.getContext('2d');
+
+  const scale = currentColorScale(values);
+  const colors = values.map(v => scale(v));
+  const maxVal = Math.max(...values, 1);
+
+  barChart=new Chart(ctx,{
+    type:'bar',
+    data:{labels,datasets:[{label:'Área (km²)',data:values,backgroundColor:colors,borderColor:colors,borderWidth:1,borderRadius:4}]},
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        datalabels: (typeof ChartDataLabels==='undefined') ? undefined : {
+          display: () => !isSmallScreen(),
+          anchor:'end', align:'end', offset:6, color:'#111',
+          font:{weight:'bold', size:12},
+          formatter:v=>v.toLocaleString('pt-BR',{maximumFractionDigits:2}),
+          clamp:true, clip:false
+        },
+        tooltip:{enabled:true}
+      },
+      layout:{ padding: isSmallScreen()? {left:0,right:10,top:0,bottom:0} : {right:14} },
+      scales:{
+        x:{beginAtZero:true, suggestedMax: withHeadroom(maxVal, 0.12), grid:{display:false}, title:{display:true,text:'Área (km²)'},
+           ticks:{autoSkip:true, maxTicksLimit: isSmallScreen()?4 : (isTabletScreen()?6:8)}},
+        y:{grid:{display:false}, ticks:{autoSkip: isSmallScreen(), maxTicksLimit: isSmallScreen()?8:undefined}}
+      }
+    }
+  });
+  window.barChart = barChart;
+}
+
+function updateLineChart(csvDataCompleto, territoryType){
+  const c=document.getElementById('lineChart'); if(!c) return;
+  const prev=Chart.getChart(c); if(prev) prev.destroy();
+  const ctx=c.getContext('2d');
+
+  if (!csvDataCompleto || !csvDataCompleto.length){
+    lineChart = new Chart(ctx,{type:'line',data:{labels:[],datasets:[]},options:lineOptionsResponsive(1)});
+    window.lineChart = lineChart;
+    return;
+  }
+
+  const years = Array.from(new Set(csvDataCompleto.map(d=>d.ANO))).sort((a,b)=>a-b);
+  const key = territoryNameMapping[territoryType];
+
+  const grouped={};
+  csvDataCompleto.forEach(d=>{
+    const k=d[key];
+    const y=d.ANO;
+    const a=+d.AREAKM2||0;
+    if(!grouped[k]) grouped[k]={};
+    grouped[k][y]=(grouped[k][y]||0)+a;
+  });
+
+  const colors=d3.schemeTableau10;
+  const labelsSelecionadas=(window.currentTopTerritories||[]).slice(0,10);
+  const datasets=labelsSelecionadas.map((k,i)=>({
+    label:estadoNomes[k]||k,
+    data:years.map(y=>grouped[k]?.[y]||0),
+    borderColor:colors[i%colors.length],
+    backgroundColor:colors[i%colors.length],
+    borderWidth:2.5,
+    fill:false,
+    pointRadius: isSmallScreen()? 2.5 : 3.5
+  }));
+
+  const maxY = withHeadroom(Math.max(0, ...datasets.flatMap(d=>d.data)), 0.12);
+  lineChart=new Chart(ctx,{type:'line',data:{labels:years,datasets},options:lineOptionsResponsive(maxY)});
+  window.lineChart = lineChart;
+}
+
+function updateYearlyChart(csvDataCompleto){
+  const c=document.getElementById('yearlyChart'); if(!c) return;
+  const prev=Chart.getChart(c); if(prev) prev.destroy();
+  const ctx=c.getContext('2d');
+
+  if (!csvDataCompleto || !csvDataCompleto.length){
+    yearlyChart = new Chart(ctx,{type:'bar',data:{labels:[],datasets:[]},options:{responsive:true,maintainAspectRatio:false}});
+    window.yearlyChart = yearlyChart;
+    return;
+  }
+
+  const years = Array.from(new Set(csvDataCompleto.map(d=>d.ANO))).sort((a,b)=>a-b);
+  const yearly={};
+  csvDataCompleto.forEach(d=>{
+    const y=d.ANO, a=+d.AREAKM2||0;
+    yearly[y]=(yearly[y]||0)+a;
+  });
+  const values=years.map(y=> yearly[y]||0);
+  const maxVal = Math.max(...values, 1);
+
+  const isTodos = dataTypeAtual()==='todos';
+  const isDesmat = dataTypeAtual()==='desmatamento';
+  const bg = isTodos ? 'rgba(255,140,0,.7)' : (isDesmat ? 'rgba(198,40,40,.7)' : 'rgba(104,78,167,.7)');
+  const br = isTodos ? 'rgba(255,140,0,1)' : (isDesmat ? 'rgba(198,40,40,1)' : 'rgba(31,17,77,1)');
+
+  yearlyChart=new Chart(ctx,{
+    type:'bar',
+    plugins: (typeof ChartDataLabels!=='undefined') ? [ChartDataLabels] : [],
+    data:{labels:years,datasets:[{label:'Área Total (km²)',data:values,backgroundColor:bg,borderColor:br,borderWidth:2,borderRadius:4}]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        datalabels: (typeof ChartDataLabels==='undefined') ? undefined : {
+          display: () => !isSmallScreen(),
+          anchor:'end', align:'top', color:'#333', font:{weight:'bold', size: isSmallScreen()?9:10},
+          formatter:v=>v.toLocaleString('pt-BR',{maximumFractionDigits:0}),
+          clamp:true, clip:false
+        },
+        tooltip:{enabled:true}
+      },
+      layout:{ padding: isSmallScreen()? {left:0,right:10,top:0,bottom:0} : {right:12} },
+      scales:{
+        y:{beginAtZero:true, suggestedMax: withHeadroom(maxVal, 0.12), grid:{display:false},title:{display:true,text:'Área (km²)'}},
+        x:{grid:{display:false},title:{display:true,text:'Ano'},
+           ticks:{maxRotation: isSmallScreen()?0:40, minRotation: isSmallScreen()?0:40, autoSkip:true, maxTicksLimit: isSmallScreen()?6 : (isTabletScreen()?10:14)}}
+      }
+    }
+  });
+  window.yearlyChart = yearlyChart;
+}
+
+function updateMap(geojsonData, aggregatedData, territoryType){
+  if(geoJsonLayer){ try{map.removeLayer(geoJsonLayer);}catch(e){} }
+  const nameKey = territoryNameMapping[territoryType];
+  const shownKeys = window.currentTopTerritories || [];
+  const values = (shownKeys.length ? shownKeys : Object.keys(aggregatedData))
+                 .map(k => aggregatedData[k]||0)
+                 .filter(v => v>=0);
+  const scale = currentColorScale(values);
+
+  const feats = geojsonData.features.filter(f => (shownKeys.length ? shownKeys : Object.keys(aggregatedData))
+                    .includes(f.properties[nameKey]));
+  if(!feats.length){ fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);return;}
+
+  geoJsonLayer = L.geoJSON({type:'FeatureCollection',features:feats},{
+    style:f=>{
+      const v = aggregatedData[f.properties[nameKey]]||0;
+      return {fillColor:scale(v),weight:1.2,opacity:1,color:'#555',fillOpacity:.75};
+    },
+    onEachFeature:(f,l)=>{
+      const n=f.properties[nameKey]; const v=aggregatedData[n]||0;
+      l.bindPopup(`<strong>${n}</strong><br>Área: ${v.toLocaleString('pt-BR',{maximumFractionDigits:2})} km²`);
+    }
+  }).addTo(map);
+
+  try{
+    const b = geoJsonLayer.getBounds();
+    if (b && b.isValid()) fitBoundsWithExtra(map, b, [20,20], 0);
+    else fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
+  } catch(e){
+    fitBoundsWithExtra(map, amazoniaBounds, [20,20], 0);
+    return;
+  }
+
+  updateBackgroundOutlines();
+}
+
+const territoryNaming={estados:{nome:'Estados',genero:'m'}, terrasIndigenas:{nome:'Terras Indígenas',genero:'f'}, unidadesConservacao:{nome:'Unidades de Conservação',genero:'f'}, assentamentos:{nome:'Assentamentos',genero:'m'}};
+const dataTypeLabel={
+  desmatamento:{m:'Mais Desmatados',f:'Mais Degradadas'},
+  degradacao:{m:'Mais Degradados',f:'Mais Degradadas'},
+  todos:{m:'Mais Impactados',f:'Mais Impactadas'}
+};
+const territorySingular={estados:'Estado',terrasIndigenas:'Terra Indígena',unidadesConservacao:'Unidade de Conservação',assentamentos:'Assentamento'};
+
+function updateTitles(){
+  const tkey=categoriaAtual(); 
+  const dkey=dataTypeAtual();
+  const {nome,genero}=territoryNaming[tkey]; 
+  const art = genero==='f'?'das':'dos';
+  const tipo = (dataTypeLabel[dkey] || dataTypeLabel['desmatamento'])[genero];
+
+  document.getElementById('bar-chart-title').innerHTML =
+    `<i class="fas fa-chart-bar me-2"></i>Ranking ${art} ${nome} ${tipo}`;
+
+  const sY=document.getElementById('yearStart').value, eY=document.getElementById('yearEnd').value;
+  const sM=document.getElementById('monthStart').value;
+  const eM=document.getElementById('monthEnd').value;
+
+  const singular=territorySingular[tkey]; 
+  const label = (dkey==='desmatamento') ? 'Desmatamento' : (dkey==='degradacao' ? 'Degradação' : 'Desmatamento e Degradação');
+  document.getElementById('map-title').innerHTML =
+    `<i class="fas fa-map me-2"></i>Mapa de ${label} por ${singular} (${monthName(sM)}/${sY} a ${monthName(eM)}/${eY})`;
+
+  const anosDisponiveis = (csvData && csvData.length)
+    ? Array.from(new Set(csvData.map(d=>+d.ANO))).filter(Boolean).sort((a,b)=>a-b)
+    : [];
+  const minY = anosDisponiveis.length ? anosDisponiveis[0] : '—';
+  const maxY = anosDisponiveis.length ? anosDisponiveis[anosDisponiveis.length-1] : '—';
+
+  document.getElementById('line-chart-title').innerHTML =
+    `<i class="fas fa-chart-line me-2"></i>Série Histórica - ${label} • ${nome} (${minY}–${maxY})`;
+  document.getElementById('yearly-chart-title').innerHTML =
+    `<i class="fas fa-chart-area me-2"></i>Série Histórica Anual (${minY}–${maxY})`;
+}
+
+async function updateDashboard(){
+  showLoader('Carregando Dados...');
+  try{
+    const {csvData:loadedData,geojsonData} = await loadData();
+    if(!loadedData.length || !geojsonData){ hideLoader(); return; }
+
+    const ttype=categoriaAtual();
+    const key=territoryNameMapping[ttype];
+
+    const yS=parseInt(document.getElementById('yearStart').value||'2008',10);
+    const yE=parseInt(document.getElementById('yearEnd').value||String(new Date().getFullYear()),10);
+    const mS=document.getElementById('monthStart').value || '01';
+    const mE=document.getElementById('monthEnd').value   || '12';
+
+    const startVal = parseInt(`${yS}${mS}`);
+    const endVal   = parseInt(`${yE}${mE}`);
+    if(startVal > endVal){
+      new bootstrap.Modal(document.getElementById('invalidPeriodModal')).show();
+      hideLoader(); return;
+    }
+
+    let filtered = loadedData.filter(d => (d.ANO*100 + d.MES) >= startVal && (d.ANO*100 + d.MES) <= endVal);
+    filtered = applySpecificFilters(filtered, ttype);
+
+    const aggregated={};
+    filtered.forEach(d => { const name=d[key]; const a=+d.AREAKM2||0; if(name) aggregated[name]=(aggregated[name]||0)+a; });
+
+    rankingAll = Object.entries(aggregated).sort(([,a],[,b])=>b-a);
+    window._lastAggreg = aggregated;
+    window._lastGeo = geojsonData;
+
+    updateStatistics(aggregated, filtered);
+    updateTitles();
+    setRankPage(0);
+
+    updateLineChart(loadedData, ttype);
+    updateYearlyChart(loadedData);
+
+  }catch(e){ console.error('Erro ao atualizar dashboard:',e); }
+  finally{ setTimeout(hideLoader,300); }
+}
+
+function populateList(listId, searchId, selectedList, countId){
+  const listEl = document.getElementById(listId);
+  const termEl = document.getElementById(searchId);
+  const term = (termEl ? termEl.value : '').toLowerCase();
+  const key = territoryNameMapping[categoriaAtual()];
+  const names = [...new Set(csvData.map(d => d[key] || ''))].filter(name => name.trim() !== '').sort();
+  listEl.innerHTML = '';
+
+  const allItem = document.createElement('div');
+  allItem.className = `settlement-item ${selectedList.length === names.length ? 'selected' : ''}`;
+  allItem.textContent = 'Todos';
+  allItem.onclick = () => {
+    if (selectedList.length === names.length) { selectedList.length = 0; }
+    else { selectedList.length = 0; names.forEach(name => selectedList.push(name)); }
+    populateList(listId, searchId, selectedList, countId);
+  };
+  listEl.appendChild(allItem);
+
+  names.filter(n => n.toLowerCase().includes(term)).forEach(name => {
+    const sel = selectedList.includes(name);
+    const item = document.createElement('div');
+    item.className = `settlement-item ${sel ? 'selected' : ''}`;
+    item.textContent = name;
+    item.onclick = () => {
+      if (!sel && selectedList.length >= 10) { alert('Máximo 10 selecionados'); return; }
+      if (sel) { selectedList.splice(selectedList.indexOf(name), 1); }
+      else { selectedList.push(name); }
+      populateList(listId, searchId, selectedList, countId);
+    };
+    listEl.appendChild(item);
+  });
+
+  const countEl = document.getElementById(countId);
+  if (countEl) countEl.textContent = selectedList.length;
+}
+
+function setUpModalListeners(){
+  const modalsConfig = [
+    { openId:'open-terras-indigenas-modal', modalId:'terrasIndigenasModal', listId:'terras-indigenas-list', searchId:'terras-indigenas-search', countId:'selected-terras-indigenas-count', selectedList:selectedTerrasIndigenas, applyId:'apply-terras-indigenas-selection' },
+    { openId:'open-uc-modal', modalId:'ucModal', listId:'uc-list', searchId:'uc-search', countId:'selected-uc-count', selectedList:selectedUCs, applyId:'apply-uc-selection' },
+    { openId:'open-assentamentos-modal', modalId:'assentamentosModal', listId:'assentamentos-list', searchId:'assentamentos-search', countId:'selected-assentamentos-count', selectedList:selectedAssentamentos, applyId:'apply-assentamentos-selection' }
+  ];
+
+  modalsConfig.forEach(config => {
+    const openBtn = document.getElementById(config.openId);
+    const modalEl = document.getElementById(config.modalId);
+    const applyBtn = document.getElementById(config.applyId);
+    if (!openBtn || !modalEl || !applyBtn) return;
+
+    openBtn.addEventListener('click', () => {
+      populateList(config.listId, config.searchId, config.selectedList, config.countId);
+      new bootstrap.Modal(modalEl).show();
+    });
+    applyBtn.addEventListener('click', () => {
+      const inst = bootstrap.Modal.getInstance(modalEl);
+      if (inst) inst.hide();
+      updateDashboard();
+    });
+    const searchInput = document.getElementById(config.searchId);
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        populateList(config.listId, config.searchId, config.selectedList, config.countId);
+      });
+    }
+  });
+}
+
+function toggleUCFields(){
+  const show = (categoriaAtual() === 'unidadesConservacao');
+  document.getElementById('jurisdicaoFilterWrap').style.display = show ? '' : 'none';
+  document.getElementById('modalidadeFilterWrap').style.display = show ? '' : 'none';
+  if (!show){
+    document.getElementById('jurisdicaoFilter').value = 'all';
+    document.getElementById('modalidadeFilter').value = 'all';
+  }
+}
+function toggleDatasetButtonsInFilters() {
+  ['terrasIndigenasSelectGroup','ucSelectGroup','assentamentosSelectGroup']
+    .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+
+  const categoria = categoriaAtual();
+  const mapCatToId = {
+    terrasIndigenas: 'terrasIndigenasSelectGroup',
+    unidadesConservacao: 'ucSelectGroup',
+    assentamentos: 'assentamentosSelectGroup'
+  };
+  const targetId = mapCatToId[categoria];
+  const el = document.getElementById(targetId);
+  if (el) el.style.display = '';
+}
+
+function populateMonthSelect(sel){
+  sel.innerHTML = MONTHS.map((nm,i)=>`<option value="${String(i+1).padStart(2,'0')}">${nm}</option>`).join('');
+}
+function setCurrentYear() {
+  const currentYear = new Date().getFullYear();
+  document.getElementById('yearStart').value = currentYear;
+  document.getElementById('yearEnd').value = currentYear;
+}
+function populateYearSelects(){
+  const cur = new Date().getFullYear();
+  const curMonth = new Date().getMonth() + 1; // mês atual (1–12)
+  const endMonth = ((curMonth - 2) <= 0) ? (12 + (curMonth - 2)) : (curMonth - 2);
+  const endYear = ((curMonth - 2) <= 0) ? (cur - 1) : cur;
+
+  const ys = document.getElementById('yearStart');
+  const ye = document.getElementById('yearEnd');
+  for(let y=2008; y<=cur; y++){ 
+    ys.add(new Option(y,y)); 
+    ye.add(new Option(y,y)); 
+  }
+
+  setCurrentYear();
+  populateMonthSelect(document.getElementById('monthStart'));
+  populateMonthSelect(document.getElementById('monthEnd'));
+
+  document.getElementById('monthStart').value = '01';
+  document.getElementById('monthEnd').value = String(endMonth).padStart(2,'0');
+  document.getElementById('yearEnd').value = endYear;
+}
+
+
+function clearFilters() {
+  selectedMunicipios = [];
+  selectedTerrasIndigenas = [];
+  selectedUCs = [];
+  selectedAssentamentos = [];
+  document.getElementById('sadFilter').value = 'desmatamento';
+  document.getElementById('categoriaFilter').value = 'estados';
+  document.getElementById('estadoFilter').value = 'all';
+  document.getElementById('jurisdicaoFilter').value = 'all';
+  document.getElementById('modalidadeFilter').value = 'all';
+  document.getElementById('monthStart').value = '01';
+  document.getElementById('monthEnd').value = String(new Date().getMonth()+1).padStart(2,'0');
+  setCurrentYear();
+  toggleDatasetButtonsInFilters();
+  updateTitles();
+  updateDashboard();
+}
+
+function chartPNG(target, baseName){
+  let canvas = null;
+  if (target && target.canvas instanceof HTMLCanvasElement) canvas = target.canvas;
+  else if (target instanceof HTMLCanvasElement) canvas = target;
+  else if (typeof target === 'string') canvas = document.getElementById(target);
+  if (!canvas) { alert('Gráfico ainda não está pronto para exportar.'); return; }
+  try {
+    const dataURL = canvas.toDataURL('image/png', 1.0);
+    const a = document.createElement('a'); a.href = dataURL; a.download = `${slugify(baseName)}_${nowStamp()}.png`; a.click();
+  } catch (e) { console.error('Falha ao exportar PNG:', e); alert('Não foi possível exportar a imagem agora.'); }
+}
+function downloadBlob(filename,blob){ const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},0); }
+function buildRankingCSV(entries){
+  const header = ['Posição','Território','Área (km²)'];
+  const rows = [header];
+  entries.forEach(([nome,valor],i)=> rows.push([i+1, nome, (valor||0).toLocaleString('pt-BR',{maximumFractionDigits:2})]) );
+  return toCSV(rows);
+}
+function exportRankingCSVAll(){
+  const csv = buildRankingCSV(rankingAll);
+  downloadBlob(`ranking_completo_${nowStamp()}.csv`, new Blob([csv], {type:'text/csv;charset=utf-8'}));
+}
+function mapPNG() {
+  try {
+    const geojsonData = window._lastGeo;
+    const aggregated  = window._lastAggreg || {};
+    const territoryType = (typeof categoriaAtual === 'function') ? categoriaAtual() : 'estados';
+    const nameKey = territoryNameMapping[territoryType];
+
+    if (!geojsonData || !geojsonData.features || !Object.keys(aggregated).length) { alert('Mapa ainda não está pronto para exportar.'); return; }
+
+    const keysFiltradas = Object.keys(aggregated);
+    const feats = geojsonData.features.filter(f => keysFiltradas.includes(f.properties?.[nameKey]));
+    if (!feats.length) { alert('Não há feições para exportar com os filtros atuais.'); return; }
+
+    const offDiv = document.createElement('div');
+    offDiv.style.cssText = 'position:fixed;left:-99999px;top:-99999px;width:1200px;height:900px;z-index:-1;';
+    document.body.appendChild(offDiv);
+
+    const offMap = L.map(offDiv, { zoomControl:false, attributionControl:false, preferCanvas:true });
+    const tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '', subdomains: 'abcd', maxZoom: 20, crossOrigin: true }).addTo(offMap);
+
+    const values = keysFiltradas.map(k => aggregated[k]||0);
+    const scale = currentColorScale(values);
+
+    const layer = L.geoJSON({ type: 'FeatureCollection', features: feats }, {
+      style: f => {
+        const nome = f.properties?.[nameKey];
+        return { fillColor: scale(aggregated[nome] || 0), weight: 1.2, opacity: 1, color: '#555', fillOpacity: .75 };
+      }
+    }).addTo(offMap);
+
+    let bounds; try { bounds = layer.getBounds(); } catch { bounds = null; }
+    if (!bounds || !bounds.isValid()) { bounds = L.latLngBounds([[-18, -75], [6, -44]]); }
+
+    const pSW = offMap.options.crs.project(bounds.getSouthWest());
+    const pNE = offMap.options.crs.project(bounds.getNorthEast());
+    const dx  = Math.max(1, Math.abs(pNE.x - pSW.x));
+    const dy  = Math.max(1, Math.abs(pNE.y - pSW.y));
+    const aspect = dx / dy;
+
+    const MAX_W = 2200, MAX_H = 1600;
+    let outW = MAX_W, outH = Math.round(outW / aspect);
+    if (outH > MAX_H) { outH = MAX_H; outW = Math.round(outH * aspect); }
+    offDiv.style.width  = outW + 'px';
+    offDiv.style.height = outH + 'px';
+    offMap.invalidateSize(false);
+    offMap.fitBounds(bounds, { padding: [40, 40] });
+
+    const snap = () => {
+      if (typeof leafletImage !== 'function') {
+        html2canvas(offDiv, { useCORS: true, background: '#ffffff', scale: 1.5 })
+          .then(cv => cv.toBlob(b => { downloadBlob(`mapa_${nowStamp()}.png`, b); offMap.remove(); offDiv.remove(); }));
+        return;
+      }
+      leafletImage(offMap, (err, canvas) => {
+        if (err || !canvas) {
+          html2canvas(offDiv, { useCORS: true, background: '#ffffff', scale: 1.5 })
+            .then(cv => cv.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b)));
+        } else {
+          canvas.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b));
+        }
+        offMap.remove(); offDiv.remove();
+      });
+    };
+
+    tile.once('load', () => setTimeout(snap, 80));
+    setTimeout(snap, 2000);
+  } catch (e) {
+    console.error('Falha ao exportar mapa:', e);
+    alert('Não foi possível exportar o mapa agora.');
+  }
+}
+
+function debounce(fn, delay){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), delay); }; }
+function refreshChartsOnResize(){
+  try{
+    if (barChart) {
+      if (barChart.options.plugins?.datalabels) { barChart.options.plugins.datalabels.display = () => !isSmallScreen(); }
+      barChart.options.scales.x.ticks.maxTicksLimit = isSmallScreen()?4:(isTabletScreen()?6:8);
+      barChart.options.scales.y.ticks.autoSkip = isSmallScreen();
+      barChart.update('none');
+    }
+    if (yearlyChart) {
+      if (yearlyChart.options.plugins?.datalabels) {
+        yearlyChart.options.plugins.datalabels.display = () => !isSmallScreen();
+        yearlyChart.options.plugins.datalabels.font = { weight: 'bold', size: isSmallScreen()?9:10 };
+      }
+      yearlyChart.update('none');
+    }
+    if (lineChart) {
+      lineChart.options = lineOptionsResponsive(lineChart.options.scales.y.suggestedMax);
+      lineChart.update('none');
+    }
+    map.invalidateSize();
+  }catch(e){ console.warn('resize refresh issue', e); }
+}
+window.addEventListener('resize', debounce(refreshChartsOnResize, 200));
+
+const SAD_GEOJSON_BASE = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad/geojson';
+const SAD_CSV_BASE     = '/dataset/sad/csv/mensal';
+const SAD_SHP_BASE     = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad/shp/';
+let SAD_SELECTED_TYPE = 'geojson';
+
+const MONTHS_ABBR = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+function monthsForSADYear(y){
+  const now=new Date(), cy=now.getFullYear(), cm=now.getMonth()+1;        // 1..12
+  const lastComplete = Math.max(cm-2, 0);                                  // mês atual - 2
+  if(y===2008) return [8,9,10,11,12];                                      // início histórico (Agosto/2008)
+  if(y<cy)     return [1,2,3,4,5,6,7,8,9,10,11,12];
+  if(y===cy)   return Array.from({length:lastComplete},(_,i)=>i+1);
+  return [];
+}
+function sadMonthlyUrl(y,m,type=SAD_SELECTED_TYPE){
+  const mm=String(m).padStart(2,'0');
+  if(type==='geojson') return `${SAD_GEOJSON_BASE}/sad_${y}_${mm}.geojson`;
+  if(type==='csv')     return `${SAD_CSV_BASE}/sad_${y}_${mm}.csv`;
+  return `${SAD_SHP_BASE}/sad_${y}_${mm}.zip`;
+}
+function makeChip(label,url){
+  const li=document.createElement('li');
+  const a=document.createElement('a');
+  a.className='chiplink'; a.textContent=label; a.href=url; a.target='_blank'; a.rel='noopener';
+  li.appendChild(a); return li;
+}
+async function buildSADYearBlock(y){
+  const details=document.createElement('details'); details.open=false;
+  const summary=document.createElement('summary');
+  summary.innerHTML=`<span class="year">${y}</span>`;
+  details.appendChild(summary);
+
+  const formats=document.createElement('div'); formats.className='format-wrap';
+  const fMensal=document.createElement('div'); fMensal.className='format-card';
+  const titleKind = SAD_SELECTED_TYPE==='geojson' ? 'GeoJSON mensal'
+                    : SAD_SELECTED_TYPE==='csv'   ? 'CSV mensal'
+                    : 'Shapefile mensal (ZIP)';
+  fMensal.innerHTML=`<div class="format-title">${titleKind}</div>`;
+
+  const list=document.createElement('ul'); list.className='chiplist';
+  const ms = monthsForSADYear(y);
+  ms.forEach(m=>{
+    const label = `${MONTHS_ABBR[m-1]}/${y}`;
+    const url   = sadMonthlyUrl(y,m);
+    list.appendChild(makeChip(label,url));
+  });
+  if(!ms.length){
+    const li=document.createElement('li'); li.className='muted'; li.textContent='Sem dados para este ano.'; list.appendChild(li);
+  }
+  fMensal.appendChild(list);
+  formats.appendChild(fMensal);
+  details.appendChild(formats);
+  return details;
+}
+async function renderDownloadsSAD(){
+  const ul=document.getElementById('sad-downloads-list');
+  ul.innerHTML='';
+  const curYear = new Date().getFullYear();
+  for(let y=curYear; y>=2008; y--){
+    const blk = await buildSADYearBlock(y);
+    const li = document.createElement('li'); li.appendChild(blk); ul.appendChild(li);
+  }
+}
+
+/* ========= DOM Ready ========= */
+document.addEventListener('DOMContentLoaded', ()=>{
+  populateYearSelects();
+  toggleUCFields();
+  updateTitles();
+  toggleDatasetButtonsInFilters();
+  setUpModalListeners();
+
+  // contorno da Amazônia Legal ao carregar
+  updateBackgroundOutlines();
+
+  // ATUALIZA COMO O SAD: ao trocar a modalidade territorial
+  document.getElementById('categoriaFilter').addEventListener('change', ()=>{ 
+    showLoader('Aplicando modalidade...');
+    rankPage = 0;
+    toggleUCFields(); 
+    updateTitles(); 
+    toggleDatasetButtonsInFilters();
+    updateDashboard();          // <--- atualiza dashboard ao trocar modalidade
+    updateBackgroundOutlines(); // mantém o fundo
+  });
+
+  document.getElementById('sadFilter').addEventListener('change', ()=>{
+    showLoader('Aplicando filtro do SAD...');
+    rankPage = 0;
+    updateDashboard();
+    updateBackgroundOutlines();
+  });
+
+  document.getElementById('yearStart').addEventListener('change', updateTitles);
+  document.getElementById('yearEnd').addEventListener('change',   updateTitles);
+  document.getElementById('monthStart').addEventListener('change', updateTitles);
+  document.getElementById('monthEnd').addEventListener('change',   updateTitles);
+
+  document.getElementById('apply-filters').addEventListener('click', updateDashboard);
+  document.getElementById('clear-filters').addEventListener('click', clearFilters);
+
+  document.getElementById('rank-first').addEventListener('click', ()=> setRankPage(0));
+  document.getElementById('rank-prev').addEventListener('click',  ()=> setRankPage(rankPage-1));
+  document.getElementById('rank-next').addEventListener('click',  ()=> setRankPage(rankPage+1));
+  document.getElementById('rank-last').addEventListener('click',  ()=> setRankPage( totalPages()-1 ));
+
+  const titleBar  = () => document.getElementById('bar-chart-title').innerText.trim();
+  const titleLine = () => document.getElementById('line-chart-title').innerText.trim();
+  const titleYear = () => document.getElementById('yearly-chart-title').innerText.trim();
+
+  document.getElementById('btn-bar-png').addEventListener('click', ()=>chartPNG('barChart',titleBar()));
+  document.getElementById('btn-line-png').addEventListener('click',()=>chartPNG('lineChart',titleLine()));
+  document.getElementById('btn-yearly-png').addEventListener('click',()=>chartPNG('yearlyChart',titleYear()));
+
+  document.getElementById('btn-bar-csv').addEventListener('click', exportRankingCSVAll);
+  document.getElementById('btn-map-png').addEventListener('click', mapPNG);
+
+  document.querySelectorAll('.download-group').forEach(g=> g.classList.add('d-none'));
+  document.querySelectorAll('.dl-toggle').forEach(btn=>{
+    btn.setAttribute('aria-pressed','true');
+    btn.innerHTML = '<i class="fas fa-eye me-1"></i>Mostrar';
+    btn.addEventListener('click',()=>{
+      const header = btn.closest('.card-header');
+      const group  = header.querySelector('.download-group');
+      const hidden = group.classList.toggle('d-none');
+      btn.setAttribute('aria-pressed', hidden?'true':'false');
+      btn.innerHTML = hidden ? '<i class="fas fa-eye me-1"></i>Mostrar' : '<i class="fas fa-eye-slash me-1"></i>Ocultar';
+    });
+  });
+
+  // ===== Downloads – SAD (novo): colapso + render =====
+  const downloadCard = document.getElementById('downloads-sad-card');
+  const toggleBtn    = document.getElementById('downloads-sad-toggle');
+  const listEl       = document.getElementById('sad-downloads-list');
+
+  toggleBtn.addEventListener('click', async () => {
+    const collapsed = downloadCard.classList.toggle('collapsed');
+    toggleBtn.setAttribute('aria-expanded', String(!collapsed));
+
+    // Se abriu e não tem anos renderizados, renderiza agora
+    const needsRender = !collapsed && (
+      !listEl.children.length ||
+      (listEl.children.length === 1 && listEl.querySelector('.muted'))
+    );
+    if (needsRender) {
+      await renderDownloadsSAD();
+    }
+  });
+
+  // Seletor de tipo (GeoJSON/CSV/SHP) — escopado ao bloco de downloads
+  document.querySelector('#downloads-sad-card #sad-typebar').addEventListener('click', async (e)=>{
+    const btn = e.target.closest('.typebtn'); if(!btn) return;
+    document.querySelectorAll('#downloads-sad-card #sad-typebar .typebtn').forEach(b=>{
+      b.classList.toggle('active', b===btn);
+      b.setAttribute('aria-selected', b===btn ? 'true' : 'false');
+    });
+    SAD_SELECTED_TYPE = btn.dataset.type;
+    await renderDownloadsSAD();
+  });
+
+  // Render inicial (conteúdo pronto quando possível; bloco começa minimizado)
+  renderDownloadsSAD().catch(()=>{});
+
+  showLoader('Iniciando dashboard...');
+  setTimeout(updateDashboard, 350);
+});
+</script>
+
+<div class="modal fade" id="invalidPeriodModal" tabindex="-1" aria-labelledby="invalidPeriodLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px">
+      <div class="modal-header">
+        <h5 class="modal-title" id="invalidPeriodLabel">Período inválido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">A data inicial não pode ser maior que a data final. Ajuste o período para continuar.</div>
+      <div class="modal-footer"><button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok, entendi</button></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
