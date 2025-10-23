@@ -560,7 +560,7 @@ async function updateBackgroundOutlines(){
     } 
   }catch(e){}
   
-  const url = "/dataset/sad/geojson/AMZ_legal_amz_legal.geojson";
+  const url = "/sad/dataset/sad/geojson/AMZ_legal_amz_legal.geojson";
   
   // Criar pane específico para a base (como no SIMEX)
   if (!map.getPane('base-legal')) {
@@ -1232,10 +1232,14 @@ function refreshChartsOnResize(){
 }
 window.addEventListener('resize', debounce(refreshChartsOnResize, 200));
 
-const SAD_GEOJSON_BASE = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad/geojson';
-const SAD_CSV_BASE     = '/dataset/sad/csv/mensal';
-const SAD_SHP_BASE     = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad/shp/';
+const SAD_BASE          = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad';
+const SAD_GEOJSON_BASE  = `${SAD_BASE}/geojson`;
+const SAD_CSV_BASE      = `${SAD_BASE}/csv`;
+const SAD_SHP_BASE      = `${SAD_BASE}/shapefile`;
 let SAD_SELECTED_TYPE = 'geojson';
+function joinUrl(base, path){
+  return base.replace(/\/+$/,'') + '/' + String(path).replace(/^\/+/,'');
+}
 
 const MONTHS_ABBR = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 function monthsForSADYear(y){
@@ -1246,12 +1250,19 @@ function monthsForSADYear(y){
   if(y===cy)   return Array.from({length:lastComplete},(_,i)=>i+1);
   return [];
 }
-function sadMonthlyUrl(y,m,type=SAD_SELECTED_TYPE){
-  const mm=String(m).padStart(2,'0');
-  if(type==='geojson') return `${SAD_GEOJSON_BASE}/sad_${y}_${mm}.geojson`;
-  if(type==='csv')     return `${SAD_CSV_BASE}/sad_${y}_${mm}.csv`;
-  return `${SAD_SHP_BASE}/sad_${y}_${mm}.zip`;
+function sadMonthlyUrl(y, m, type = SAD_SELECTED_TYPE){
+  const mm       = String(m).padStart(2, '0');
+  const ext      = (type === 'shp') ? 'zip' : (type === 'csv' ? 'csv' : 'geojson');
+  const filename = `sad_${y}_${mm}.${ext}`;
+
+  const base =
+    (type === 'geojson') ? SAD_GEOJSON_BASE :
+    (type === 'csv')     ? SAD_CSV_BASE     :
+                           SAD_SHP_BASE;
+
+  return joinUrl(base, filename);
 }
+
 function makeChip(label,url){
   const li=document.createElement('li');
   const a=document.createElement('a');
