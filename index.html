@@ -35,7 +35,6 @@
     .btn-secondary{height:42px;border-radius:8px;font-weight:600}
     #map{height:var(--map-h-desktop);border-radius:12px}
     .chart-container{position:relative;height:var(--chart-h-desktop)}
-    .download-group{display:flex;gap:6px}
     .rank-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
     .rank-pager{display:flex;gap:6px;align-items:center}
     .rank-pager .btn{padding:.25rem .5rem}
@@ -94,6 +93,17 @@
     /* esconder corpo quando colapsado */
     .downloads-card.collapsed .card-body{display:none}
 
+    /* Estilo para os novos inputs de período */
+    .period-input-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .period-separator {
+      color: #6b7280;
+      font-weight: 600;
+    }
+
     @media (max-width: 992px){
       .chart-container{height:var(--chart-h-tablet)}
       #map{height:var(--map-h-tablet)}
@@ -104,6 +114,13 @@
       .card-header{row-gap:.25rem}
       .rank-header-stack{flex-direction:column; align-items:flex-start !important; gap:.5rem}
       .rank-controls{gap:6px}
+      .period-input-group {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .period-separator {
+        display: none;
+      }
     }
     @media(max-width:576px){
       .filter-container{grid-template-columns:repeat(2,1fr)}
@@ -140,7 +157,7 @@
       </div>
 
       <div class="filter-item span-2">
-        <label class="filter-label fw-bold" for="estadoFilter">Estado</label>
+        <label class="filter-label fw-bold" for="estadoFilter">Limite Territorial</label>
         <select id="estadoFilter" class="form-select">
           <option value="__AMAZONIA_LEGAL__">Amazônia Legal</option>
           <option value="AC">Acre</option><option value="AP">Amapá</option><option value="AM">Amazonas</option>
@@ -177,23 +194,44 @@
         </select>
       </div>
 
-      <!-- Ano/Mês -->
-      <div class="filter-item span-2">
-        <label class="filter-label fw-bold" for="yearStart">Ano Inicial</label>
-        <select id="yearStart" class="form-select"></select>
-      </div>
-      <div id="monthStartWrap" class="filter-item span-2">
-        <label class="filter-label fw-bold" for="monthStart">Mês Inicial</label>
-        <select id="monthStart" class="form-select"></select>
-      </div>
-
-      <div class="filter-item span-2">
-        <label class="filter-label fw-bold" for="yearEnd">Ano Final</label>
-        <select id="yearEnd" class="form-select"></select>
-      </div>
-      <div id="monthEndWrap" class="filter-item span-2">
-        <label class="filter-label fw-bold" for="monthEnd">Mês Final</label>
-        <select id="monthEnd" class="form-select"></select>
+      <!-- Período no formato MM/AAAA -->
+      <div class="filter-item span-4">
+        <label class="filter-label fw-bold">Período</label>
+        <div class="period-input-group">
+          <select id="monthStart" class="form-select" style="flex: 1;">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <span class="period-separator">/</span>
+          <select id="yearStart" class="form-select" style="flex: 1;"></select>
+          <span class="period-separator">a</span>
+          <select id="monthEnd" class="form-select" style="flex: 1;">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <span class="period-separator">/</span>
+          <select id="yearEnd" class="form-select" style="flex: 1;"></select>
+        </div>
       </div>
 
       <!-- Botões seleção múltipla -->
@@ -271,14 +309,6 @@
               <span class="muted small" id="rank-range-label">mostrando 0–0 de 0</span>
             </div>
           </div>
-
-          <div class="d-flex align-items-center">
-            <div class="download-group">
-              <button class="btn btn-sm btn-outline-secondary" id="btn-bar-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
-              <button class="btn btn-sm btn-outline-secondary" id="btn-bar-csv" title="CSV (todos)"><i class="fa-solid fa-file-csv me-1"></i>CSV</button>
-            </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
-          </div>
         </div>
         <div class="card-body"><div class="chart-container"><canvas id="barChart"></canvas></div></div>
       </div>
@@ -288,12 +318,6 @@
       <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between">
           <div id="map-title"><i class="fas fa-map me-2"></i>Mapa</div>
-          <div class="d-flex align-items-center">
-            <div class="download-group">
-              <button class="btn btn-sm btn-outline-secondary" id="btn-map-png" title="PNG (toda a camada)"><i class="fa-solid fa-image me-1"></i>PNG</button>
-            </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
-          </div>
         </div>
         <div class="card-body p-2 position-relative">
           <div id="map"></div>
@@ -308,15 +332,6 @@
       <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between">
           <div id="line-chart-title"><i class="fas a-chart-line me-2"></i>Série Histórica</div>
-          <div class="d-flex align-items-center">
-            <div class="download-group">
-              <button class="btn btn-sm btn-outline-secondary" id="btn-line-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
-              <button class="btn btn-sm btn-outline-secondary" id="btn-line-csv" title="CSV" disabled aria-disabled="true">
-                <i class="fa-solid fa-file-csv me-1"></i>CSV
-              </button>
-            </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
-          </div>
         </div>
         <div class="card-body"><div class="chart-container"><canvas id="lineChart"></canvas></div></div>
       </div>
@@ -326,13 +341,6 @@
       <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between">
           <div id="yearly-chart-title"><i class="fas fa-chart-area me-2"></i>Série Histórica Anual</div>
-          <div class="d-flex align-items-center">
-            <div class="download-group">
-              <button class="btn btn-sm btn-outline-secondary" id="btn-yearly-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
-              <button class="btn btn-sm btn-outline-secondary" id="btn-yearly-csv" title="CSV"><i class="fa-solid fa-file-csv me-1"></i>CSV</button>
-            </div>
-            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="false" title="Ocultar downloads"><i class="fas fa-eye-slash me-1"></i>Ocultar</button>
-          </div>
         </div>
         <div class="card-body"><div class="chart-container"><canvas id="yearlyChart"></canvas></div></div>
       </div>
@@ -917,7 +925,7 @@ function updateTitles(){
   const singular=territorySingular[tkey]; 
   const label = (dkey==='desmatamento') ? 'Desmatamento' : (dkey==='degradacao' ? 'Degradação' : 'Desmatamento e Degradação');
   document.getElementById('map-title').innerHTML =
-    `<i class="fas fa-map me-2"></i>Mapa de ${label} por ${singular} (${monthName(sM)}/${sY} a ${monthName(eM)}/${eY})`;
+    `<i class="fas fa-map me-2"></i>Mapa de ${label} por ${singular} (${sM}/${sY} a ${eM}/${eY})`;
 
   const anosDisponiveis = (csvData && csvData.length)
     ? Array.from(new Set(csvData.map(d=>+d.ANO))).filter(Boolean).sort((a,b)=>a-b)
@@ -1064,14 +1072,7 @@ function toggleDatasetButtonsInFilters() {
   if (el) el.style.display = '';
 }
 
-function populateMonthSelect(sel){
-  sel.innerHTML = MONTHS.map((nm,i)=>`<option value="${String(i+1).padStart(2,'0')}">${nm}</option>`).join('');
-}
-function setCurrentYear() {
-  const currentYear = new Date().getFullYear();
-  document.getElementById('yearStart').value = currentYear;
-  document.getElementById('yearEnd').value = currentYear;
-}
+// Atualizar a função populateYearSelects para o novo formato
 function populateYearSelects(){
   const cur = new Date().getFullYear();
   const curMonth = new Date().getMonth() + 1; // mês atual (1–12)
@@ -1080,20 +1081,23 @@ function populateYearSelects(){
 
   const ys = document.getElementById('yearStart');
   const ye = document.getElementById('yearEnd');
+  
+  // Limpar selects
+  ys.innerHTML = '';
+  ye.innerHTML = '';
+  
   for(let y=2008; y<=cur; y++){ 
     ys.add(new Option(y,y)); 
     ye.add(new Option(y,y)); 
   }
 
-  setCurrentYear();
-  populateMonthSelect(document.getElementById('monthStart'));
-  populateMonthSelect(document.getElementById('monthEnd'));
-
+  // Definir valores padrão
+  ys.value = cur;
+  ye.value = endYear;
+  
   document.getElementById('monthStart').value = '01';
   document.getElementById('monthEnd').value = String(endMonth).padStart(2,'0');
-  document.getElementById('yearEnd').value = endYear;
 }
-
 
 function clearFilters() {
   selectedMunicipios = [];
@@ -1105,106 +1109,13 @@ function clearFilters() {
   document.getElementById('estadoFilter').value = 'all';
   document.getElementById('jurisdicaoFilter').value = 'all';
   document.getElementById('modalidadeFilter').value = 'all';
-  document.getElementById('monthStart').value = '01';
-  document.getElementById('monthEnd').value = String(new Date().getMonth()+1).padStart(2,'0');
-  setCurrentYear();
+  
+  // Resetar para valores padrão
+  populateYearSelects();
+  
   toggleDatasetButtonsInFilters();
   updateTitles();
   updateDashboard();
-}
-
-function chartPNG(target, baseName){
-  let canvas = null;
-  if (target && target.canvas instanceof HTMLCanvasElement) canvas = target.canvas;
-  else if (target instanceof HTMLCanvasElement) canvas = target;
-  else if (typeof target === 'string') canvas = document.getElementById(target);
-  if (!canvas) { alert('Gráfico ainda não está pronto para exportar.'); return; }
-  try {
-    const dataURL = canvas.toDataURL('image/png', 1.0);
-    const a = document.createElement('a'); a.href = dataURL; a.download = `${slugify(baseName)}_${nowStamp()}.png`; a.click();
-  } catch (e) { console.error('Falha ao exportar PNG:', e); alert('Não foi possível exportar a imagem agora.'); }
-}
-function downloadBlob(filename,blob){ const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},0); }
-function buildRankingCSV(entries){
-  const header = ['Posição','Território','Área (km²)'];
-  const rows = [header];
-  entries.forEach(([nome,valor],i)=> rows.push([i+1, nome, (valor||0).toLocaleString('pt-BR',{maximumFractionDigits:2})]) );
-  return toCSV(rows);
-}
-function exportRankingCSVAll(){
-  const csv = buildRankingCSV(rankingAll);
-  downloadBlob(`ranking_completo_${nowStamp()}.csv`, new Blob([csv], {type:'text/csv;charset=utf-8'}));
-}
-function mapPNG() {
-  try {
-    const geojsonData = window._lastGeo;
-    const aggregated  = window._lastAggreg || {};
-    const territoryType = (typeof categoriaAtual === 'function') ? categoriaAtual() : 'estados';
-    const nameKey = territoryNameMapping[territoryType];
-
-    if (!geojsonData || !geojsonData.features || !Object.keys(aggregated).length) { alert('Mapa ainda não está pronto para exportar.'); return; }
-
-    const keysFiltradas = Object.keys(aggregated);
-    const feats = geojsonData.features.filter(f => keysFiltradas.includes(f.properties?.[nameKey]));
-    if (!feats.length) { alert('Não há feições para exportar com os filtros atuais.'); return; }
-
-    const offDiv = document.createElement('div');
-    offDiv.style.cssText = 'position:fixed;left:-99999px;top:-99999px;width:1200px;height:900px;z-index:-1;';
-    document.body.appendChild(offDiv);
-
-    const offMap = L.map(offDiv, { zoomControl:false, attributionControl:false, preferCanvas:true });
-    const tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '', subdomains: 'abcd', maxZoom: 20, crossOrigin: true }).addTo(offMap);
-
-    const values = keysFiltradas.map(k => aggregated[k]||0);
-    const scale = currentColorScale(values);
-
-    const layer = L.geoJSON({ type: 'FeatureCollection', features: feats }, {
-      style: f => {
-        const nome = f.properties?.[nameKey];
-        return { fillColor: scale(aggregated[nome] || 0), weight: 1.2, opacity: 1, color: '#555', fillOpacity: .75 };
-      }
-    }).addTo(offMap);
-
-    let bounds; try { bounds = layer.getBounds(); } catch { bounds = null; }
-    if (!bounds || !bounds.isValid()) { bounds = L.latLngBounds([[-18, -75], [6, -44]]); }
-
-    const pSW = offMap.options.crs.project(bounds.getSouthWest());
-    const pNE = offMap.options.crs.project(bounds.getNorthEast());
-    const dx  = Math.max(1, Math.abs(pNE.x - pSW.x));
-    const dy  = Math.max(1, Math.abs(pNE.y - pSW.y));
-    const aspect = dx / dy;
-
-    const MAX_W = 2200, MAX_H = 1600;
-    let outW = MAX_W, outH = Math.round(outW / aspect);
-    if (outH > MAX_H) { outH = MAX_H; outW = Math.round(outH * aspect); }
-    offDiv.style.width  = outW + 'px';
-    offDiv.style.height = outH + 'px';
-    offMap.invalidateSize(false);
-    offMap.fitBounds(bounds, { padding: [40, 40] });
-
-    const snap = () => {
-      if (typeof leafletImage !== 'function') {
-        html2canvas(offDiv, { useCORS: true, background: '#ffffff', scale: 1.5 })
-          .then(cv => cv.toBlob(b => { downloadBlob(`mapa_${nowStamp()}.png`, b); offMap.remove(); offDiv.remove(); }));
-        return;
-      }
-      leafletImage(offMap, (err, canvas) => {
-        if (err || !canvas) {
-          html2canvas(offDiv, { useCORS: true, background: '#ffffff', scale: 1.5 })
-            .then(cv => cv.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b)));
-        } else {
-          canvas.toBlob(b => downloadBlob(`mapa_${nowStamp()}.png`, b));
-        }
-        offMap.remove(); offDiv.remove();
-      });
-    };
-
-    tile.once('load', () => setTimeout(snap, 80));
-    setTimeout(snap, 2000);
-  } catch (e) {
-    console.error('Falha ao exportar mapa:', e);
-    alert('Não foi possível exportar o mapa agora.');
-  }
 }
 
 function debounce(fn, delay){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), delay); }; }
@@ -1336,6 +1247,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     updateBackgroundOutlines();
   });
 
+  // Atualizar event listeners para os novos selects de período
   document.getElementById('yearStart').addEventListener('change', updateTitles);
   document.getElementById('yearEnd').addEventListener('change',   updateTitles);
   document.getElementById('monthStart').addEventListener('change', updateTitles);
@@ -1348,30 +1260,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('rank-prev').addEventListener('click',  ()=> setRankPage(rankPage-1));
   document.getElementById('rank-next').addEventListener('click',  ()=> setRankPage(rankPage+1));
   document.getElementById('rank-last').addEventListener('click',  ()=> setRankPage( totalPages()-1 ));
-
-  const titleBar  = () => document.getElementById('bar-chart-title').innerText.trim();
-  const titleLine = () => document.getElementById('line-chart-title').innerText.trim();
-  const titleYear = () => document.getElementById('yearly-chart-title').innerText.trim();
-
-  document.getElementById('btn-bar-png').addEventListener('click', ()=>chartPNG('barChart',titleBar()));
-  document.getElementById('btn-line-png').addEventListener('click',()=>chartPNG('lineChart',titleLine()));
-  document.getElementById('btn-yearly-png').addEventListener('click',()=>chartPNG('yearlyChart',titleYear()));
-
-  document.getElementById('btn-bar-csv').addEventListener('click', exportRankingCSVAll);
-  document.getElementById('btn-map-png').addEventListener('click', mapPNG);
-
-  document.querySelectorAll('.download-group').forEach(g=> g.classList.add('d-none'));
-  document.querySelectorAll('.dl-toggle').forEach(btn=>{
-    btn.setAttribute('aria-pressed','true');
-    btn.innerHTML = '<i class="fas fa-eye me-1"></i>Mostrar';
-    btn.addEventListener('click',()=>{
-      const header = btn.closest('.card-header');
-      const group  = header.querySelector('.download-group');
-      const hidden = group.classList.toggle('d-none');
-      btn.setAttribute('aria-pressed', hidden?'true':'false');
-      btn.innerHTML = hidden ? '<i class="fas fa-eye me-1"></i>Mostrar' : '<i class="fas fa-eye-slash me-1"></i>Ocultar';
-    });
-  });
 
   // ===== Downloads – SAD (novo): colapso + render =====
   const downloadCard = document.getElementById('downloads-sad-card');
