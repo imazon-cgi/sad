@@ -151,6 +151,7 @@
         <label class="filter-label fw-bold" for="categoriaFilter">Modalidade Territorial</label>
         <select id="categoriaFilter" class="form-select">
           <option value="estados">Estados</option>
+          <option value="municipios">Municípios</option>
           <option value="terrasIndigenas">Terras Indígenas</option>
           <option value="unidadesConservacao">Unidades de Conservação</option>
           <option value="assentamentos">Assentamentos</option>
@@ -862,13 +863,13 @@ function updateMap(geojsonData, aggregatedData, territoryType){
   updateBackgroundOutlines();
 }
 
-const territoryNaming={estados:{nome:'Estados',genero:'m'}, terrasIndigenas:{nome:'Terras Indígenas',genero:'f'}, unidadesConservacao:{nome:'Unidades de Conservação',genero:'f'}, assentamentos:{nome:'Assentamentos',genero:'m'}};
+const territoryNaming={estados:{nome:'Estados',genero:'m'}, municipios:{nome:'Municípios',genero:'m'}, terrasIndigenas:{nome:'Terras Indígenas',genero:'f'}, unidadesConservacao:{nome:'Unidades de Conservação',genero:'f'}, assentamentos:{nome:'Assentamentos',genero:'m'}};
 const dataTypeLabel={
   desmatamento:{m:'Mais Desmatados',f:'Mais Degradadas'},
   degradacao:{m:'Mais Degradados',f:'Mais Degradadas'},
   todos:{m:'Mais Impactados',f:'Mais Impactadas'}
 };
-const territorySingular={estados:'Estado',terrasIndigenas:'Terra Indígena',unidadesConservacao:'Unidade de Conservação',assentamentos:'Assentamento'};
+const territorySingular={estados:'Estado',municipios:'Município',terrasIndigenas:'Terra Indígena',unidadesConservacao:'Unidade de Conservação',assentamentos:'Assentamento'};
 
 function updateTitles(){
   const tkey=categoriaAtual(); 
@@ -1036,23 +1037,45 @@ function toggleDatasetButtonsInFilters() {
 
 // Período
 function populateYearSelects(){
-  const cur = new Date().getFullYear();
-  const curMonth = new Date().getMonth() + 1;
-  const endMonth = ((curMonth - 2) <= 0) ? (12 + (curMonth - 2)) : (curMonth - 2);
-  const endYear = ((curMonth - 2) <= 0) ? (cur - 1) : cur;
+  const MAX_YEAR = 2025;
+  const MAX_MONTH = 8; // travado até agosto/2025
 
   const ys = document.getElementById('yearStart');
   const ye = document.getElementById('yearEnd');
   ys.innerHTML = '';
   ye.innerHTML = '';
-  for(let y=2008; y<=cur; y++){ 
-    ys.add(new Option(y,y)); 
-    ye.add(new Option(y,y)); 
+  for(let y=2008; y<=MAX_YEAR; y++){
+    ys.add(new Option(y,y));
+    ye.add(new Option(y,y));
   }
-  ys.value = cur;
-  ye.value = endYear;
+  // Default: 01/2025 a 08/2025
+  ys.value = String(MAX_YEAR);
+  ye.value = String(MAX_YEAR);
   document.getElementById('monthStart').value = '01';
-  document.getElementById('monthEnd').value = String(endMonth).padStart(2,'0');
+  document.getElementById('monthEnd').value = String(MAX_MONTH).padStart(2,'0');
+}
+
+// Impede seleção além de 08/2025 no "fim"
+function enforceEndMonthLimit(){
+  const MAX_YEAR = 2025;
+  const MAX_MONTH = 8;
+  const ye = document.getElementById('yearEnd');
+  const me = document.getElementById('monthEnd');
+  const selectedYear = parseInt(ye.value,10);
+
+  // Desabilita/abilita meses conforme o ano final
+  Array.from(me.options).forEach(opt => {
+    const m = parseInt(opt.value,10);
+    opt.disabled = (selectedYear === MAX_YEAR && m > MAX_MONTH);
+  });
+
+  // Garante que o mês não ultrapasse o limite
+  if (selectedYear > MAX_YEAR) {
+    ye.value = String(MAX_YEAR);
+  }
+  if (parseInt(me.value,10) > MAX_MONTH && selectedYear === MAX_YEAR) {
+    me.value = String(MAX_MONTH).padStart(2,'0');
+  }
 }
 
 function clearFilters() {
@@ -1060,12 +1083,13 @@ function clearFilters() {
   selectedTerrasIndigenas = [];
   selectedUCs = [];
   selectedAssentamentos = [];
-  document.getElementById('sadFilter').value = 'desmatamento';
+  document.getElementById('sadFilter').value = 'todos';
   document.getElementById('categoriaFilter').value = 'estados';
   document.getElementById('estadoFilter').value = '__AMAZONIA_LEGAL__'; // corrigido
   document.getElementById('jurisdicaoFilter').value = 'all';
   document.getElementById('modalidadeFilter').value = 'all';
   populateYearSelects();
+  enforceEndMonthLimit();
   toggleDatasetButtonsInFilters();
   updateTitles();
   updateDashboard();
@@ -1107,16 +1131,16 @@ function joinUrl(base, path){
 
 const MONTHS_ABBR = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 function monthsForSADYear(y){
-  const now=new Date(), cy=now.getFullYear(), cm=now.getMonth()+1;
-  const lastComplete = Math.max(cm-2, 0);
-  if(y===2008) return [8,9,10,11,12];
-  if(y<cy)     return [1,2,3,4,5,6,7,8,9,10,11,12];
-  if(y===cy)   return Array.from({length:lastComplete},(_,i)=>i+1);
+  const MAX_YEAR = 2025;
+  const MAX_MONTH = 8;
+  if (y === 2008) return [8,9,10,11,12];
+  if (y < MAX_YEAR) return [1,2,3,4,5,6,7,8,9,10,11,12];
+  if (y === MAX_YEAR) return Array.from({length:MAX_MONTH},(_,i)=>i+1);
   return [];
 }
 function sadMonthlyUrl(y, m, type = SAD_SELECTED_TYPE){
   const mm       = String(m).padStart(2, '0');
-  const ext      = (type === 'shp') ? 'zip' : (type === 'csv' ? 'csv' : 'geojson');
+  const ext      = (type === 'csv') ? 'csv' : 'zip'; // geojson agora em .zip
   const filename = `sad_${y}_${mm}.${ext}`;
   const base =
     (type === 'geojson') ? SAD_GEOJSON_BASE :
@@ -1139,7 +1163,7 @@ async function buildSADYearBlock(y){
 
   const formats=document.createElement('div'); formats.className='format-wrap';
   const fMensal=document.createElement('div'); fMensal.className='format-card';
-  const titleKind = SAD_SELECTED_TYPE==='geojson' ? 'GeoJSON mensal'
+  const titleKind = SAD_SELECTED_TYPE==='geojson' ? 'GeoJSON mensal (ZIP)'
                     : SAD_SELECTED_TYPE==='csv'   ? 'CSV mensal'
                     : 'Shapefile mensal (ZIP)';
   fMensal.innerHTML=`<div class="format-title">${titleKind}</div>`;
@@ -1162,7 +1186,7 @@ async function buildSADYearBlock(y){
 async function renderDownloadsSAD(){
   const ul=document.getElementById('sad-downloads-list');
   ul.innerHTML='';
-  const curYear = new Date().getFullYear();
+  const curYear = Math.min(new Date().getFullYear(), 2025);
   for(let y=curYear; y>=2008; y--){
     const blk = await buildSADYearBlock(y);
     const li = document.createElement('li'); li.appendChild(blk); ul.appendChild(li);
@@ -1172,6 +1196,7 @@ async function renderDownloadsSAD(){
 /* ========= DOM Ready ========= */
 document.addEventListener('DOMContentLoaded', ()=>{
   populateYearSelects();
+  enforceEndMonthLimit();
   toggleUCFields();
   updateTitles();
   toggleDatasetButtonsInFilters();
@@ -1196,7 +1221,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   });
 
   document.getElementById('yearStart').addEventListener('change', updateTitles);
-  document.getElementById('yearEnd').addEventListener('change',   updateTitles);
+  document.getElementById('yearEnd').addEventListener('change',   ()=>{ enforceEndMonthLimit(); updateTitles(); });
   document.getElementById('monthStart').addEventListener('change', updateTitles);
   document.getElementById('monthEnd').addEventListener('change',   updateTitles);
 
