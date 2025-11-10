@@ -30,9 +30,15 @@
     .filter-item{display:flex;flex-direction:column;gap:6px}
     .span-3{grid-column:span 3}.span-2{grid-column:span 2}.span-4{grid-column:span 4}.span-1{grid-column:span 1}
     .form-select,.form-control{height:42px;border-radius:8px;border:1px solid #ddd}
-    .btn-primary{height:42px;background:var(--primary-color);border-color:var(--primary-color);border-radius:8px;font-weight:600}
-    .btn-primary:hover{background:var(--primary-dark);border-color:var(--primary-dark)}
-    .btn-secondary{height:42px;border-radius:8px;font-weight:600}
+    .btn-primary{height:42px;background:#fff;border-color:#ddd;color:#6b7280;border-radius:8px;font-weight:600}
+    .btn-primary:hover{background:#f8f9fa;border-color:#cfd4da;color:#374151}
+    .btn-secondary{height:42px;background:#fff;border-color:#ddd;color:#6b7280;border-radius:8px;font-weight:600}
+    .btn-secondary:hover{background:#f8f9fa;border-color:#cfd4da;color:#374151}
+    /* Botões do mapa (Leaflet) */
+    .leaflet-bar a{background:#fff;color:#6b7280;border:1px solid #ddd}
+    .leaflet-bar a:hover,.leaflet-bar a:focus{background:#f8f9fa;color:#374151;border-color:#cfd4da}
+    .leaflet-touch .leaflet-bar a{width:34px;height:34px;line-height:34px}
+    .leaflet-control-zoom a{font-weight:600}
     #map{height:var(--map-h-desktop);border-radius:12px}
     .chart-container{position:relative;height:var(--chart-h-desktop)}
     .rank-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -310,6 +316,12 @@
       <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between">
           <div id="map-title"><i class="fas fa-map me-2"></i>Mapa</div>
+          <div class="d-flex align-items-center">
+            <div class="download-group d-none">
+              <button class="btn btn-sm btn-outline-secondary" id="download-map-png" title="PNG"><i class="fa-solid fa-image me-1"></i>PNG</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dl-toggle ms-2" aria-pressed="true" title="Mostrar downloads"><i class="fas fa-eye me-1"></i>Mostrar</button>
+          </div>
         </div>
         <div class="card-body p-2 position-relative">
           <div id="map"></div>
@@ -865,6 +877,18 @@ function downloadChartPNG(chartInstance, fileName){
   if (!chartInstance) return; const dataUrl = chartInstance.toBase64Image('image/png',1.0); triggerDownload(dataUrl,fileName);
 }
 
+// Baixar imagem do mapa (Leaflet)
+function downloadMapPNG(mapInstance, fileName){
+  if (!mapInstance || typeof leafletImage === 'undefined') return;
+  try{
+    leafletImage(mapInstance, function(err, canvas){
+      if (err || !canvas) return;
+      const dataUrl = canvas.toDataURL('image/png');
+      triggerDownload(dataUrl, fileName);
+    });
+  }catch(e){ /* silencioso */ }
+}
+
 function csvFromBarChartPage(){
   if(!barChart) return '';
   const labels = barChart.data?.labels || [];
@@ -1354,6 +1378,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if (yearlyPngBtn) yearlyPngBtn.addEventListener('click', ()=> downloadChartPNG(yearlyChart, `serie-historica-anual-${categoriaAtual()}-${nowStamp()}.png`));
   if (yearlyCsvBtn) yearlyCsvBtn.addEventListener('click', ()=> downloadCSV(csvFromYearlyChart(), `serie-historica-anual-${categoriaAtual()}-${nowStamp()}.csv`));
   if (yearlyCsvAllBtn) yearlyCsvAllBtn.addEventListener('click', ()=> downloadCSV(csvFromYearlyChart(), `serie-historica-anual-todos-${categoriaAtual()}-${nowStamp()}.csv`));
+
+  // Download - Mapa
+  const mapPngBtn = document.getElementById('download-map-png');
+  if (mapPngBtn) mapPngBtn.addEventListener('click', ()=> downloadMapPNG(map, `mapa-${categoriaAtual()}-${nowStamp()}.png`));
 
   const downloadCard = document.getElementById('downloads-sad-card');
   const toggleBtn    = document.getElementById('downloads-sad-toggle');
