@@ -338,7 +338,7 @@
         <button class="typebtn active" data-type="geojson" role="tab" aria-selected="true" title="Mensal">
           <i class="fa-regular fa-map"></i> GeoJSON
         </button>
-        <button class="typebtn" data-type="csv" role="tab" aria-selected="false" title="CSV mensal">
+        <button class="typebtn" data-type="csv" role="tab" aria-selected="false" title="CSV mensal (ZIP)">
           <i class="fa-regular fa-file-lines"></i> CSV
         </button>
         <button class="typebtn" data-type="shp" role="tab" aria-selected="false" title="Shapefile mensal (ZIP)">
@@ -1140,7 +1140,7 @@ function monthsForSADYear(y){
 }
 function sadMonthlyUrl(y, m, type = SAD_SELECTED_TYPE){
   const mm       = String(m).padStart(2, '0');
-  const ext      = (type === 'csv') ? 'csv' : 'zip'; // geojson agora em .zip
+  const ext      = 'zip'; // todos os formatos (geojson/csv/shp) baixam como ZIP
   const filename = `sad_${y}_${mm}.${ext}`;
   const base =
     (type === 'geojson') ? SAD_GEOJSON_BASE :
@@ -1164,7 +1164,7 @@ async function buildSADYearBlock(y){
   const formats=document.createElement('div'); formats.className='format-wrap';
   const fMensal=document.createElement('div'); fMensal.className='format-card';
   const titleKind = SAD_SELECTED_TYPE==='geojson' ? 'GeoJSON mensal (ZIP)'
-                    : SAD_SELECTED_TYPE==='csv'   ? 'CSV mensal'
+                    : SAD_SELECTED_TYPE==='csv'   ? 'CSV mensal (ZIP)'
                     : 'Shapefile mensal (ZIP)';
   fMensal.innerHTML=`<div class="format-title">${titleKind}</div>`;
 
