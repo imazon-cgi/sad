@@ -17179,3 +17179,115 @@ degradacao,8,2025,Sentinel-2,RO,0.459292,Porto Velho,FLONA de Jacundá,Uso Suste
 degradacao,8,2025,Sentinel-2,RO,0.387990,Porto Velho,FLONA de Jacundá,Uso Sustentável,Federal
 degradacao,8,2025,Sentinel-2,RO,16.609217,Porto Velho,FLONA de Jacundá,Uso Sustentável,Federal
 degradacao,8,2025,Sentinel-2,MT,0.034148,Nova Bandeirantes,PARNA do Juruena,Proteção Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.132441,Nova UbiratÃ£,ESEC Rio Ronuro,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.045855,Ã“bidos,FES de Trombetas,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,MT,8.998708,Novo Mundo,PES Cristalino II,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Landsat-8,TO,3.935455,Araguacema,APA Leandro (Ilha do Bananal/CantÃ£o),Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,AP,2.644759,AmapÃ¡,REBIO do Lago de Piratuba,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Landsat-8,MT,1.917089,Novo Mundo,PES Cristalino II,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Landsat-8,TO,0.925195,Araguacema,APA Leandro (Ilha do Bananal/CantÃ£o),Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,PA,0.605407,Altamira,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,MT,0.272805,Novo Mundo,PES Cristalino II,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Landsat-8,PA,0.261970,Altamira,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,RO,0.111423,Porto Velho,FERS do Rio Madeira (B),Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,RO,0.108175,Porto Velho,FERS do Rio Madeira (B),Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,RO,0.103655,Porto Velho,RESEX Jaci ParanÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,RO,0.046433,Porto Velho,RESEX Jaci ParanÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Landsat-8,PA,0.042447,Altamira,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.151919,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,1.063263,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.982192,SÃ£o FÃ©lix do Xingu,ESEC da Terra do Meio,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,RO,0.801621,SÃ£o Francisco do GuaporÃ©,REBIO do GuaporÃ©,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.787731,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.705269,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.553931,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.543287,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.432956,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.425556,GuajarÃ¡-Mirim,PARNA PacaÃ¡s Novos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.356619,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.307737,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,AM,0.265007,Canutama,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.248006,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.242746,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.209092,Novo Santo AntÃ´nio,PES do Araguaia,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.197737,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.178415,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,RO,0.176497,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,AM,0.088465,ManicorÃ©,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.159997,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.143846,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.131850,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.131166,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.130561,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.128383,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.126755,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.124532,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.122798,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.104178,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.103783,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.054656,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.096916,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.091978,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.080513,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.080025,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.077772,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.074163,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.073762,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.071033,Porto Velho,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,RO,0.067214,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,RO,0.066262,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.062218,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.059295,Jacareacanga,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+degradacao,9,2025,Sentinel-2,RO,0.059056,Porto Velho,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.059015,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.057999,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.056942,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.053368,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.051983,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.051005,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.049845,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.049729,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.046919,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.045794,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.045075,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.043145,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.042274,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.039952,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.039688,Novo Santo AntÃ´nio,PES do Araguaia,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.037084,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.037001,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.036659,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.035895,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.034359,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.034040,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.033887,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.033253,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.032594,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.032546,Porto Velho,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.032109,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.031672,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.031606,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.031094,Porto Velho,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,PA,0.030484,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.029382,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.028462,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.028263,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.027969,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.027468,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.026855,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.026339,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.025516,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.024928,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.024282,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.024111,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.023023,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.022959,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.022417,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,PA,0.021765,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.021126,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+degradacao,9,2025,Sentinel-2,MT,0.019743,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.019276,Porto Velho,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,AM,0.019027,LÃ¡brea,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,MT,0.017921,Colniza,ESEC do Rio Roosevelt,ProteÃ§Ã£o Integral,Estadual
+degradacao,9,2025,Sentinel-2,RO,0.011338,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal
+degradacao,9,2025,Sentinel-2,RO,0.010568,Machadinho D'Oeste,PARNA dos Campos AmazÃ´nicos,ProteÃ§Ã£o Integral,Federal

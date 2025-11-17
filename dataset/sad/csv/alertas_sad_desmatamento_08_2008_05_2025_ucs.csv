@@ -63765,3 +63765,495 @@ desmatamento,8,2025,Sentinel-2,PA,0.014012,Altamira,FES do Iriri,Uso Sustentáve
 desmatamento,8,2025,Sentinel-2,AC,0.012991,Cruzeiro do Sul,RESEX Riozinho da Liberdade,Uso Sustentável,Federal
 desmatamento,8,2025,Sentinel-2,AC,0.012252,Mâncio Lima,PARNA da Serra do Divisor,Proteção Integral,Federal
 desmatamento,8,2025,Sentinel-2,AC,0.011166,Xapuri,RESEX Chico Mendes,Uso Sustentável,Federal
+desmatamento,9,2025,Landsat-8,PA,5.883673,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,PA,0.814605,Prainha,FES do Paru,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,RO,0.482333,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,PA,0.417529,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,RO,0.236379,Porto Velho,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Landsat-8,AC,0.036307,Bujari,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,PA,0.183674,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,PA,0.153464,Prainha,FES do Paru,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AM,0.142856,AlvarÃ£es,FLONA de TefÃ©,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.117089,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AC,0.094552,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,RO,0.085806,Porto Velho,RESEX Jaci ParanÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,PA,0.080351,Portel,FLONA CaxiuanÃ£,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.076353,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AC,0.061300,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.059697,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.043362,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AC,0.042392,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,PA,0.040595,Prainha,FES do Paru,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,RO,0.031283,Porto Velho,RESEX Jaci ParanÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,MA,0.030561,PalmeirÃ¢ndia,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AC,0.030265,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.029643,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.026778,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.026074,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.023725,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AC,0.016261,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AC,0.015665,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.015652,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Landsat-8,AC,0.014586,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.014488,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Landsat-8,AC,0.010210,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.423470,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.401467,Altamira,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,RO,0.326586,Machadinho D'Oeste,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.288393,TurilÃ¢ndia,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.273862,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MA,0.267954,TurilÃ¢ndia,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,RO,0.214839,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.178393,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.024825,Canutama,PARNA Mapinguari,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.021842,TucuruÃ­,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MT,0.156295,Colniza,RESEX Guariba-Roosevelt,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.137433,Almeirim,FES do Paru,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.127592,TarauacÃ¡,FES do Rio Liberdade,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.123610,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.119885,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.118586,AfuÃ¡,APA ArquipÃ©lago do MarajÃ³,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.116661,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.114750,FeijÃ³,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.109242,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.099692,Bujari,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.096913,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.089441,Sena Madureira,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.075921,RurÃ³polis,RESEX Riozinho do AnfrÃ­sio,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.079951,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.077709,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.076549,Tartarugalzinho,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.074458,Prainha,FES do Paru,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.074038,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.070877,Oiapoque,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.070865,TurilÃ¢ndia,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.070061,Tartarugalzinho,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.069592,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.069075,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.068273,Aveiro,FLONA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.067026,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.066932,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.066421,Bujari,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.065693,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.065482,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.064739,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.064361,Prainha,FES do Paru,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.063309,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.063149,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.062691,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.062459,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.062357,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.062253,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.062072,OriximinÃ¡,FLONA de SaracÃ¡-Taquera,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MT,0.061873,Colniza,RESEX Guariba-Roosevelt,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.061491,Oiapoque,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.061315,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.060153,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.060072,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.059393,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AP,0.059303,Laranjal do Jari,RESEX do Rio Cajari,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.059172,TucuruÃ­,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.058810,AfuÃ¡,APA ArquipÃ©lago do MarajÃ³,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.058835,Pinheiro,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.058719,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.058447,Novo Repartimento,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.058366,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.058321,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.057483,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.056921,TapauÃ¡,RDS PiagaÃ§u-Purus,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.056754,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.056592,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.056426,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.055791,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.055811,TrairÃ£o,FLONA de Itaituba II,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.055305,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.054986,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MT,0.054819,AripuanÃ£,RESEX Guariba-Roosevelt,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.054710,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.053998,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.053346,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.053066,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.052934,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.052792,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.052399,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.052337,Coari,RESEX CatuÃ¡-Ipixuna,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.052187,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.010625,Pauini,FLONA do Purus,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.051901,TucuruÃ­,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.050887,Oiapoque,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.050800,NhamundÃ¡,APA Guajuma,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.050210,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.049567,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.048980,Pinheiro,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.048880,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.048860,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.048818,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.048636,MÃ¢ncio Lima,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.047768,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MT,0.047641,Colniza,RESEX Guariba-Roosevelt,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.047639,TarauacÃ¡,RESEX do Alto TarauacÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.047437,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.046881,Itaituba,PARNA do Jamanxim,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AP,0.046950,CalÃ§oene,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.046465,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.046292,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.046299,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.045957,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.045855,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.045579,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.045390,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.044941,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.044555,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.044248,MauÃ©s,FES de MauÃ©s,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.044119,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.043955,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.043773,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MA,0.043471,Penalva,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.043286,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.043239,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.042927,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.042770,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.042750,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.042649,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.042207,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.042245,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.041987,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.041929,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.041905,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.041919,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.041482,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.041126,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.041049,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.040183,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.040061,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.039980,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.039859,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.039680,Itaituba,PARNA do Jamanxim,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.039750,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.039640,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.039441,Prainha,RESEX Renascer,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.039356,AlvarÃ£es,FLONA de TefÃ©,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.039297,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.039333,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.038899,Novo Repartimento,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.038806,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.038589,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.038648,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.038554,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.038204,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.038078,MonÃ§Ã£o,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.037681,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.037483,Itapiranga,RDS do UatumÃ£,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.037340,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.037113,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.036629,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.036503,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.036524,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,RO,0.036429,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.036202,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.036103,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.036071,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.036069,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.035933,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.035817,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.035476,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.035550,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.035380,TarauacÃ¡,RESEX do Alto TarauacÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.035450,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.035316,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.035205,Terra Santa,FLONA de SaracÃ¡-Taquera,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.035176,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.035157,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AP,0.035012,CalÃ§oene,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.034934,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034838,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034737,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.034729,Ipixuna,RESEX do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.034698,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034642,JordÃ£o,RESEX do Alto TarauacÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034554,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034511,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.034505,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.034422,Itaituba,PARNA do Jamanxim,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034153,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034157,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034070,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.034004,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.033873,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.033862,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.033913,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.033860,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.033741,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.033736,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.033726,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.033663,OriximinÃ¡,FES de Trombetas,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.033697,Oiapoque,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.033647,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.033481,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.033235,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.033070,OriximinÃ¡,FES de Trombetas,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.033116,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.033052,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.032833,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.032420,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.032253,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.031634,Capixaba,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.032135,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.032048,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.032027,Sena Madureira,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.032019,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.031950,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.031910,MauÃ©s,FES de MauÃ©s,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.031864,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.031710,TarauacÃ¡,FES do Rio Liberdade,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.031635,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.031594,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.031317,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.031172,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.031223,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030825,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AP,0.030875,Laranjal do Jari,RESEX do Rio Cajari,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030778,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030803,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.030738,MauÃ©s,FES de MauÃ©s,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.030674,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030670,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030560,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030358,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030376,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030359,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.030363,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.030447,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MA,0.030351,Cajari,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.030370,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.030182,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.030059,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029962,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.030000,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029890,FeijÃ³,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029873,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.029782,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.029716,Bujari,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029559,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.029603,Sena Madureira,RESEX do CazumbÃ¡-Iracema,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.029414,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.029449,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029425,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029418,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.029389,Curralinho,APA ArquipÃ©lago do MarajÃ³,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029410,Bujari,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.029325,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.029151,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.029199,FeijÃ³,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029128,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.029096,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.029081,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.029096,SÃ£o FÃ©lix do Xingu,APA Triunfo do Xingu,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.029028,TucuruÃ­,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.029027,TefÃ©,RESEX CatuÃ¡-Ipixuna,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.028721,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.028714,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.028661,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.028205,Faro,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.028374,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.028276,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MA,0.027621,Carutapera,APA das ReentrÃ¢ncias Maranhenses,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.028025,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.027901,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.027871,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.027834,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.027679,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.027703,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.027683,Tartarugalzinho,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.027567,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.027476,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.027396,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.027379,Carauari,RDS de Uacari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.027440,Cajari,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.027244,TefÃ©,RESEX CatuÃ¡-Ipixuna,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.027241,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026974,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026981,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.019730,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.026835,JordÃ£o,RESEX do Alto TarauacÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026620,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026563,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.026638,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026471,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026542,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026284,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026269,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026283,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026234,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.026121,Curralinho,APA ArquipÃ©lago do MarajÃ³,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.026121,Curralinho,RESEX Terra Grande-PracuÃºba,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026068,TarauacÃ¡,FES do Rio Liberdade,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.026081,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MT,0.026123,Colniza,RESEX Guariba-Roosevelt,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.025979,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.026024,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025986,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.025939,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.025907,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025671,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025679,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025514,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025547,MÃ¢ncio Lima,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.025427,NhamundÃ¡,APA Guajuma,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.025394,TarauacÃ¡,FES do Rio Liberdade,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,RR,0.025332,UiramutÃ£,PARNA do Monte Roraima,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025314,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025323,Sena Madureira,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025264,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025288,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025057,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025143,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.025039,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024949,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024854,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024922,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024776,TarauacÃ¡,RESEX Riozinho da Liberdade,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024675,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.024699,TefÃ©,RESEX CatuÃ¡-Ipixuna,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.024572,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MA,0.024588,Penalva,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.024634,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024476,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.024425,OriximinÃ¡,ESEC do GrÃ£o-ParÃ¡,ProteÃ§Ã£o Integral,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.024350,JordÃ£o,RESEX do Alto TarauacÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.024406,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024327,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.024269,TurilÃ¢ndia,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.024197,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.024149,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024091,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024117,TarauacÃ¡,FES do Mogno,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.024075,MÃ¢ncio Lima,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021951,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.024030,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023803,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.023761,MauÃ©s,FES de MauÃ©s,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.023776,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.023789,Portel,FLONA CaxiuanÃ£,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.023750,MauÃ©s,FES de MauÃ©s,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.023735,Breves,APA ArquipÃ©lago do MarajÃ³,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.023670,Manaus,RDS Puranga Conquista,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.023721,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023674,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.023592,OriximinÃ¡,FES de Trombetas,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.023634,Sena Madureira,RESEX do CazumbÃ¡-Iracema,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.013687,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.023433,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023440,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023420,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AP,0.023343,Oiapoque,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.023261,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023270,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023268,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.023243,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023056,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.023132,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.023055,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.023008,Porto Walter,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022866,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022944,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022847,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022708,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022660,Sena Madureira,RESEX do CazumbÃ¡-Iracema,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022604,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022595,Porto Walter,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022535,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022452,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022378,Sena Madureira,RESEX do CazumbÃ¡-Iracema,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022386,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.021298,Altamira,RESEX Riozinho do AnfrÃ­sio,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.022151,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.022088,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.021914,Oeiras do ParÃ¡,RESEX AriÃ³ca PruanÃ£,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021866,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021846,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021784,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021775,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.011529,Capixaba,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.021638,Beruri,RDS PiagaÃ§u-Purus,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.021552,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021616,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021514,Rio Branco,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021364,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021393,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.021339,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.021289,Oiapoque,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.021290,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021192,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.021203,Manaus,APA Margem Esquerda do Rio Negro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.021203,Altamira,RESEX Riozinho do AnfrÃ­sio,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021195,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021196,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.021184,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.021135,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.021024,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.020893,MauÃ©s,FLONA de Pau-Rosa,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.020918,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AP,0.020927,PracuÃºba,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.020891,JordÃ£o,RESEX do Alto TarauacÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.020832,MÃ¢ncio Lima,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AP,0.020669,CalÃ§oene,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.020736,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.020600,Porto Walter,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.020486,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.020535,Manoel Urbano,FES Afluente do Complexo do Seringal Jurupari,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.020540,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.020398,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.020385,Novo Repartimento,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.020311,Capixaba,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.020243,Manacapuru,APA Margem Direita do Rio Negro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.020092,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.020107,TefÃ©,FLONA de TefÃ©,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.020088,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.020137,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.019822,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.019559,Iranduba,RDS do Rio Negro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.019607,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.019551,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.019528,OriximinÃ¡,FLONA de SaracÃ¡-Taquera,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.019408,AlvarÃ£es,FLONA de TefÃ©,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.019399,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.019341,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.019229,OriximinÃ¡,FES de Faro,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.019197,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.019064,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.018920,TefÃ©,RESEX CatuÃ¡-Ipixuna,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.018929,AlvarÃ£es,FLONA de TefÃ©,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MA,0.018884,Cajari,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.018826,MelgaÃ§o,RESEX GurupÃ¡-MelgaÃ§o,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.018755,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.018546,BrasilÃ©ia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.018410,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.018366,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.018050,Coari,RESEX CatuÃ¡-Ipixuna,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.018033,Sena Madureira,RESEX do CazumbÃ¡-Iracema,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,RO,0.017663,Cujubim,RESEX Rio Preto-JacundÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.017696,Sena Madureira,RESEX do CazumbÃ¡-Iracema,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.017632,EpitaciolÃ¢ndia,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.017404,Xapuri,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.017263,MÃ¢ncio Lima,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.017104,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,MA,0.017077,Pinheiro,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,MA,0.016967,Cajari,APA Baixada Maranhense,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AP,0.017031,PracuÃºba,FES do AmapÃ¡,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.016567,Itaituba,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.016561,Porto de Moz,RESEX Verde para Sempre,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.016479,GoianÃ©sia do ParÃ¡,APA do Lago de TucuruÃ­,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.016540,Marechal Thaumaturgo,RESEX Alto JuruÃ¡,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.016337,Sena Madureira,FES do Antimary,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.016180,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.016219,Assis Brasil,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.016116,TarauacÃ¡,FES do Rio GregÃ³rio,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AM,0.016055,Coari,RESEX CatuÃ¡-Ipixuna,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.015570,Jacareacanga,APA do TapajÃ³s,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.015506,MÃ¢ncio Lima,PARNA da Serra do Divisor,ProteÃ§Ã£o Integral,Federal
+desmatamento,9,2025,Sentinel-2,PA,0.014946,OriximinÃ¡,FES de Trombetas,Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,AC,0.014178,Sena Madureira,RESEX Chico Mendes,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AC,0.013511,Cruzeiro do Sul,RESEX Riozinho da Liberdade,Uso SustentÃ¡vel,Federal
+desmatamento,9,2025,Sentinel-2,AM,0.012122,Presidente Figueiredo,APA Caverna do Maroaga (Presidente Figueiredo),Uso SustentÃ¡vel,Estadual
+desmatamento,9,2025,Sentinel-2,PA,0.010508,Prainha,FES do Paru,Uso SustentÃ¡vel,Estadual

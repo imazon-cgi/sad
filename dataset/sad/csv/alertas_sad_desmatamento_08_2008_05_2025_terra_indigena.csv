@@ -28876,3 +28876,178 @@ desmatamento,8,2025,Sentinel-2,AM,0.014272,Barreirinha,TI Andirá-Marau
 desmatamento,8,2025,Sentinel-2,AM,0.014188,Itamarati,TI Deni
 desmatamento,8,2025,Sentinel-2,AM,0.012974,Barreirinha,TI Andirá-Marau
 desmatamento,8,2025,Sentinel-2,MT,0.010549,Rondolândia,TI Sete de Setembro
+desmatamento,9,2025,Landsat-8,MT,0.440896,AripuanÃ£,TI Arara do Rio Branco
+desmatamento,9,2025,Landsat-8,AM,0.026770,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.418620,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.034782,Careiro da VÃ¡rzea,TI GaviÃ£o
+desmatamento,9,2025,Sentinel-2,MT,0.133715,Brasnorte,TI MenkÃ¼ (reestudo)
+desmatamento,9,2025,Sentinel-2,PA,0.067361,Placas,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,PA,0.103292,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.096693,Careiro da VÃ¡rzea,TI SissaÃ­ma
+desmatamento,9,2025,Sentinel-2,AM,0.089905,Boca do Acre,TI ApurinÃ£ km-124 BR-317
+desmatamento,9,2025,Sentinel-2,AM,0.089173,Autazes,TI Murutinga/TracajÃ¡
+desmatamento,9,2025,Sentinel-2,AM,0.088711,ManicorÃ©,TI Tenharim/Marmelos
+desmatamento,9,2025,Sentinel-2,MT,0.088125,Brasnorte,TI MenkÃ¼ (reestudo)
+desmatamento,9,2025,Sentinel-2,PA,0.011568,Senador JosÃ© PorfÃ­rio,TI Koatinemo
+desmatamento,9,2025,Sentinel-2,AM,0.073306,Careiro da VÃ¡rzea,TI SissaÃ­ma
+desmatamento,9,2025,Sentinel-2,AM,0.021929,Santo AntÃ´nio do IÃ§Ã¡,TI Porto Limoeiro
+desmatamento,9,2025,Sentinel-2,AM,0.071014,Benjamin Constant,TI SÃ£o Leopoldo
+desmatamento,9,2025,Sentinel-2,PA,0.066505,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AC,0.066506,FeijÃ³,TI Kulina do Rio Envira
+desmatamento,9,2025,Sentinel-2,AC,0.063087,TarauacÃ¡,TI Kampa do IgarapÃ© Primavera
+desmatamento,9,2025,Sentinel-2,PA,0.062485,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.060472,Autazes,TI Jauary
+desmatamento,9,2025,Sentinel-2,MT,0.059202,RondolÃ¢ndia,TI Sete de Setembro
+desmatamento,9,2025,Sentinel-2,PA,0.059220,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AC,0.056897,FeijÃ³,TI Kampa e Isolados do Rio Envira
+desmatamento,9,2025,Sentinel-2,PA,0.017396,MedicilÃ¢ndia,TI Arara
+desmatamento,9,2025,Sentinel-2,PA,0.053133,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,PA,0.053008,UruarÃ¡,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,PA,0.051036,Placas,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AC,0.050743,TarauacÃ¡,TI Rio GregÃ³rio
+desmatamento,9,2025,Sentinel-2,AM,0.050372,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,RO,0.050345,SÃ£o Miguel do GuaporÃ©,TI Rio Branco
+desmatamento,9,2025,Sentinel-2,RO,0.050167,Nova MamorÃ©,TI IgarapÃ© RibeirÃ£o
+desmatamento,9,2025,Sentinel-2,PA,0.045280,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,RO,0.049545,Nova MamorÃ©,TI IgarapÃ© Lage
+desmatamento,9,2025,Sentinel-2,MT,0.049008,AripuanÃ£,TI AripuanÃ£
+desmatamento,9,2025,Sentinel-2,PA,0.048551,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.047655,Benjamin Constant,TI SÃ£o Leopoldo
+desmatamento,9,2025,Sentinel-2,PA,0.046292,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,PA,0.045790,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.045305,Benjamin Constant,TI Tikuna Porto Espiritual
+desmatamento,9,2025,Sentinel-2,PA,0.019345,Placas,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.043442,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AP,0.042128,Oiapoque,TI UaÃ§Ã¡ I e II
+desmatamento,9,2025,Sentinel-2,AM,0.041875,Novo AirÃ£o,TI Waimiri Atroari
+desmatamento,9,2025,Sentinel-2,PA,0.041569,Ã“bidos,TI ZoÂ´Ã©
+desmatamento,9,2025,Sentinel-2,PA,0.040573,Aveiro,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.039241,Placas,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,PA,0.038648,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,RO,0.038482,Nova MamorÃ©,TI IgarapÃ© Lage
+desmatamento,9,2025,Sentinel-2,PA,0.036042,Altamira,TI Koatinemo
+desmatamento,9,2025,Sentinel-2,RO,0.036766,Ji-ParanÃ¡,TI IgarapÃ© Lourdes
+desmatamento,9,2025,Sentinel-2,AM,0.036454,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AC,0.036505,FeijÃ³,TI Kulina do Rio Envira
+desmatamento,9,2025,Sentinel-2,AM,0.036071,Tabatinga,TI Ã‰vare  I
+desmatamento,9,2025,Sentinel-2,PA,0.035802,Placas,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.035817,Benjamin Constant,TI SururuÃ¡
+desmatamento,9,2025,Sentinel-2,RR,0.035605,Pacaraima,TI SÃ£o Marcos
+desmatamento,9,2025,Sentinel-2,AC,0.035582,JordÃ£o,TI Kaxinawa/Ashaninka do Rio Breu
+desmatamento,9,2025,Sentinel-2,PA,0.035450,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,PA,0.034780,OriximinÃ¡,TI NhamundÃ¡-Mapuera
+desmatamento,9,2025,Sentinel-2,AM,0.034532,ManicorÃ©,TI Tenharim/Marmelos
+desmatamento,9,2025,Sentinel-2,RO,0.034006,Alta Floresta D'Oeste,TI Rio Branco
+desmatamento,9,2025,Sentinel-2,AM,0.033898,SÃ£o Paulo de OlivenÃ§a,TI Ã‰vare II
+desmatamento,9,2025,Sentinel-2,AM,0.033769,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.033663,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,AC,0.033192,Manoel Urbano,TI Alto Rio Purus
+desmatamento,9,2025,Sentinel-2,PA,0.033070,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,AC,0.033115,Assis Brasil,TI Mamoadate
+desmatamento,9,2025,Sentinel-2,AP,0.032709,Oiapoque,TI UaÃ§Ã¡ I e II
+desmatamento,9,2025,Sentinel-2,RR,0.032458,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AM,0.032193,NhamundÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,AM,0.032116,Atalaia do Norte,TI Vale do Javari
+desmatamento,9,2025,Sentinel-2,AC,0.031627,TarauacÃ¡,TI Rio GregÃ³rio
+desmatamento,9,2025,Sentinel-2,AC,0.031292,TarauacÃ¡,TI Rio GregÃ³rio
+desmatamento,9,2025,Sentinel-2,AM,0.031241,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.030975,OriximinÃ¡,TI NhamundÃ¡-Mapuera
+desmatamento,9,2025,Sentinel-2,AM,0.030507,NhamundÃ¡,TI NhamundÃ¡-Mapuera
+desmatamento,9,2025,Sentinel-2,RO,0.030487,Porto Velho,TI Kaxarari
+desmatamento,9,2025,Sentinel-2,AM,0.030394,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.030295,Tabatinga,TI Ã‰vare  I
+desmatamento,9,2025,Sentinel-2,AM,0.029965,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.029932,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.029836,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.029752,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.029677,Benjamin Constant,TI Guanabara
+desmatamento,9,2025,Sentinel-2,AC,0.029556,FeijÃ³,TI Kaxinawa do Rio HumaitÃ¡
+desmatamento,9,2025,Sentinel-2,PA,0.029128,OriximinÃ¡,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,PA,0.029096,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,PA,0.029015,Altamira,TI Koatinemo
+desmatamento,9,2025,Sentinel-2,PA,0.028889,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,PA,0.028819,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AM,0.028788,Atalaia do Norte,TI Vale do Javari
+desmatamento,9,2025,Sentinel-2,PA,0.028659,Faro,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,RO,0.028737,Alta Floresta D'Oeste,TI Rio Branco
+desmatamento,9,2025,Sentinel-2,AM,0.028529,SÃ£o Gabriel da Cachoeira,TI MÃ©dio Rio Negro I
+desmatamento,9,2025,Sentinel-2,AM,0.028338,Manaquiri,TI Vista Alegre
+desmatamento,9,2025,Sentinel-2,AP,0.027656,Oiapoque,TI UaÃ§Ã¡ I e II
+desmatamento,9,2025,Sentinel-2,PA,0.027714,OriximinÃ¡,TI NhamundÃ¡-Mapuera
+desmatamento,9,2025,Sentinel-2,RR,0.027690,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AM,0.027553,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.027529,OriximinÃ¡,TI NhamundÃ¡-Mapuera
+desmatamento,9,2025,Sentinel-2,AM,0.027250,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AC,0.026451,MÃ¢ncio Lima,TI Nukini
+desmatamento,9,2025,Sentinel-2,AM,0.026088,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.025939,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,AM,0.025865,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.025688,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.025671,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.025212,Itacoatiara,TI Rio Urubu
+desmatamento,9,2025,Sentinel-2,RR,0.025523,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,RR,0.025332,UiramutÃ£,TI Raposa Serra do Sol
+desmatamento,9,2025,Sentinel-2,AC,0.024883,FeijÃ³,TI Kulina do Rio Envira
+desmatamento,9,2025,Sentinel-2,PA,0.024567,Altamira,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,PA,0.024425,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,AM,0.024256,Tabatinga,TI Ã‰vare  I
+desmatamento,9,2025,Sentinel-2,PA,0.024309,Faro,TI NhamundÃ¡-Mapuera
+desmatamento,9,2025,Sentinel-2,PA,0.024135,OriximinÃ¡,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AC,0.023998,TarauacÃ¡,TI Rio GregÃ³rio
+desmatamento,9,2025,Sentinel-2,PA,0.023776,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,PA,0.023592,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,AM,0.023214,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.023173,Itamarati,TI Kanamari do Rio JuruÃ¡
+desmatamento,9,2025,Sentinel-2,AM,0.023025,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.022793,OriximinÃ¡,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AM,0.022518,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.022397,Tabatinga,TI Ã‰vare  I
+desmatamento,9,2025,Sentinel-2,AM,0.022326,Santa Isabel do Rio Negro,TI Jurubaxi-TÃ©a
+desmatamento,9,2025,Sentinel-2,RR,0.022137,UiramutÃ£,TI Raposa Serra do Sol
+desmatamento,9,2025,Sentinel-2,AM,0.021759,SÃ£o Gabriel da Cachoeira,TI MÃ©dio Rio Negro I
+desmatamento,9,2025,Sentinel-2,AM,0.021515,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,RR,0.021440,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AM,0.021450,ManicorÃ©,TI Tenharim/Marmelos
+desmatamento,9,2025,Sentinel-2,PA,0.021339,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,RR,0.021264,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AP,0.021102,Oiapoque,TI UaÃ§Ã¡ I e II
+desmatamento,9,2025,Sentinel-2,AM,0.021043,Atalaia do Norte,TI Vale do Javari
+desmatamento,9,2025,Sentinel-2,PA,0.020935,Almeirim,PI Tumucumaque
+desmatamento,9,2025,Sentinel-2,AM,0.020893,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,RR,0.020798,Alto Alegre,TI Yanomami
+desmatamento,9,2025,Sentinel-2,AC,0.020656,FeijÃ³,TI Kaxinawa do Rio HumaitÃ¡
+desmatamento,9,2025,Sentinel-2,RR,0.020740,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,RO,0.020644,SÃ£o Miguel do GuaporÃ©,TI Rio Branco
+desmatamento,9,2025,Sentinel-2,AC,0.020530,JordÃ£o,TI Kaxinawa do Rio JordÃ£o
+desmatamento,9,2025,Sentinel-2,PA,0.020537,OriximinÃ¡,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,PA,0.020419,Aveiro,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.020445,UruarÃ¡,TI Cachoeira Seca
+desmatamento,9,2025,Sentinel-2,AP,0.020368,Pedra Branca do Amapari,TI WaiÃ£pi
+desmatamento,9,2025,Sentinel-2,AM,0.020375,Atalaia do Norte,TI Vale do Javari
+desmatamento,9,2025,Sentinel-2,AM,0.020100,SÃ£o Gabriel da Cachoeira,TI MÃ©dio Rio Negro I
+desmatamento,9,2025,Sentinel-2,AM,0.020085,SÃ£o Gabriel da Cachoeira,TI MÃ©dio Rio Negro I
+desmatamento,9,2025,Sentinel-2,AM,0.019850,Careiro da VÃ¡rzea,TI SissaÃ­ma
+desmatamento,9,2025,Sentinel-2,AM,0.019695,Tabatinga,TI Ã‰vare  I
+desmatamento,9,2025,Sentinel-2,PA,0.019563,Almeirim,PI Tumucumaque
+desmatamento,9,2025,Sentinel-2,PA,0.019637,Aveiro,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AP,0.019440,Pedra Branca do Amapari,TI WaiÃ£pi
+desmatamento,9,2025,Sentinel-2,AP,0.019419,Pedra Branca do Amapari,TI WaiÃ£pi
+desmatamento,9,2025,Sentinel-2,AC,0.019422,MÃ¢ncio Lima,TI Nukini
+desmatamento,9,2025,Sentinel-2,PA,0.019229,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,RR,0.019039,Alto Alegre,TI Yanomami
+desmatamento,9,2025,Sentinel-2,PA,0.018942,OriximinÃ¡,PI Tumucumaque
+desmatamento,9,2025,Sentinel-2,AM,0.018586,SÃ£o Gabriel da Cachoeira,TI Alto Rio Negro
+desmatamento,9,2025,Sentinel-2,AC,0.018633,TarauacÃ¡,TI Kaxinawa Praia do CarapanÃ£
+desmatamento,9,2025,Sentinel-2,AM,0.018131,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,RR,0.017917,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AC,0.017671,FeijÃ³,TI Kaxinawa do Rio HumaitÃ¡
+desmatamento,9,2025,Sentinel-2,AM,0.017321,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.016767,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,RR,0.016613,Caroebe,TI Trombetas/Mapuera
+desmatamento,9,2025,Sentinel-2,AC,0.016470,Porto Walter,TI Arara/IgarapÃ© HumaitÃ¡
+desmatamento,9,2025,Sentinel-2,AM,0.016279,MauÃ©s,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,PA,0.015975,OriximinÃ¡,PI Tumucumaque
+desmatamento,9,2025,Sentinel-2,AM,0.015540,NhamundÃ¡,TI NhamundÃ¡-Mapuera
+desmatamento,9,2025,Sentinel-2,PA,0.014946,OriximinÃ¡,TI Kaxuyana-Tunayana
+desmatamento,9,2025,Sentinel-2,AM,0.011715,Barreirinha,TI AndirÃ¡-Marau
+desmatamento,9,2025,Sentinel-2,AM,0.011348,MauÃ©s,TI AndirÃ¡-Marau

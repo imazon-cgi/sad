@@ -28196,3 +28196,165 @@ degradacao,7,2025,Landsat-8,MT,0.83,Comodoro,TI Vale do Guaporé
 degradacao,8,2025,Sentinel-2,MT,0.174051,Paranatinga,PI Xingu
 degradacao,8,2025,Sentinel-2,MT,1.570992,São Félix do Araguaia,TI Marãiwatsédé
 degradacao,8,2025,Sentinel-2,MT,0.289226,São Félix do Araguaia,TI Marãiwatsédé
+degradacao,9,2025,Sentinel-2,AM,0.026531,LÃ¡brea,TI Kaxarari
+degradacao,9,2025,Sentinel-2,MT,1.622897,Brasnorte,TI MenkÃ¼ (reestudo)
+degradacao,9,2025,Sentinel-2,MT,1.246311,Brasnorte,TI MenkÃ¼ (reestudo)
+degradacao,9,2025,Sentinel-2,MT,0.809060,Brasnorte,TI MenkÃ¼ (reestudo)
+degradacao,9,2025,Landsat-8,PA,1.034529,OurilÃ¢ndia do Norte,TI KayapÃ³
+degradacao,9,2025,Landsat-8,PA,11.417930,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Landsat-8,MT,5.526696,Paranatinga,PI Xingu
+degradacao,9,2025,Landsat-8,MT,4.884278,Paranatinga,PI Xingu
+degradacao,9,2025,Landsat-8,MT,0.936643,GaÃºcha do Norte,PI Xingu
+degradacao,9,2025,Landsat-8,PA,0.861237,OurilÃ¢ndia do Norte,TI KayapÃ³
+degradacao,9,2025,Landsat-8,MT,0.806127,GaÃºcha do Norte,PI Xingu
+degradacao,9,2025,Landsat-8,MT,0.556227,GaÃºcha do Norte,PI Xingu
+degradacao,9,2025,Landsat-8,MA,0.420009,Amarante do MaranhÃ£o,TI Governador
+degradacao,9,2025,Landsat-8,PA,0.244043,OurilÃ¢ndia do Norte,TI KayapÃ³
+degradacao,9,2025,Landsat-8,PA,0.028422,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Landsat-8,MT,0.135913,GaÃºcha do Norte,PI Xingu
+degradacao,9,2025,Landsat-8,PA,0.124055,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Landsat-8,PA,0.087335,SÃ£o FÃ©lix do Xingu,TI Apyterewa
+degradacao,9,2025,Landsat-8,MT,0.036519,Confresa,TI Urubu Branco
+degradacao,9,2025,Landsat-8,PA,0.025770,OurilÃ¢ndia do Norte,TI KayapÃ³
+degradacao,9,2025,Landsat-8,PA,0.026437,OurilÃ¢ndia do Norte,TI KayapÃ³
+degradacao,9,2025,Landsat-8,PA,0.015093,OurilÃ¢ndia do Norte,TI KayapÃ³
+degradacao,9,2025,Landsat-8,PA,0.013329,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,MT,33.036291,Paranatinga,PI Xingu
+degradacao,9,2025,Sentinel-2,MT,26.142868,GaÃºcha do Norte,PI Xingu
+degradacao,9,2025,Sentinel-2,PA,21.362705,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,PA,18.951571,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,12.626051,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,PA,10.320095,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,5.308217,GaÃºcha do Norte,PI Xingu
+degradacao,9,2025,Sentinel-2,RO,4.799599,Vilhena,PI AripuanÃ£
+degradacao,9,2025,Sentinel-2,PA,4.151905,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,MT,3.877987,Nova UbiratÃ£,PI Xingu
+degradacao,9,2025,Sentinel-2,PA,3.869321,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,1.302703,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,MT,0.996487,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.943258,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,PA,0.914880,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.877991,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.789458,SÃ£o FÃ©lix do Xingu,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,0.637028,SÃ£o FÃ©lix do Araguaia,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.593615,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,MT,0.584915,QuerÃªncia,PI Xingu
+degradacao,9,2025,Sentinel-2,MT,0.514479,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.481473,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,RO,0.425556,GuajarÃ¡-Mirim,TI Uru-Eu-Wau-Wau
+degradacao,9,2025,Sentinel-2,PA,0.423195,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,RO,0.356668,Vilhena,PI AripuanÃ£
+degradacao,9,2025,Sentinel-2,MT,0.325873,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.014238,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.305937,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,AM,0.265007,Canutama,TI JacareÃºba/Katawixi
+degradacao,9,2025,Sentinel-2,MT,0.260666,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.257560,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.225174,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.218391,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,PA,0.206429,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.205019,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.199281,AripuanÃ£,TI AripuanÃ£
+degradacao,9,2025,Sentinel-2,PA,0.192464,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,0.181858,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.176925,SÃ£o FÃ©lix do Xingu,TI Apyterewa
+degradacao,9,2025,Sentinel-2,PA,0.164676,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.155221,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,PA,0.154364,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.131810,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,MT,0.122547,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.115483,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.111530,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.111278,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,AM,0.106712,ManicorÃ©,TI Tenharim Marmelos (Gleba B)
+degradacao,9,2025,Sentinel-2,AM,0.098684,ManicorÃ©,TI Tenharim Marmelos (Gleba B)
+degradacao,9,2025,Sentinel-2,RO,0.093357,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,PA,0.092517,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,0.089266,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.081636,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,0.078380,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.078326,SÃ£o FÃ©lix do Xingu,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,RO,0.073697,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,PA,0.072964,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.069497,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,AM,0.068601,ManicorÃ©,TI Tenharim Marmelos (Gleba B)
+degradacao,9,2025,Sentinel-2,MT,0.061567,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.061274,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.060588,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,PA,0.058152,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.057051,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,MT,0.056665,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.054347,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.053025,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,MT,0.052814,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.052554,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.052322,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.051819,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.049400,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.047903,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.045920,SÃ£o FÃ©lix do Araguaia,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.045245,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,MT,0.043640,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,MT,0.042133,Brasnorte,TI Menku
+degradacao,9,2025,Sentinel-2,PA,0.041266,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.040916,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,0.039395,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.038397,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,PA,0.038274,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.037861,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.037885,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,RO,0.037741,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,MT,0.037259,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.037157,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.036960,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.035925,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.035765,Brasnorte,TI Erikpatsa
+degradacao,9,2025,Sentinel-2,PA,0.035708,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.035438,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,RO,0.035274,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,RO,0.033963,Vilhena,PI AripuanÃ£
+degradacao,9,2025,Sentinel-2,PA,0.033979,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.033560,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,RO,0.033518,Vilhena,PI AripuanÃ£
+degradacao,9,2025,Sentinel-2,RO,0.033276,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,AM,0.033173,ManicorÃ©,TI Sepoti
+degradacao,9,2025,Sentinel-2,PA,0.033068,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.032997,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,AM,0.032746,ManicorÃ©,TI Sepoti
+degradacao,9,2025,Sentinel-2,PA,0.031409,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.031331,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.030703,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.030030,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.029408,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,MT,0.029399,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.029382,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,MT,0.028654,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.028566,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.028537,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,RO,0.028431,Vilhena,PI AripuanÃ£
+degradacao,9,2025,Sentinel-2,PA,0.028174,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.027903,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.027809,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,RO,0.027849,Vilhena,PI AripuanÃ£
+degradacao,9,2025,Sentinel-2,MT,0.027702,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,PA,0.026547,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,RO,0.026444,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,PA,0.026449,Altamira,TI Menkragnoti
+degradacao,9,2025,Sentinel-2,MT,0.026314,Brasnorte,TI Erikpatsa
+degradacao,9,2025,Sentinel-2,PA,0.026116,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.024792,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.024802,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,MT,0.024745,AripuanÃ£,TI AripuanÃ£
+degradacao,9,2025,Sentinel-2,RO,0.024423,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,MT,0.023232,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,RO,0.022534,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,PA,0.022261,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
+degradacao,9,2025,Sentinel-2,PA,0.022116,SÃ£o FÃ©lix do Xingu,TI KayapÃ³
+degradacao,9,2025,Sentinel-2,RO,0.022001,Vilhena,PI AripuanÃ£
+degradacao,9,2025,Sentinel-2,MT,0.018078,RondolÃ¢ndia,TI ZorÃ³
+degradacao,9,2025,Sentinel-2,RO,0.017349,GuajarÃ¡-Mirim,TI PacaÃ¡s-Novas
+degradacao,9,2025,Sentinel-2,MT,0.016590,GaÃºcha do Norte,PI Xingu
+degradacao,9,2025,Sentinel-2,MT,0.016437,SÃ£o FÃ©lix do Araguaia,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.013659,SÃ£o FÃ©lix do Araguaia,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,MT,0.012586,Alto Boa Vista,TI MarÃ£iwatsÃ©dÃ©
+degradacao,9,2025,Sentinel-2,PA,0.010751,SÃ£o FÃ©lix do Xingu,TI BadjÃ´nkÃ´re
