@@ -1,2 +1,7 @@
 2025-10-17T17:50:33: ✅ Servidor rodando em http://localhost:8052
 2025-10-17T17:50:33: 📦 Servindo dataset em /dataset (pasta: C:\dashboards\sad\dataset)
+2025-10-30T20:48:45: ROOT_DIR: C:\dashboards\sad
+2025-10-30T20:48:45: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-30T20:48:45: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-30T20:48:45: ✅ Server em http://localhost:8052
+2025-10-30T20:48:45: 🛡️ CSP (Enforcing) ativo

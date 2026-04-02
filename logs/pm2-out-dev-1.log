@@ -76,3 +76,525 @@
 2025-10-17T19:34:01: ✅ Server (Linux) em http://localhost:8053
 2025-10-17T19:34:01: 📦 DATASET_DIR: C:\dashboards\sad\dataset
 2025-10-17T19:34:01: 🛡️ CSP (Enforcing) ativo
+2025-10-17T19:47:49: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T19:47:49: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T19:47:49: 🛡️ CSP (Enforcing) ativo
+2025-10-17T19:49:14: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T19:49:14: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T19:49:14: 🛡️ CSP (Enforcing) ativo
+2025-10-17T19:59:12: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T19:59:12: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T19:59:12: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:05:54: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:05:54: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:05:54: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:07:17: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:07:17: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:07:17: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:07:21: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:07:21: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:07:21: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:07:46: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:07:46: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:07:46: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:09:00: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:09:00: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:09:00: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:09:51: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:09:51: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:09:51: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:11:55: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:11:55: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:11:55: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:11:59: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:11:59: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:11:59: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:12:02: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:12:02: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:12:02: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:13:00: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:13:00: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:13:00: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:13:05: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:13:05: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:13:05: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:15:11: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:15:11: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:15:11: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:15:50: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:15:50: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:15:50: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:16:04: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:16:04: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:16:04: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:16:05: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:16:05: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:16:05: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:18:23: ✅ Server (Linux) em http://localhost:8053
+2025-10-17T20:18:23: 📦 DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:18:23: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:25:43: ROOT_DIR: C:\dashboards\sad
+2025-10-17T20:25:43: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:25:43: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T20:25:43: ✅ Server em http://localhost:8053
+2025-10-17T20:25:43: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:25:44: ROOT_DIR: C:\dashboards\sad
+2025-10-17T20:25:44: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:25:44: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T20:25:44: ✅ Server em http://localhost:8053
+2025-10-17T20:25:44: 🛡️ CSP (Enforcing) ativo
+2025-10-17T20:25:55: ROOT_DIR: C:\dashboards\sad
+2025-10-17T20:25:55: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T20:25:55: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T20:25:55: ✅ Server em http://localhost:8053
+2025-10-17T20:25:55: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:10:05: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:10:05: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:10:05: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:10:05: ✅ Server em http://localhost:8053
+2025-10-17T22:10:05: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:12:21: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:12:21: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:12:21: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:12:21: ✅ Server em http://localhost:8053
+2025-10-17T22:12:21: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:12:33: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:12:33: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:12:33: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:12:33: ✅ Server em http://localhost:8053
+2025-10-17T22:12:33: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:12:57: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:12:57: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:12:57: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:12:57: ✅ Server em http://localhost:8053
+2025-10-17T22:12:57: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:13:19: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:13:19: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:13:19: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:13:19: ✅ Server em http://localhost:8053
+2025-10-17T22:13:19: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:13:30: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:13:30: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:13:30: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:13:30: ✅ Server em http://localhost:8053
+2025-10-17T22:13:30: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:13:36: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:13:36: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:13:36: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:13:36: ✅ Server em http://localhost:8053
+2025-10-17T22:13:36: 🛡️ CSP (Enforcing) ativo
+2025-10-17T22:13:40: ROOT_DIR: C:\dashboards\sad
+2025-10-17T22:13:40: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-17T22:13:40: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-17T22:13:40: ✅ Server em http://localhost:8053
+2025-10-17T22:13:40: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:46:03: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:46:03: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:03: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T10:46:03: ✅ Server em http://localhost:8053
+2025-10-20T10:46:03: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:46:21: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:46:21: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:21: SAD_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:21: ✅ Server em http://localhost:8053
+2025-10-20T10:46:21: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:46:41: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:46:41: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:41: SAD_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:41: ✅ Server em http://localhost:8053
+2025-10-20T10:46:41: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:46:47: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:46:47: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:47: SAD_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:47: ✅ Server em http://localhost:8053
+2025-10-20T10:46:47: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:46:59: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:46:59: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:59: SAD_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:46:59: ✅ Server em http://localhost:8053
+2025-10-20T10:46:59: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:47:04: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:47:04: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:47:04: SAD_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:47:04: ✅ Server em http://localhost:8053
+2025-10-20T10:47:04: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:47:09: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:47:09: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:47:09: SAD_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:47:09: ✅ Server em http://localhost:8053
+2025-10-20T10:47:09: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:47:58: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:47:58: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:47:58: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T10:47:58: ✅ Server em http://localhost:8053
+2025-10-20T10:47:58: 🛡️ CSP (Enforcing) ativo
+2025-10-20T10:49:13: ROOT_DIR: C:\dashboards\sad
+2025-10-20T10:49:13: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T10:49:13: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T10:49:13: ✅ Server em http://localhost:8053
+2025-10-20T10:49:13: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:09:44: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:09:44: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:09:44: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:09:44: ✅ Server em http://localhost:8053
+2025-10-20T11:09:44: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:10:32: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:10:32: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:10:32: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:10:32: ✅ Server em http://localhost:8053
+2025-10-20T11:10:32: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:10:41: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:10:41: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:10:41: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:10:41: ✅ Server em http://localhost:8053
+2025-10-20T11:10:41: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:15:47: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:15:47: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:15:47: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:15:47: ✅ Server em http://localhost:8053
+2025-10-20T11:15:47: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:16:05: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:16:05: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:16:05: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:16:05: ✅ Server em http://localhost:8053
+2025-10-20T11:16:05: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:16:10: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:16:10: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:16:10: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:16:10: ✅ Server em http://localhost:8053
+2025-10-20T11:16:10: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:16:38: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:16:38: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:16:38: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:16:38: ✅ Server em http://localhost:8053
+2025-10-20T11:16:38: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:22:17: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:22:17: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:22:17: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:22:17: ✅ Server em http://localhost:8053
+2025-10-20T11:22:17: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:22:27: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:22:27: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:22:27: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:22:27: ✅ Server em http://localhost:8053
+2025-10-20T11:22:27: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:22:44: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:22:44: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:22:44: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:22:44: ✅ Server em http://localhost:8053
+2025-10-20T11:22:44: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:29:18: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:29:18: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:29:18: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:29:18: ✅ Server em http://localhost:8053
+2025-10-20T11:29:18: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:29:52: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:29:52: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:29:52: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:29:52: ✅ Server em http://localhost:8053
+2025-10-20T11:29:52: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:30:22: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:30:22: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:30:22: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:30:22: ✅ Server em http://localhost:8053
+2025-10-20T11:30:22: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:31:08: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:31:08: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:31:08: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:31:08: ✅ Server em http://localhost:8053
+2025-10-20T11:31:08: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:31:25: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:31:25: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:31:25: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:31:25: ✅ Server em http://localhost:8053
+2025-10-20T11:31:25: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:31:33: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:31:33: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:31:33: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:31:33: ✅ Server em http://localhost:8053
+2025-10-20T11:31:33: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:36:30: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:36:30: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:36:30: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:36:30: ✅ Server em http://localhost:8053
+2025-10-20T11:36:30: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:36:32: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:36:32: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:36:32: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:36:32: ✅ Server em http://localhost:8053
+2025-10-20T11:36:32: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:36:53: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:36:53: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:36:53: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:36:53: ✅ Server em http://localhost:8053
+2025-10-20T11:36:53: 🛡️ CSP (Enforcing) ativo
+2025-10-20T11:37:23: ROOT_DIR: C:\dashboards\sad
+2025-10-20T11:37:23: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T11:37:23: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T11:37:23: ✅ Server em http://localhost:8053
+2025-10-20T11:37:23: 🛡️ CSP (Enforcing) ativo
+2025-10-20T12:30:07: ROOT_DIR: C:\dashboards\sad
+2025-10-20T12:30:07: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T12:30:07: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T12:30:07: ✅ Server em http://localhost:8053
+2025-10-20T12:30:07: 🛡️ CSP (Enforcing) ativo
+2025-10-20T17:11:17: ROOT_DIR: C:\dashboards\sad
+2025-10-20T17:11:17: DATASET_DIR: C:\dashboards\sad\dataset
+2025-10-20T17:11:17: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-10-20T17:11:17: ✅ Server em http://localhost:8053
+2025-10-20T17:11:17: 🛡️ CSP (Enforcing) ativo
+2025-11-05T07:35:39: ROOT_DIR: C:\dashboards\sad
+2025-11-05T07:35:39: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T07:35:39: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T07:35:39: ✅ Server em http://localhost:8053
+2025-11-05T07:35:39: 🛡️ CSP (Enforcing) ativo
+2025-11-05T07:36:03: ROOT_DIR: C:\dashboards\sad
+2025-11-05T07:36:03: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T07:36:03: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T07:36:03: ✅ Server em http://localhost:8053
+2025-11-05T07:36:03: 🛡️ CSP (Enforcing) ativo
+2025-11-05T07:36:22: ROOT_DIR: C:\dashboards\sad
+2025-11-05T07:36:22: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T07:36:22: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T07:36:22: ✅ Server em http://localhost:8053
+2025-11-05T07:36:22: 🛡️ CSP (Enforcing) ativo
+2025-11-05T08:07:10: ROOT_DIR: C:\dashboards\sad
+2025-11-05T08:07:10: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T08:07:10: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T08:07:10: ✅ Server em http://localhost:8053
+2025-11-05T08:07:10: 🛡️ CSP (Enforcing) ativo
+2025-11-05T08:07:11: ROOT_DIR: C:\dashboards\sad
+2025-11-05T08:07:11: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T08:07:11: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T08:07:11: ✅ Server em http://localhost:8053
+2025-11-05T08:07:11: 🛡️ CSP (Enforcing) ativo
+2025-11-05T08:38:42: ROOT_DIR: C:\dashboards\sad
+2025-11-05T08:38:42: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T08:38:42: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T08:38:42: ✅ Server em http://localhost:8053
+2025-11-05T08:38:42: 🛡️ CSP (Enforcing) ativo
+2025-11-05T08:38:56: ROOT_DIR: C:\dashboards\sad
+2025-11-05T08:38:56: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T08:38:56: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T08:38:56: ✅ Server em http://localhost:8053
+2025-11-05T08:38:56: 🛡️ CSP (Enforcing) ativo
+2025-11-05T08:38:57: ROOT_DIR: C:\dashboards\sad
+2025-11-05T08:38:57: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T08:38:57: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T08:38:57: ✅ Server em http://localhost:8053
+2025-11-05T08:38:57: 🛡️ CSP (Enforcing) ativo
+2025-11-05T08:44:00: ROOT_DIR: C:\dashboards\sad
+2025-11-05T08:44:00: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-05T08:44:00: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-05T08:44:00: ✅ Server em http://localhost:8053
+2025-11-05T08:44:00: 🛡️ CSP (Enforcing) ativo
+2025-11-06T00:46:45: ROOT_DIR: C:\dashboards\sad
+2025-11-06T00:46:45: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-06T00:46:45: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-06T00:46:45: ✅ Server em http://localhost:8053
+2025-11-06T00:46:45: 🛡️ CSP (Enforcing) ativo
+2025-11-06T02:15:28: ROOT_DIR: C:\dashboards\sad
+2025-11-06T02:15:28: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-06T02:15:28: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-06T02:15:28: ✅ Server em http://localhost:8053
+2025-11-06T02:15:28: 🛡️ CSP (Enforcing) ativo
+2025-11-06T02:15:30: ROOT_DIR: C:\dashboards\sad
+2025-11-06T02:15:30: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-06T02:15:30: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-06T02:15:30: ✅ Server em http://localhost:8053
+2025-11-06T02:15:30: 🛡️ CSP (Enforcing) ativo
+2025-11-06T02:15:55: ROOT_DIR: C:\dashboards\sad
+2025-11-06T02:15:55: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-06T02:15:55: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-06T02:15:55: ✅ Server em http://localhost:8053
+2025-11-06T02:15:55: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:49:03: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:49:03: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:49:03: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:49:03: ✅ Server em http://localhost:8053
+2025-11-09T16:49:03: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:49:59: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:49:59: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:49:59: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:49:59: ✅ Server em http://localhost:8053
+2025-11-09T16:49:59: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:50:00: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:50:00: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:50:00: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:50:00: ✅ Server em http://localhost:8053
+2025-11-09T16:50:00: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:50:02: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:50:02: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:50:02: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:50:02: ✅ Server em http://localhost:8053
+2025-11-09T16:50:02: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:50:13: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:50:13: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:50:13: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:50:13: ✅ Server em http://localhost:8053
+2025-11-09T16:50:13: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:50:17: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:50:17: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:50:17: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:50:17: ✅ Server em http://localhost:8053
+2025-11-09T16:50:17: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:50:20: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:50:20: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:50:20: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:50:20: ✅ Server em http://localhost:8053
+2025-11-09T16:50:20: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:50:33: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:50:33: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:50:33: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:50:33: ✅ Server em http://localhost:8053
+2025-11-09T16:50:33: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:51:26: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:51:26: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:51:26: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:51:26: ✅ Server em http://localhost:8053
+2025-11-09T16:51:26: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:57:34: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:57:34: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:57:34: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:57:34: ✅ Server em http://localhost:8053
+2025-11-09T16:57:34: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:58:24: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:58:24: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:58:24: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:58:24: ✅ Server em http://localhost:8053
+2025-11-09T16:58:24: 🛡️ CSP (Enforcing) ativo
+2025-11-09T16:58:36: ROOT_DIR: C:\dashboards\sad
+2025-11-09T16:58:36: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T16:58:36: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T16:58:36: ✅ Server em http://localhost:8053
+2025-11-09T16:58:36: 🛡️ CSP (Enforcing) ativo
+2025-11-09T17:00:40: ROOT_DIR: C:\dashboards\sad
+2025-11-09T17:00:40: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T17:00:40: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T17:00:40: ✅ Server em http://localhost:8053
+2025-11-09T17:00:40: 🛡️ CSP (Enforcing) ativo
+2025-11-09T17:01:05: ROOT_DIR: C:\dashboards\sad
+2025-11-09T17:01:05: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T17:01:05: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T17:01:05: ✅ Server em http://localhost:8053
+2025-11-09T17:01:05: 🛡️ CSP (Enforcing) ativo
+2025-11-09T17:01:11: ROOT_DIR: C:\dashboards\sad
+2025-11-09T17:01:11: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T17:01:11: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T17:01:11: ✅ Server em http://localhost:8053
+2025-11-09T17:01:11: 🛡️ CSP (Enforcing) ativo
+2025-11-09T17:01:30: ROOT_DIR: C:\dashboards\sad
+2025-11-09T17:01:30: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T17:01:30: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T17:01:30: ✅ Server em http://localhost:8053
+2025-11-09T17:01:30: 🛡️ CSP (Enforcing) ativo
+2025-11-09T17:01:45: ROOT_DIR: C:\dashboards\sad
+2025-11-09T17:01:45: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T17:01:45: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T17:01:45: ✅ Server em http://localhost:8053
+2025-11-09T17:01:45: 🛡️ CSP (Enforcing) ativo
+2025-11-09T17:02:40: ROOT_DIR: C:\dashboards\sad
+2025-11-09T17:02:40: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T17:02:40: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T17:02:40: ✅ Server em http://localhost:8053
+2025-11-09T17:02:40: 🛡️ CSP (Enforcing) ativo
+2025-11-09T17:05:59: ROOT_DIR: C:\dashboards\sad
+2025-11-09T17:05:59: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-09T17:05:59: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-09T17:05:59: ✅ Server em http://localhost:8053
+2025-11-09T17:05:59: 🛡️ CSP (Enforcing) ativo
+2025-11-10T03:35:22: ROOT_DIR: C:\dashboards\sad
+2025-11-10T03:35:22: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T03:35:22: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T03:35:22: ✅ Server em http://localhost:8053
+2025-11-10T03:35:22: 🛡️ CSP (Enforcing) ativo
+2025-11-10T03:35:46: ROOT_DIR: C:\dashboards\sad
+2025-11-10T03:35:46: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T03:35:46: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T03:35:46: ✅ Server em http://localhost:8053
+2025-11-10T03:35:46: 🛡️ CSP (Enforcing) ativo
+2025-11-10T04:15:30: ROOT_DIR: C:\dashboards\sad
+2025-11-10T04:15:30: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T04:15:30: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T04:15:30: ✅ Server em http://localhost:8053
+2025-11-10T04:15:30: 🛡️ CSP (Enforcing) ativo
+2025-11-10T04:15:38: ROOT_DIR: C:\dashboards\sad
+2025-11-10T04:15:38: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T04:15:38: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T04:15:38: ✅ Server em http://localhost:8053
+2025-11-10T04:15:38: 🛡️ CSP (Enforcing) ativo
+2025-11-10T04:15:45: ROOT_DIR: C:\dashboards\sad
+2025-11-10T04:15:45: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T04:15:45: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T04:15:45: ✅ Server em http://localhost:8053
+2025-11-10T04:15:45: 🛡️ CSP (Enforcing) ativo
+2025-11-10T04:16:09: ROOT_DIR: C:\dashboards\sad
+2025-11-10T04:16:09: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T04:16:09: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T04:16:09: ✅ Server em http://localhost:8053
+2025-11-10T04:16:09: 🛡️ CSP (Enforcing) ativo
+2025-11-10T04:16:39: ROOT_DIR: C:\dashboards\sad
+2025-11-10T04:16:39: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T04:16:39: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T04:16:39: ✅ Server em http://localhost:8053
+2025-11-10T04:16:39: 🛡️ CSP (Enforcing) ativo
+2025-11-10T09:10:25: ROOT_DIR: C:\dashboards\sad
+2025-11-10T09:10:25: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T09:10:25: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T09:10:25: ✅ Server em http://localhost:8053
+2025-11-10T09:10:25: 🛡️ CSP (Enforcing) ativo
+2025-11-10T09:14:18: ROOT_DIR: C:\dashboards\sad
+2025-11-10T09:14:18: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T09:14:18: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T09:14:18: ✅ Server em http://localhost:8053
+2025-11-10T09:14:18: 🛡️ CSP (Enforcing) ativo
+2025-11-10T09:18:09: ROOT_DIR: C:\dashboards\sad
+2025-11-10T09:18:09: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T09:18:09: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T09:18:09: ✅ Server em http://localhost:8053
+2025-11-10T09:18:09: 🛡️ CSP (Enforcing) ativo
+2025-11-10T09:18:39: ROOT_DIR: C:\dashboards\sad
+2025-11-10T09:18:39: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T09:18:39: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T09:18:39: ✅ Server em http://localhost:8053
+2025-11-10T09:18:39: 🛡️ CSP (Enforcing) ativo
+2025-11-10T09:19:18: ROOT_DIR: C:\dashboards\sad
+2025-11-10T09:19:19: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-10T09:19:19: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-10T09:19:19: ✅ Server em http://localhost:8053
+2025-11-10T09:19:19: 🛡️ CSP (Enforcing) ativo
+2025-11-16T22:45:19: ROOT_DIR: C:\dashboards\sad
+2025-11-16T22:45:19: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-16T22:45:19: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-16T22:45:19: ✅ Server em http://localhost:8053
+2025-11-16T22:45:19: 🛡️ CSP (Enforcing) ativo
+2025-11-17T00:03:28: ROOT_DIR: C:\dashboards\sad
+2025-11-17T00:03:28: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-17T00:03:28: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-17T00:03:28: ✅ Server em http://localhost:8053
+2025-11-17T00:03:28: 🛡️ CSP (Enforcing) ativo
+2025-11-17T00:05:12: ROOT_DIR: C:\dashboards\sad
+2025-11-17T00:05:12: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-17T00:05:12: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-17T00:05:12: ✅ Server em http://localhost:8053
+2025-11-17T00:05:12: 🛡️ CSP (Enforcing) ativo
+2025-11-17T00:05:24: ROOT_DIR: C:\dashboards\sad
+2025-11-17T00:05:24: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-17T00:05:24: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-17T00:05:24: ✅ Server em http://localhost:8053
+2025-11-17T00:05:24: 🛡️ CSP (Enforcing) ativo
+2025-11-17T00:05:26: ROOT_DIR: C:\dashboards\sad
+2025-11-17T00:05:26: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-17T00:05:26: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-17T00:05:26: ✅ Server em http://localhost:8053
+2025-11-17T00:05:26: 🛡️ CSP (Enforcing) ativo
+2025-11-17T00:05:27: ROOT_DIR: C:\dashboards\sad
+2025-11-17T00:05:27: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-17T00:05:27: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-17T00:05:27: ✅ Server em http://localhost:8053
+2025-11-17T00:05:27: 🛡️ CSP (Enforcing) ativo
+2025-11-17T00:05:28: ROOT_DIR: C:\dashboards\sad
+2025-11-17T00:05:28: DATASET_DIR: C:\dashboards\sad\dataset
+2025-11-17T00:05:28: SAD_DIR: C:\dashboards\sad\dataset\sad
+2025-11-17T00:05:28: ✅ Server em http://localhost:8053
+2025-11-17T00:05:28: 🛡️ CSP (Enforcing) ativo

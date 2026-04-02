@@ -558,20 +558,24 @@ function __featureCenter(feat){
 }
 
 // ===== FONTES DE DADOS =====
+const _S3_BASE    = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/dashboard/sad';
+const _S3_CSV     = `${_S3_BASE}/csv`;
+const _S3_GEOJSON = `${_S3_BASE}/geojson`;
+
 const dataSources={
   desmatamento:{
-    assentamentos:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_assentamentos.csv",geojson:"/dataset/sad/geojson/AMZ_assentamentos.geojson"},
-    estados:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_estados.geojson"},
-    municipios:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_municipios.geojson"},
-    terrasIndigenas:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_terra_indigena.csv",geojson:"/dataset/sad/geojson/AMZ_terra_indigena.geojson"},
-    unidadesConservacao:{csv:"/dataset/sad/csv/alertas_sad_desmatamento_08_2008_05_2025_ucs.csv",geojson:"/dataset/sad/geojson/AMZ_unidade_conservacao.geojson"}
+    assentamentos:{csv:`${_S3_CSV}/alertas_sad_desmatamento_assentamentos.csv`,geojson:`${_S3_GEOJSON}/AMZ_assentamentos.geojson`},
+    estados:{csv:`${_S3_CSV}/alertas_sad_desmatamento_municipios.csv`,geojson:`${_S3_GEOJSON}/AMZ_estados.geojson`},
+    municipios:{csv:`${_S3_CSV}/alertas_sad_desmatamento_municipios.csv`,geojson:`${_S3_GEOJSON}/AMZ_municipios.geojson`},
+    terrasIndigenas:{csv:`${_S3_CSV}/alertas_sad_desmatamento_terra_indigena.csv`,geojson:`${_S3_GEOJSON}/AMZ_terra_indigena.geojson`},
+    unidadesConservacao:{csv:`${_S3_CSV}/alertas_sad_desmatamento_ucs.csv`,geojson:`${_S3_GEOJSON}/AMZ_unidade_conservacao.geojson`}
   },
   degradacao:{
-    assentamentos:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_assentamento.csv",geojson:"/dataset/sad/geojson/AMZ_assentamentos.geojson"},
-    estados:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_estados.geojson"},
-    municipios:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_municipios.csv",geojson:"/dataset/sad/geojson/AMZ_municipios.geojson"},
-    terrasIndigenas:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_terra_indigena.csv",geojson:"/dataset/sad/geojson/AMZ_terra_indigena.geojson"},
-    unidadesConservacao:{csv:"/dataset/sad/csv/alertas_sad_degradacao_09_2008_05_2025_ucs.csv",geojson:"/dataset/sad/geojson/AMZ_unidade_conservacao.geojson"}
+    assentamentos:{csv:`${_S3_CSV}/alertas_sad_degradacao_assentamento.csv`,geojson:`${_S3_GEOJSON}/AMZ_assentamentos.geojson`},
+    estados:{csv:`${_S3_CSV}/alertas_sad_degradacao_municipios.csv`,geojson:`${_S3_GEOJSON}/AMZ_estados.geojson`},
+    municipios:{csv:`${_S3_CSV}/alertas_sad_degradacao_municipios.csv`,geojson:`${_S3_GEOJSON}/AMZ_municipios.geojson`},
+    terrasIndigenas:{csv:`${_S3_CSV}/alertas_sad_degradacao_terra_indigena.csv`,geojson:`${_S3_GEOJSON}/AMZ_terra_indigena.geojson`},
+    unidadesConservacao:{csv:`${_S3_CSV}/alertas_sad_degradacao_ucs.csv`,geojson:`${_S3_GEOJSON}/AMZ_unidade_conservacao.geojson`}
   }
 };
 
@@ -580,7 +584,7 @@ const __bgCache = {};
 let __bgLayer = null;
 async function updateBackgroundOutlines(){
   try{ if(__bgLayer){ map.removeLayer(__bgLayer); __bgLayer = null; } }catch(e){}
-  const url = "/dataset/sad/geojson/AMZ_legal_amz_legal.geojson"; // << corrigido
+  const url = `${_S3_GEOJSON}/AMZ_legal_amz_legal.geojson`;
   if (!map.getPane('base-legal')) {
     map.createPane('base-legal');
     map.getPane('base-legal').style.zIndex = 300;
@@ -1149,7 +1153,7 @@ function toggleDatasetButtonsInFilters() {
 // Período
 function populateYearSelects(){
   const MAX_YEAR = 2025;
-  const MAX_MONTH = 8; // travado até agosto/2025
+  const MAX_MONTH = 9; // travado até agosto/2025
 
   const ys = document.getElementById('yearStart');
   const ye = document.getElementById('yearEnd');
@@ -1169,7 +1173,7 @@ function populateYearSelects(){
 // Impede seleção além de 08/2025 no "fim"
 function enforceEndMonthLimit(){
   const MAX_YEAR = 2025;
-  const MAX_MONTH = 8;
+  const MAX_MONTH = 9;
   const ye = document.getElementById('yearEnd');
   const me = document.getElementById('monthEnd');
   const selectedYear = parseInt(ye.value,10);
@@ -1231,7 +1235,7 @@ function refreshChartsOnResize(){
 }
 window.addEventListener('resize', debounce(refreshChartsOnResize, 200));
 
-const SAD_BASE          = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad';
+const SAD_BASE          = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/dashboard/sad';
 const SAD_GEOJSON_BASE  = `${SAD_BASE}/geojson`;
 const SAD_CSV_BASE      = `${SAD_BASE}/csv`;
 const SAD_SHP_BASE      = `${SAD_BASE}/shapefile`;

@@ -32,7 +32,7 @@ module.exports = {
   apps: [
     // Produção (sem watch)
     {
-      name: APP_NAME,                  // "sad"
+      name: APP_NAME,                  
       script: 'server.js',
       cwd: APP_DIR,
       instances: 1,
