@@ -1,0 +1,256 @@
+2026-04-17T12:17:05: Error: Cannot find module 'express'
+2026-04-17T12:17:05: Require stack:
+2026-04-17T12:17:05: - C:\dashboards\sad\server.js
+2026-04-17T12:17:05:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:05:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:05:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:05:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:05:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:05:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:05:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:05:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:05:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:05:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:05:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:05:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:05: }
+2026-04-17T12:17:05: Error: Cannot find module 'express'
+2026-04-17T12:17:05: Require stack:
+2026-04-17T12:17:05: - C:\dashboards\sad\server.js
+2026-04-17T12:17:05:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:05:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:05:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:05:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:05:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:05:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:05:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:05:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:05:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:05:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:05:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:05:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:05: }
+2026-04-17T12:17:06: Error: Cannot find module 'express'
+2026-04-17T12:17:06: Require stack:
+2026-04-17T12:17:06: - C:\dashboards\sad\server.js
+2026-04-17T12:17:06:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:06:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:06:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:06:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:06:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:06:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:06:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:06:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:06:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:06:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:06:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:06:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:06: }
+2026-04-17T12:17:06: Error: Cannot find module 'express'
+2026-04-17T12:17:06: Require stack:
+2026-04-17T12:17:06: - C:\dashboards\sad\server.js
+2026-04-17T12:17:06:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:06:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:06:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:06:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:06:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:06:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:06:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:06:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:06:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:06:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:06:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:06:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:06: }
+2026-04-17T12:17:06: Error: Cannot find module 'express'
+2026-04-17T12:17:06: Require stack:
+2026-04-17T12:17:06: - C:\dashboards\sad\server.js
+2026-04-17T12:17:06:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:06:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:06:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:06:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:06:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:06:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:06:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:06:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:06:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:06:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:06:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:06:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:06: }
+2026-04-17T12:17:07: Error: Cannot find module 'express'
+2026-04-17T12:17:07: Require stack:
+2026-04-17T12:17:07: - C:\dashboards\sad\server.js
+2026-04-17T12:17:07:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:07:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:07:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:07:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:07:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:07:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:07:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:07:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:07: }
+2026-04-17T12:17:07: Error: Cannot find module 'express'
+2026-04-17T12:17:07: Require stack:
+2026-04-17T12:17:07: - C:\dashboards\sad\server.js
+2026-04-17T12:17:07:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:07:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:07:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:07:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:07:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:07:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:07:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:07:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:07: }
+2026-04-17T12:17:07: Error: Cannot find module 'express'
+2026-04-17T12:17:07: Require stack:
+2026-04-17T12:17:07: - C:\dashboards\sad\server.js
+2026-04-17T12:17:07:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:07:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:07:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:07:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:07:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:07:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:07:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:07:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:07: }
+2026-04-17T12:17:07: Error: Cannot find module 'express'
+2026-04-17T12:17:07: Require stack:
+2026-04-17T12:17:07: - C:\dashboards\sad\server.js
+2026-04-17T12:17:07:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:07:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:07:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:07:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:07:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:07:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:07:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:07:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:07:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:07:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:07: }
+2026-04-17T12:17:08: Error: Cannot find module 'express'
+2026-04-17T12:17:08: Require stack:
+2026-04-17T12:17:08: - C:\dashboards\sad\server.js
+2026-04-17T12:17:08:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:08:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:08:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:08:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:08:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:08:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:08:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:08:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:08:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:08:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:08:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:08:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:08: }
+2026-04-17T12:17:08: Error: Cannot find module 'express'
+2026-04-17T12:17:08: Require stack:
+2026-04-17T12:17:08: - C:\dashboards\sad\server.js
+2026-04-17T12:17:08:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:08:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:08:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:08:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:08:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:08:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:08:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:08:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:08:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:08:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:08:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:08:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:08: }
+2026-04-17T12:17:08: Error: Cannot find module 'express'
+2026-04-17T12:17:08: Require stack:
+2026-04-17T12:17:08: - C:\dashboards\sad\server.js
+2026-04-17T12:17:08:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:08:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:08:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:08:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:08:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:08:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:08:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:08:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:08:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:08:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:08:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:08:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:08: }
+2026-04-17T12:17:09: Error: Cannot find module 'express'
+2026-04-17T12:17:09: Require stack:
+2026-04-17T12:17:09: - C:\dashboards\sad\server.js
+2026-04-17T12:17:09:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:09:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:09:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:09:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:09:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:09:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:09:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:09:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:09: }
+2026-04-17T12:17:09: Error: Cannot find module 'express'
+2026-04-17T12:17:09: Require stack:
+2026-04-17T12:17:09: - C:\dashboards\sad\server.js
+2026-04-17T12:17:09:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:09:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:09:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:09:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:09:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:09:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:09:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:09:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:09: }
+2026-04-17T12:17:09: Error: Cannot find module 'express'
+2026-04-17T12:17:09: Require stack:
+2026-04-17T12:17:09: - C:\dashboards\sad\server.js
+2026-04-17T12:17:09:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:09:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:09:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:09:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:09:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:09:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:09:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:09:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:09: }
+2026-04-17T12:17:09: Error: Cannot find module 'express'
+2026-04-17T12:17:09: Require stack:
+2026-04-17T12:17:09: - C:\dashboards\sad\server.js
+2026-04-17T12:17:09:     at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+2026-04-17T12:17:09:     at Hook._require.Module.require (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\node_modules\require-in-the-middle\index.js:81:25)
+2026-04-17T12:17:09:     at require (node:internal/modules/helpers:147:16)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\dashboards\sad\server.js:3:17)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14)
+2026-04-17T12:17:09:     at Object..js (node:internal/modules/cjs/loader:1838:10)
+2026-04-17T12:17:09:     at Module.load (node:internal/modules/cjs/loader:1441:32)
+2026-04-17T12:17:09:     at Function._load (node:internal/modules/cjs/loader:1263:12)
+2026-04-17T12:17:09:     at Object.<anonymous> (C:\Users\mathe\AppData\Roaming\npm\node_modules\pm2\lib\ProcessContainerFork.js:33:23)
+2026-04-17T12:17:09:     at Module._compile (node:internal/modules/cjs/loader:1705:14) {
+2026-04-17T12:17:09:   code: 'MODULE_NOT_FOUND',
+2026-04-17T12:17:09:   requireStack: [ 'C:\\dashboards\\sad\\server.js' ]
+2026-04-17T12:17:09: }

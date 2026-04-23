@@ -38,3 +38,13 @@
 2025-11-16T22:45:19: SAD_DIR: C:\dashboards\sad\dataset\sad
 2025-11-16T22:45:19: ✅ Server em http://localhost:8052
 2025-11-16T22:45:19: 🛡️ CSP (Enforcing) ativo
+2026-04-17T12:20:01: ROOT_DIR: C:\dashboards\sad
+2026-04-17T12:20:01: DATASET_DIR: C:\dashboards\sad\dataset
+2026-04-17T12:20:01: SAD_DIR: C:\dashboards\sad\dataset\sad
+2026-04-17T12:20:01: ✅ Server em http://localhost:8052
+2026-04-17T12:20:01: 🛡️ CSP (Enforcing) ativo
+2026-04-23T12:11:17: ROOT_DIR: C:\dashboards\sad
+2026-04-23T12:11:17: DATASET_DIR: C:\dashboards\sad\dataset
+2026-04-23T12:11:17: SAD_DIR: C:\dashboards\sad\dataset\sad
+2026-04-23T12:11:17: ✅ Server em http://localhost:8052
+2026-04-23T12:11:17: 🛡️ CSP (Enforcing) ativo

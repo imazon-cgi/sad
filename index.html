@@ -1152,8 +1152,8 @@ function toggleDatasetButtonsInFilters() {
 
 // Período
 function populateYearSelects(){
-  const MAX_YEAR = 2025;
-  const MAX_MONTH = 9; // travado até agosto/2025
+  const MAX_YEAR = 2026;
+  const MAX_MONTH = 2; // travado ate fevereiro/2026
 
   const ys = document.getElementById('yearStart');
   const ye = document.getElementById('yearEnd');
@@ -1163,17 +1163,17 @@ function populateYearSelects(){
     ys.add(new Option(y,y));
     ye.add(new Option(y,y));
   }
-  // Default: 01/2025 a 08/2025
+  // Default: 01/2026 a 02/2026
   ys.value = String(MAX_YEAR);
   ye.value = String(MAX_YEAR);
   document.getElementById('monthStart').value = '01';
   document.getElementById('monthEnd').value = String(MAX_MONTH).padStart(2,'0');
 }
 
-// Impede seleção além de 08/2025 no "fim"
+// Impede selecao alem de 02/2026 no "fim"
 function enforceEndMonthLimit(){
-  const MAX_YEAR = 2025;
-  const MAX_MONTH = 9;
+  const MAX_YEAR = 2026;
+  const MAX_MONTH = 2;
   const ye = document.getElementById('yearEnd');
   const me = document.getElementById('monthEnd');
   const selectedYear = parseInt(ye.value,10);
@@ -1246,8 +1246,8 @@ function joinUrl(base, path){
 
 const MONTHS_ABBR = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 function monthsForSADYear(y){
-  const MAX_YEAR = 2025;
-  const MAX_MONTH = 8;
+  const MAX_YEAR = 2026;
+  const MAX_MONTH = 2;
   if (y === 2008) return [8,9,10,11,12];
   if (y < MAX_YEAR) return [1,2,3,4,5,6,7,8,9,10,11,12];
   if (y === MAX_YEAR) return Array.from({length:MAX_MONTH},(_,i)=>i+1);
@@ -1301,7 +1301,7 @@ async function buildSADYearBlock(y){
 async function renderDownloadsSAD(){
   const ul=document.getElementById('sad-downloads-list');
   ul.innerHTML='';
-  const curYear = Math.min(new Date().getFullYear(), 2025);
+  const curYear = Math.min(new Date().getFullYear(), 2026);
   for(let y=curYear; y>=2008; y--){
     const blk = await buildSADYearBlock(y);
     const li = document.createElement('li'); li.appendChild(blk); ul.appendChild(li);

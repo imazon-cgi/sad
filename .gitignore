@@ -1,0 +1,11 @@
+/logs
+*/logs
+
+#Ignore log folders
+logs/
+*/logs/
+#Ignore log files
+
+
+# Ignore node_modules
+node_modules/

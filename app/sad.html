@@ -960,20 +960,17 @@ function toggleDatasetButtonsInFilters() {
 function populateMonthSelect(sel){
   sel.innerHTML = MONTHS.map((nm,i)=>`<option value="${String(i+1).padStart(2,'0')}">${nm}</option>`).join('');
 }
+const MAX_SAD_YEAR = 2026;
+const MAX_SAD_MONTH = 2;
+
 function setCurrentYear() {
-  const currentYear = new Date().getFullYear();
-  document.getElementById('yearStart').value = currentYear;
-  document.getElementById('yearEnd').value = currentYear;
+  document.getElementById('yearStart').value = MAX_SAD_YEAR;
+  document.getElementById('yearEnd').value = MAX_SAD_YEAR;
 }
 function populateYearSelects(){
-  const cur = new Date().getFullYear();
-  const curMonth = new Date().getMonth() + 1; // mês atual (1–12)
-  const endMonth = ((curMonth - 2) <= 0) ? (12 + (curMonth - 2)) : (curMonth - 2);
-  const endYear = ((curMonth - 2) <= 0) ? (cur - 1) : cur;
-
   const ys = document.getElementById('yearStart');
   const ye = document.getElementById('yearEnd');
-  for(let y=2008; y<=cur; y++){ 
+  for(let y=2008; y<=MAX_SAD_YEAR; y++){ 
     ys.add(new Option(y,y)); 
     ye.add(new Option(y,y)); 
   }
@@ -983,8 +980,8 @@ function populateYearSelects(){
   populateMonthSelect(document.getElementById('monthEnd'));
 
   document.getElementById('monthStart').value = '01';
-  document.getElementById('monthEnd').value = String(endMonth).padStart(2,'0');
-  document.getElementById('yearEnd').value = endYear;
+  document.getElementById('monthEnd').value = String(MAX_SAD_MONTH).padStart(2,'0');
+  document.getElementById('yearEnd').value = MAX_SAD_YEAR;
 }
 
 
@@ -999,7 +996,7 @@ function clearFilters() {
   document.getElementById('jurisdicaoFilter').value = 'all';
   document.getElementById('modalidadeFilter').value = 'all';
   document.getElementById('monthStart').value = '01';
-  document.getElementById('monthEnd').value = String(new Date().getMonth()+1).padStart(2,'0');
+  document.getElementById('monthEnd').value = String(MAX_SAD_MONTH).padStart(2,'0');
   setCurrentYear();
   toggleDatasetButtonsInFilters();
   updateTitles();
