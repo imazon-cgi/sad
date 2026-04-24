@@ -448,7 +448,7 @@ function __featureCenter(feat){
   try{ const tmp = L.geoJSON(feat); const b = tmp.getBounds(); return b && b.isValid() ? b.getCenter() : null; }catch{return null;}
 }
 
-const SAD_BASE     = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad';
+const SAD_BASE     = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/dashboard/sad';
 const SAD_CSV      = `${SAD_BASE}/csv`;
 const SAD_GEOJSON  = `${SAD_BASE}/geojson`;
 
