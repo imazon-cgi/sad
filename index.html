@@ -558,7 +558,7 @@ function __featureCenter(feat){
 }
 
 // ===== FONTES DE DADOS =====
-const _S3_BASE    = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/dashboard/sad';
+const _S3_BASE    = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad';
 const _S3_CSV     = `${_S3_BASE}/csv`;
 const _S3_GEOJSON = `${_S3_BASE}/geojson`;
 
@@ -1235,7 +1235,7 @@ function refreshChartsOnResize(){
 }
 window.addEventListener('resize', debounce(refreshChartsOnResize, 200));
 
-const SAD_BASE          = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/dashboard/sad';
+const SAD_BASE          = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/sad';
 const SAD_GEOJSON_BASE  = `${SAD_BASE}/geojson`;
 const SAD_CSV_BASE      = `${SAD_BASE}/csv`;
 const SAD_SHP_BASE      = `${SAD_BASE}/shapefile`;
