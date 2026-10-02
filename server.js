@@ -177,6 +177,7 @@ app.get('/api/sad/download/:ano/:mes.:formato', async (req, res) => {
   if (!downloadPool) return semBanco(res);
   const ano = Number(req.params.ano), mes = Number(req.params.mes);
   const formato = String(req.params.formato).toLowerCase();
+  const zipGeojson = formato === 'zip' && String(req.query.formato || '') === 'geojson';
   if (!Number.isInteger(ano) || !Number.isInteger(mes) || mes < 1 || mes > 12 || !['csv','geojson','zip'].includes(formato)) return res.status(400).send('Parâmetros inválidos');
   const { rows } = await downloadPool.query(`SELECT tipo, camada, ano, mes, sensor, uf, municipio, territorio, uso, jurisdicao, area_km2, ST_AsGeoJSON(geom)::json AS geometry FROM imazongeo.vw_sad WHERE ano=$1 AND mes=$2 ORDER BY tipo, camada`, [ano, mes]);
   if (!rows.length) return res.status(404).send('Sem dados para o período');
@@ -191,7 +192,7 @@ app.get('/api/sad/download/:ano/:mes.:formato', async (req, res) => {
     res.type('text/csv'); return res.attachment(`sad_${stamp}.csv`).send(head.join(',')+'\n'+body+'\n');
   }
   const tmp = await fs.promises.mkdtemp(path.join(os.tmpdir(), `sad-${stamp}-`));
-  try { const geo = path.join(tmp, `sad_${stamp}.geojson`); await fs.promises.writeFile(geo, JSON.stringify(fc)); const shp = path.join(tmp, 'shapefile'); await fs.promises.mkdir(shp); await execFileAsync('ogr2ogr', ['-f','ESRI Shapefile',shp,geo]); await execFileAsync('zip', ['-j', '-q', path.join(tmp, `sad_${stamp}.zip`), ...await fs.promises.readdir(shp).then(a=>a.map(x=>path.join(shp,x)))]); res.download(path.join(tmp, `sad_${stamp}.zip`), `sad_${stamp}.zip`, () => fs.promises.rm(tmp,{recursive:true,force:true})); } catch (e) { await fs.promises.rm(tmp,{recursive:true,force:true}); res.status(500).send(`Falha ao gerar Shapefile: ${e.message}`); }
+  try { const geo = path.join(tmp, `sad_${stamp}.geojson`); await fs.promises.writeFile(geo, JSON.stringify(fc)); const zip = path.join(tmp, `sad_${stamp}.zip`); if (zipGeojson) await execFileAsync('zip', ['-j', '-q', zip, geo]); else { const shp = path.join(tmp, 'shapefile'); await fs.promises.mkdir(shp); await execFileAsync('ogr2ogr', ['-f','ESRI Shapefile',shp,geo]); await execFileAsync('zip', ['-j', '-q', zip, ...await fs.promises.readdir(shp).then(a=>a.map(x=>path.join(shp,x)))]); } res.download(zip, `sad_${stamp}.zip`, () => fs.promises.rm(tmp,{recursive:true,force:true})); } catch (e) { await fs.promises.rm(tmp,{recursive:true,force:true}); res.status(500).send(`Falha ao gerar arquivo: ${e.message}`); }
 });
 
 // ======== Servir /dataset ========

@@ -1322,9 +1322,9 @@ function monthsForSADYear(y){
 }
 function sadMonthlyUrl(y, m, type = SAD_SELECTED_TYPE){
   const mm       = String(m).padStart(2, '0');
-  const ext = type === 'geojson' ? 'geojson' : type === 'csv' ? 'csv' : 'zip';
+  const ext = type === 'geojson' ? 'zip' : type === 'csv' ? 'csv' : 'zip';
   const api = window.location.pathname.startsWith('/sad') ? '/sad/api/sad' : '/api/sad';
-  return `${api}/download/${y}/${mm}.${ext}`;
+  return `${api}/download/${y}/${mm}.${ext}${type === 'geojson' ? '?formato=geojson' : ''}`;
 }
 
 function makeChip(label,url){
