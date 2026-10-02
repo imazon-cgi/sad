@@ -1311,10 +1311,10 @@ function joinUrl(base, path){
 
 const MONTHS_ABBR = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 // Downloads: o limite aqui acompanha os ZIPs publicados no S3, não o banco —
-// meses que só existem no banco ainda não têm arquivo para baixar.
+// meses disponíveis até o último período publicado.
 function monthsForSADYear(y){
   const MAX_YEAR = 2026;
-  const MAX_MONTH = 2;
+  const MAX_MONTH = 7;
   if (y === 2008) return [8,9,10,11,12];
   if (y < MAX_YEAR) return [1,2,3,4,5,6,7,8,9,10,11,12];
   if (y === MAX_YEAR) return Array.from({length:MAX_MONTH},(_,i)=>i+1);
