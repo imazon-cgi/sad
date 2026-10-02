@@ -558,9 +558,39 @@ function __featureCenter(feat){
 }
 
 // ===== FONTES DE DADOS =====
+// Alertas: banco (server.js, /api/sad) quando a tabela do SAD existir; se o banco
+// não estiver configurado ou ativo, os CSVs do S3 abaixo. Os GeoJSON vêm sempre do S3.
+const _API_SAD    = '/api/sad';
 const _S3_BASE    = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/dashboard/sad';
 const _S3_CSV     = `${_S3_BASE}/csv`;
 const _S3_GEOJSON = `${_S3_BASE}/geojson`;
+
+// Camada do banco de cada recorte (estados soma os alertas dos municípios)
+const camadaBanco = {
+  assentamentos:'assentamentos', estados:'municipios', municipios:'municipios',
+  terrasIndigenas:'terras_indigenas', unidadesConservacao:'unidades_conservacao'
+};
+
+// Período coberto pelos dados, usado para montar os filtros de mês/ano. Vem do
+// banco; sem banco, fica o alcance dos arquivos publicados no S3.
+let limiteSAD = { anoMin:2008, ano:2026, mes:2 };
+async function carregarLimiteSAD(){
+  try{
+    const r = await fetch(`${_API_SAD}/periodo`);
+    if(!r.ok) return;
+    const p = await r.json();
+    if(p.ano_max && p.mes_max) limiteSAD = { anoMin: p.ano_min || 2008, ano: p.ano_max, mes: p.mes_max };
+  }catch{ /* sem banco: mantém o padrão */ }
+}
+
+/* Período do filtro como dois inteiros AAAAMM */
+function periodoSelecionado(){
+  const ys = document.getElementById('yearStart').value  || String(limiteSAD.anoMin);
+  const ms = document.getElementById('monthStart').value || '01';
+  const ye = document.getElementById('yearEnd').value    || String(limiteSAD.ano);
+  const me = document.getElementById('monthEnd').value   || '12';
+  return [parseInt(`${ys}${ms}`,10), parseInt(`${ye}${me}`,10)];
+}
 
 const dataSources={
   desmatamento:{
@@ -644,29 +674,58 @@ async function loadCsvCached(url){
   return p;
 }
 
+/* Alertas de um tipo + recorte: banco e, se indisponível (503), CSV do S3 */
+async function loadAlertas(tipo, territoryType){
+  try{
+    return await loadCsvCached(`${_API_SAD}/${tipo}/${camadaBanco[territoryType]}.csv`);
+  }catch{
+    return loadCsvCached(dataSources[tipo]?.[territoryType]?.csv);
+  }
+}
+
+/* Polígonos do mapa: alertas do período vindos do banco e, se indisponível, o
+   GeoJSON do S3. 'Estados' continua no S3, que tem os limites estaduais — o
+   banco guarda alertas, não contornos de território. */
+const __mapGeoCache = {};
+function loadGeoCached(url){
+  if (__mapGeoCache[url]) return __mapGeoCache[url];
+  const p = fetch(url)
+    .then(r => { if(!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+    .catch(err => { delete __mapGeoCache[url]; throw err; });
+  __mapGeoCache[url] = p;
+  return p;
+}
+async function loadGeo(tipo, territoryType, territorios=[]){
+  const camada = camadaBanco[territoryType];
+  if (territoryType !== 'estados' && camada){
+    const [de, ate] = periodoSelecionado();
+    const lista = territorios.length ? `&territorios=${encodeURIComponent(territorios.join('|'))}` : '';
+    try{
+      return await loadGeoCached(`${_API_SAD}/${tipo}/${camada}.geojson?de=${de}&ate=${ate}${lista}`);
+    }catch{ /* sem banco, sem alertas no período ou período grande demais */ }
+  }
+  const s3 = dataSources.desmatamento?.[territoryType]?.geojson;
+  return s3 ? loadGeoCached(s3).catch(()=>null) : null;
+}
+
 /* Carrega CSV (ou combina os dois quando 'todos') e o geojson */
 async function loadData(){
   const sad = dataTypeAtual();
   const territoryType = categoriaAtual();
-  const geoUrl = dataSources.desmatamento?.[territoryType]?.geojson;
 
   try{
     let data = [];
     if (sad === 'todos'){
-      const urlDes = dataSources.desmatamento?.[territoryType]?.csv;
-      const urlDeg = dataSources.degradacao?.[territoryType]?.csv;
-      const [a,b] = await Promise.all([ loadCsvCached(urlDes), loadCsvCached(urlDeg) ]);
+      const [a,b] = await Promise.all([ loadAlertas('desmatamento', territoryType), loadAlertas('degradacao', territoryType) ]);
       data = a.concat(b);
     } else {
-      const url = dataSources[sad]?.[territoryType]?.csv;
-      data = await loadCsvCached(url);
+      data = await loadAlertas(sad, territoryType);
     }
-    const geojsonData = geoUrl ? await fetch(geoUrl).then(r=>r.json()) : null;
     csvData = data;
-    return { csvData:data, geojsonData };
+    return { csvData:data };
   }catch(e){
     console.error('Erro ao carregar dados:', e);
-    return { csvData:[], geojsonData:null };
+    return { csvData:[] };
   }
 }
 
@@ -736,7 +795,14 @@ async function setRankPage(p){
   window.currentTopTerritories = slice.map(([k]) => k);
 
   updateBarChart(labels, values);
-  if(window._lastGeo && window._lastAggreg) { updateMap(window._lastGeo, window._lastAggreg, ttype); }
+  await desenharMapa(ttype);
+}
+
+/* Busca os polígonos dos territórios listados nesta página do ranking e desenha */
+async function desenharMapa(ttype){
+  if(!window._lastAggreg) return;
+  window._lastGeo = await loadGeo(dataTypeAtual(), ttype, window.currentTopTerritories || []);
+  updateMap(window._lastGeo || {type:'FeatureCollection', features:[]}, window._lastAggreg, ttype);
   zoomToTopItems(5);
 }
 
@@ -1020,8 +1086,8 @@ function updateTitles(){
 async function updateDashboard(){
   showLoader('Carregando Dados...');
   try{
-    const {csvData:loadedData,geojsonData} = await loadData();
-    if(!loadedData.length || !geojsonData){ hideLoader(); return; }
+    const {csvData:loadedData} = await loadData();
+    if(!loadedData.length){ hideLoader(); return; }
 
     const ttype=categoriaAtual();
     const key=territoryNameMapping[ttype];
@@ -1046,11 +1112,10 @@ async function updateDashboard(){
 
     rankingAll = Object.entries(aggregated).sort(([,a],[,b])=>b-a);
     window._lastAggreg = aggregated;
-    window._lastGeo = geojsonData;
 
     updateStatistics(aggregated, filtered);
     updateTitles();
-    setRankPage(0);
+    await setRankPage(0); // busca os polígonos do mapa e desenha
 
     updateLineChart(loadedData, ttype);
     updateYearlyChart(loadedData);
@@ -1150,30 +1215,30 @@ function toggleDatasetButtonsInFilters() {
   if (el) el.style.display = '';
 }
 
-// Período
+// Período (os limites vêm de limiteSAD, ou seja, dos dados disponíveis)
 function populateYearSelects(){
-  const MAX_YEAR = 2026;
-  const MAX_MONTH = 2; // travado ate fevereiro/2026
+  const MAX_YEAR = limiteSAD.ano;
+  const MAX_MONTH = limiteSAD.mes;
 
   const ys = document.getElementById('yearStart');
   const ye = document.getElementById('yearEnd');
   ys.innerHTML = '';
   ye.innerHTML = '';
-  for(let y=2008; y<=MAX_YEAR; y++){
+  for(let y=limiteSAD.anoMin; y<=MAX_YEAR; y++){
     ys.add(new Option(y,y));
     ye.add(new Option(y,y));
   }
-  // Default: 01/2026 a 02/2026
+  // Default: janeiro do último ano até o último mês disponível
   ys.value = String(MAX_YEAR);
   ye.value = String(MAX_YEAR);
   document.getElementById('monthStart').value = '01';
   document.getElementById('monthEnd').value = String(MAX_MONTH).padStart(2,'0');
 }
 
-// Impede selecao alem de 02/2026 no "fim"
+// Impede selecionar um mês final além do último disponível
 function enforceEndMonthLimit(){
-  const MAX_YEAR = 2026;
-  const MAX_MONTH = 2;
+  const MAX_YEAR = limiteSAD.ano;
+  const MAX_MONTH = limiteSAD.mes;
   const ye = document.getElementById('yearEnd');
   const me = document.getElementById('monthEnd');
   const selectedYear = parseInt(ye.value,10);
@@ -1245,6 +1310,8 @@ function joinUrl(base, path){
 }
 
 const MONTHS_ABBR = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+// Downloads: o limite aqui acompanha os ZIPs publicados no S3, não o banco —
+// meses que só existem no banco ainda não têm arquivo para baixar.
 function monthsForSADYear(y){
   const MAX_YEAR = 2026;
   const MAX_MONTH = 2;
@@ -1309,7 +1376,8 @@ async function renderDownloadsSAD(){
 }
 
 /* ========= DOM Ready ========= */
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', async ()=>{
+  await carregarLimiteSAD(); // define o alcance dos filtros antes de montá-los
   populateYearSelects();
   enforceEndMonthLimit();
   toggleUCFields();

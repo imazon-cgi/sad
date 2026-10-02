@@ -9,3 +9,9 @@ logs/
 
 # Ignore node_modules
 node_modules/
+# Configuração local (DATABASE_URL)
+.env
+
+# Dados baixados do Drive (scripts/preparar_banco_sad.sh)
+dados-sad/
+.env.bak

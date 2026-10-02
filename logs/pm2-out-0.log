@@ -48,3 +48,68 @@
 2026-04-23T12:11:17: SAD_DIR: C:\dashboards\sad\dataset\sad
 2026-04-23T12:11:17: ✅ Server em http://localhost:8052
 2026-04-23T12:11:17: 🛡️ CSP (Enforcing) ativo
+2026-09-22T16:39:56: ROOT_DIR: /home/matheus/imazon/sad
+2026-09-22T16:39:56: DATASET_DIR: /home/matheus/imazon/sad/dataset
+2026-09-22T16:39:56: SAD_DIR: /home/matheus/imazon/sad/dataset/sad
+2026-09-22T16:39:56: Banco do SAD: imazongeo.vw_sad
+2026-09-22T16:39:56: ✅ Server em http://localhost:8052
+2026-09-22T16:39:56: 🛡️ CSP (Enforcing) ativo
+2026-09-22T16:40:24: SAD desmatamento/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T16:40:25: SAD degradacao/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T16:40:25: SAD desmatamento/assentamentos: lendo do banco (imazongeo.vw_sad)
+2026-09-22T16:40:26: SAD degradacao/assentamentos: lendo do banco (imazongeo.vw_sad)
+2026-09-22T16:40:27: SAD desmatamento/terras_indigenas: lendo do banco (imazongeo.vw_sad)
+2026-09-22T16:40:27: SAD degradacao/terras_indigenas: lendo do banco (imazongeo.vw_sad)
+2026-09-22T16:40:28: SAD desmatamento/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T16:40:28: SAD degradacao/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:35:18: ROOT_DIR: /home/matheus/imazon/sad
+2026-09-22T17:35:18: DATASET_DIR: /home/matheus/imazon/sad/dataset
+2026-09-22T17:35:18: SAD_DIR: /home/matheus/imazon/sad/dataset/sad
+2026-09-22T17:35:18: Banco do SAD: imazongeo.vw_sad
+2026-09-22T17:35:18: ✅ Server em http://localhost:8052
+2026-09-22T17:35:18: 🛡️ CSP (Enforcing) ativo
+2026-09-22T17:35:21: SAD periodo: 2008 a 2026-07
+2026-09-22T17:35:22: SAD degradacao/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:35:23: SAD desmatamento/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:35:24: SAD todos/municipios.geojson: período com 12282 polígonos (teto 8000); lendo do S3
+2026-09-22T17:38:13: ROOT_DIR: /home/matheus/imazon/sad
+2026-09-22T17:38:13: DATASET_DIR: /home/matheus/imazon/sad/dataset
+2026-09-22T17:38:13: SAD_DIR: /home/matheus/imazon/sad/dataset/sad
+2026-09-22T17:38:13: Banco do SAD: imazongeo.vw_sad
+2026-09-22T17:38:13: ✅ Server em http://localhost:8052
+2026-09-22T17:38:13: 🛡️ CSP (Enforcing) ativo
+2026-09-22T17:38:16: SAD periodo: 2008 a 2026-07
+2026-09-22T17:38:17: SAD degradacao/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:38:17: SAD desmatamento/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:38:19: SAD todos/municipios.geojson: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:38:52: SAD degradacao/terras_indigenas: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:38:52: SAD desmatamento/terras_indigenas: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:38:52: SAD todos/terras_indigenas.geojson: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:39:05: SAD degradacao/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:39:05: SAD desmatamento/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:39:05: SAD todos/unidades_conservacao.geojson: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:39:48: SAD todos/municipios.geojson: período com 127114 polígonos (teto 8000); lendo do S3
+2026-09-22T17:41:25: ROOT_DIR: /home/matheus/imazon/sad
+2026-09-22T17:41:25: DATASET_DIR: /home/matheus/imazon/sad/dataset
+2026-09-22T17:41:25: SAD_DIR: /home/matheus/imazon/sad/dataset/sad
+2026-09-22T17:41:25: Banco do SAD: imazongeo.vw_sad
+2026-09-22T17:41:25: ✅ Server em http://localhost:8052
+2026-09-22T17:41:25: 🛡️ CSP (Enforcing) ativo
+2026-09-22T17:41:28: SAD periodo: 2008 a 2026-07
+2026-09-22T17:41:29: SAD degradacao/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:41:29: SAD desmatamento/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:41:33: SAD degradacao/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:41:33: SAD desmatamento/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:41:33: SAD todos/unidades_conservacao.geojson: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:42:35: ROOT_DIR: /home/matheus/imazon/sad
+2026-09-22T17:42:35: DATASET_DIR: /home/matheus/imazon/sad/dataset
+2026-09-22T17:42:35: SAD_DIR: /home/matheus/imazon/sad/dataset/sad
+2026-09-22T17:42:35: Banco do SAD: imazongeo.vw_sad
+2026-09-22T17:42:35: ✅ Server em http://localhost:8052
+2026-09-22T17:42:35: 🛡️ CSP (Enforcing) ativo
+2026-09-22T17:42:39: SAD periodo: 2008 a 2026-07
+2026-09-22T17:42:39: SAD degradacao/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:42:40: SAD desmatamento/municipios: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:42:41: SAD degradacao/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:42:41: SAD desmatamento/unidades_conservacao: lendo do banco (imazongeo.vw_sad)
+2026-09-22T17:42:41: SAD todos/unidades_conservacao.geojson: lendo do banco (imazongeo.vw_sad)

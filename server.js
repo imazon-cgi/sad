@@ -1,8 +1,10 @@
 const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env'), quiet: true });
 const fs = require('fs');
 const express = require('express');
 const compression = require('compression');
 const helmet = require('helmet');
+const { csvAlertasSad, geojsonAlertasSad, periodoSad, bancoConfigurado, SAD_VIEW } = require('./banco');
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
@@ -116,6 +118,52 @@ function setStaticHeaders(res, filePath) {
 console.log('ROOT_DIR:', ROOT_DIR);
 console.log('DATASET_DIR:', DATASET_DIR);
 console.log('SAD_DIR:', SAD_DIR);
+console.log('Banco do SAD:', bancoConfigurado ? SAD_VIEW : 'DATABASE_URL não definida (só S3)');
+
+// ======== Alertas do SAD no banco ========
+// 503 quando o banco não está configurado/ativo ou ainda não tem a tabela do
+// SAD: o navegador então lê o CSV (ou o GeoJSON) do S3.
+function semBanco(res) {
+  res.setHeader('Cache-Control', 'no-store');
+  res.status(503).type('text/plain').send('Alertas do SAD indisponíveis no banco');
+}
+
+function comCacheDe10Min(res, tipoMime) {
+  res.type(tipoMime);
+  res.setHeader('Cache-Control', 'public, max-age=600, stale-while-revalidate=120');
+}
+
+// Período coberto pelo banco: a página monta os filtros de mês/ano com ele
+app.get('/api/sad/periodo', async (_req, res) => {
+  const periodo = await periodoSad();
+  if (periodo === null) return semBanco(res);
+  comCacheDe10Min(res, 'application/json; charset=utf-8');
+  res.send(periodo);
+});
+
+app.get('/api/sad/:tipo/:camada.csv', async (req, res) => {
+  const csv = await csvAlertasSad(req.params.tipo, req.params.camada);
+  if (csv === null) return semBanco(res);
+  comCacheDe10Min(res, 'text/csv; charset=utf-8');
+  res.send(csv);
+});
+
+// Polígonos do mapa no período pedido (de/ate no formato AAAAMM) e, quando
+// informados, só dos territórios do ranking (separados por '|')
+app.get('/api/sad/:tipo/:camada.geojson', async (req, res) => {
+  const territorios = String(req.query.territorios || '')
+    .split('|').map(t => t.trim()).filter(Boolean).slice(0, 50);
+  const geojson = await geojsonAlertasSad(
+    req.params.tipo,
+    req.params.camada,
+    parseInt(req.query.de, 10),
+    parseInt(req.query.ate, 10),
+    territorios
+  );
+  if (geojson === null) return semBanco(res);
+  comCacheDe10Min(res, 'application/geo+json; charset=utf-8');
+  res.send(geojson);
+});
 
 // ======== Servir /dataset ========
 app.use('/dataset', express.static(DATASET_DIR, { setHeaders: setStaticHeaders }));
@@ -129,9 +177,18 @@ app.use('/dataset/sad', express.static(SAD_DIR, {
 app.use('/img', express.static(path.join(ROOT_DIR, 'img'), { setHeaders: setStaticHeaders }));
 
 // ======== Raiz (HTML/estáticos do app) ========
+// Arquivos do servidor ficam fora: o .env tem a senha do banco, e os logs e a
+// configuração não interessam ao navegador.
+const ARQUIVOS_PRIVADOS = /^\/(server\.js|banco\.js|package(-lock)?\.json|ecosystem\.config\.js|logs(\/|$))/;
+app.use((req, res, next) => {
+  if (ARQUIVOS_PRIVADOS.test(req.path)) return res.status(404).type('text/plain').send('Não encontrado');
+  next();
+});
+
 app.use(express.static(ROOT_DIR, {
   setHeaders: setStaticHeaders,
-  extensions: ['html']
+  extensions: ['html'],
+  dotfiles: 'ignore' // .env e outros arquivos ocultos
 }));
 
 // ======== Healthcheck ========
