@@ -1,9 +1,14 @@
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env'), quiet: true });
 const fs = require('fs');
+const os = require('os');
 const express = require('express');
 const compression = require('compression');
 const helmet = require('helmet');
+const { Pool } = require('pg');
+const { execFile } = require('child_process');
+const { promisify } = require('util');
+const execFileAsync = promisify(execFile);
 const { csvAlertasSad, geojsonAlertasSad, periodoSad, bancoConfigurado, SAD_VIEW } = require('./banco');
 
 const app = express();
@@ -13,6 +18,7 @@ const PORT = parseInt(process.env.PORT || '3000', 10);
 const ROOT_DIR = __dirname;
 const DATASET_DIR = process.env.DATASET_DIR || path.join(ROOT_DIR, 'dataset');
 const SAD_DIR = path.join(DATASET_DIR, 'sad');
+const downloadPool = bancoConfigurado ? new Pool({ connectionString: process.env.DATABASE_URL, max: 2 }) : null;
 
 if (process.env.TRUST_PROXY) {
   app.set('trust proxy', true);
@@ -163,6 +169,29 @@ app.get('/api/sad/:tipo/:camada.geojson', async (req, res) => {
   if (geojson === null) return semBanco(res);
   comCacheDe10Min(res, 'application/geo+json; charset=utf-8');
   res.send(geojson);
+});
+
+// Download completo de todas as camadas de um mês. A fonte é a visão PostGIS,
+// garantindo que CSV, GeoJSON e Shapefile contenham exatamente o mesmo recorte.
+app.get('/api/sad/download/:ano/:mes.:formato', async (req, res) => {
+  if (!downloadPool) return semBanco(res);
+  const ano = Number(req.params.ano), mes = Number(req.params.mes);
+  const formato = String(req.params.formato).toLowerCase();
+  if (!Number.isInteger(ano) || !Number.isInteger(mes) || mes < 1 || mes > 12 || !['csv','geojson','zip'].includes(formato)) return res.status(400).send('Parâmetros inválidos');
+  const { rows } = await downloadPool.query(`SELECT tipo, camada, ano, mes, sensor, uf, municipio, territorio, uso, jurisdicao, area_km2, ST_AsGeoJSON(geom)::json AS geometry FROM imazongeo.vw_sad WHERE ano=$1 AND mes=$2 ORDER BY tipo, camada`, [ano, mes]);
+  if (!rows.length) return res.status(404).send('Sem dados para o período');
+  const props = r => ({ tipo:r.tipo, camada:r.camada, ano:r.ano, mes:r.mes, sensor:r.sensor, uf:r.uf, municipio:r.municipio, territorio:r.territorio, uso:r.uso, jurisdicao:r.jurisdicao, area_km2:Number(r.area_km2) });
+  const fc = { type:'FeatureCollection', features: rows.map(r => ({ type:'Feature', properties:props(r), geometry:r.geometry })) };
+  const stamp = `${ano}_${String(mes).padStart(2,'0')}`;
+  if (formato === 'geojson') { res.type('application/geo+json'); return res.attachment(`sad_${stamp}.geojson`).send(JSON.stringify(fc)); }
+  if (formato === 'csv') {
+    const head = ['tipo','camada','ano','mes','sensor','uf','municipio','territorio','uso','jurisdicao','area_km2','geometry'];
+    const esc = v => { const s = typeof v === 'object' ? JSON.stringify(v) : (v ?? ''); return /[",\n]/.test(String(s)) ? `"${String(s).replace(/"/g,'""')}"` : s; };
+    const body = rows.map(r => [r.tipo,r.camada,r.ano,r.mes,r.sensor,r.uf,r.municipio,r.territorio,r.uso,r.jurisdicao,r.area_km2,JSON.stringify(r.geometry)].map(esc).join(',')).join('\n');
+    res.type('text/csv'); return res.attachment(`sad_${stamp}.csv`).send(head.join(',')+'\n'+body+'\n');
+  }
+  const tmp = await fs.promises.mkdtemp(path.join(os.tmpdir(), `sad-${stamp}-`));
+  try { const geo = path.join(tmp, `sad_${stamp}.geojson`); await fs.promises.writeFile(geo, JSON.stringify(fc)); const shp = path.join(tmp, 'shapefile'); await fs.promises.mkdir(shp); await execFileAsync('ogr2ogr', ['-f','ESRI Shapefile',shp,geo]); await execFileAsync('zip', ['-j', '-q', path.join(tmp, `sad_${stamp}.zip`), ...await fs.promises.readdir(shp).then(a=>a.map(x=>path.join(shp,x)))]); res.download(path.join(tmp, `sad_${stamp}.zip`), `sad_${stamp}.zip`, () => fs.promises.rm(tmp,{recursive:true,force:true})); } catch (e) { await fs.promises.rm(tmp,{recursive:true,force:true}); res.status(500).send(`Falha ao gerar Shapefile: ${e.message}`); }
 });
 
 // ======== Servir /dataset ========
