@@ -560,7 +560,7 @@ function __featureCenter(feat){
 // ===== FONTES DE DADOS =====
 // Alertas: banco (server.js, /api/sad) quando a tabela do SAD existir; se o banco
 // não estiver configurado ou ativo, os CSVs do S3 abaixo. Os GeoJSON vêm sempre do S3.
-const _API_SAD    = '/api/sad';
+const _API_SAD    = window.location.pathname.startsWith('/sad') ? '/sad/api/sad' : '/api/sad';
 const _S3_BASE    = 'https://imazongeo3-web.s3.sa-east-1.amazonaws.com/dashboard/sad';
 const _S3_CSV     = `${_S3_BASE}/csv`;
 const _S3_GEOJSON = `${_S3_BASE}/geojson`;
