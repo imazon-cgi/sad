@@ -507,7 +507,7 @@ map.getPane('base-legal').style.pointerEvents = 'none';
 map.createPane('overlay-ranked');
 map.getPane('overlay-ranked').style.zIndex = 450;
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_4awi_1_7d7bd486fd79a1eb352a8439', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   subdomains: 'abcd', maxZoom: 20, crossOrigin: true
 }).addTo(map);

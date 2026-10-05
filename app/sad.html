@@ -399,7 +399,7 @@ const withHeadroom = (maxVal, pad=0.12) => (maxVal>0 ? maxVal*(1+pad) : 1);
 
 const amazoniaBounds = L.latLngBounds([[-18,-75],[6,-44]]);
 const map = L.map('map',{zoomControl:true});
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_4awi_1_7d7bd486fd79a1eb352a8439', {
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
   subdomains: 'abcd', maxZoom: 20, crossOrigin: true
 }).addTo(map);
@@ -1104,7 +1104,7 @@ function mapPNG() {
     document.body.appendChild(offDiv);
 
     const offMap = L.map(offDiv, { zoomControl:false, attributionControl:false, preferCanvas:true });
-    const tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '', subdomains: 'abcd', maxZoom: 20, crossOrigin: true }).addTo(offMap);
+    const tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=cb1_4awi_1_7d7bd486fd79a1eb352a8439', { attribution: '', subdomains: 'abcd', maxZoom: 20, crossOrigin: true }).addTo(offMap);
 
     const values = keysFiltradas.map(k => aggregated[k]||0);
     const scale = currentColorScale(values);
